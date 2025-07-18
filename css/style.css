@@ -1,0 +1,150 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    line-height: 1.6;
+    color: #4a2e2a; /* marrom escuro */
+    background-color: #fefaf5; /* bege claro */
+}
+
+/* Container padrão */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.logo-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    max-width: 220px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Header */
+header {
+    background: #a17964; /* marrom médio */
+    color: white;
+}
+
+    header h1 {
+        text-align: center;
+        padding: 20px 0 10px;
+        font-size: 2rem;
+    }
+
+nav ul.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 0;
+    list-style: none;
+    gap: 15px;
+}
+
+    nav ul.menu li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 8px 12px;
+        border-radius: 4px;
+    }
+
+        nav ul.menu li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+/* Hero */
+.hero {
+    background: #f2e7dc; /* bege suave */
+    padding: 60px 20px;
+    text-align: center;
+}
+
+    .hero h2 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        color: #4a2e2a;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        color: #6e4c46;
+    }
+
+/* Seções */
+section {
+    padding: 60px 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #4a2e2a;
+}
+
+.sobre p,
+.depoimentos blockquote,
+.contato p {
+    max-width: 800px;
+    margin: 10px auto;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #4a2e2a;
+}
+
+/* Depoimentos */
+.depoimentos blockquote {
+    font-style: italic;
+    background: #f7f1ec;
+    border-left: 5px solid #a17964;
+    margin: 20px auto;
+    padding: 15px 20px;
+}
+
+/* Contato */
+.contato a {
+    color: #a17964;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .contato a:hover {
+        text-decoration: underline;
+    }
+
+/* Footer */
+footer {
+    background: #a17964;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9rem;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    nav ul.menu {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero p, .sobre p, .depoimentos blockquote, .contato p {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+}
