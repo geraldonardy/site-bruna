@@ -1,150 +1,444 @@
-/* Reset b�sico */
+﻿/* --- Importações e Variáveis --- */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;700&display=swap');
+
+:root {
+    --cor-fundo: #FBF0E4; /* Cor de fundo exata do logo */
+    --cor-texto: #6D4C3D; /* Cor do texto exata do logo */
+    --cor-branca: #FFFFFF;
+    --font-titulo-script: 'Great Vibes', cursive; /* Fonte script do logo */
+    --font-corpo: 'Montserrat', sans-serif; /* Fonte da tagline */
+}
+
+/* --- Reset Básico --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* --- Estilos Globais --- */
 body {
-    font-family: "Segoe UI", sans-serif;
-    line-height: 1.6;
-    color: #4a2e2a; /* marrom escuro */
-    background-color: #fefaf5; /* bege claro */
+    font-family: var(--font-corpo);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.7;
+    font-weight: 300;
 }
 
-/* Container padr�o */
 .container {
-    max-width: 960px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 20px;
 }
-.logo-header {
+
+h1, h2, h3 {
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+/* H1 usa a fonte script */
+h1 {
+    font-family: var(--font-titulo-script);
+    font-size: 4.5rem; /* 72px */
+    font-weight: normal;
+    color: var(--cor-texto);
+    line-height: 1.2;
+}
+
+/* H2 para títulos de seção */
+h2 {
+    font-family: var(--font-corpo);
+    font-weight: 700;
+    font-size: 1.8rem; /* 29px */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-family: var(--font-corpo);
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--cor-texto);
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+/* --- Header / Navegação --- */
+header {
+    background-color: var(--cor-fundo);
+    border-bottom: 1px solid rgba(109, 76, 61, 0.2);
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+    header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header .logo img {
+        max-height: 90px; /* Ajuste a altura do logo conforme necessário */
+        width: auto;
+    }
+
+    header nav ul {
+        list-style: none;
+        display: flex;
+    }
+
+    header nav li {
+        margin-left: 30px;
+    }
+
+    header nav a {
+        text-decoration: none;
+        color: var(--cor-texto);
+        font-family: var(--font-corpo);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        transition: color 0.3s ease;
+        padding-bottom: 5px;
+        border-bottom: 2px solid transparent;
+    }
+
+        header nav a:hover {
+            color: #A07C6D; /* Um tom mais claro do marrom */
+        }
+
+        /* Estilo do link ativo */
+        header nav a.active {
+            border-bottom-color: var(--cor-texto);
+        }
+
+
+/* --- Botão CTA (Call to Action) --- */
+.cta-button {
+    display: inline-block;
+    background-color: var(--cor-texto);
+    color: var(--cor-branca);
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: var(--font-corpo);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+    .cta-button:hover {
+        background-color: #8a6a5b; /* Marrom mais claro no hover */
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+/* --- Homepage: Seção Hero --- */
+.hero {
+    text-align: center;
+    padding: 100px 0;
+}
+
+    .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+/* --- Homepage: Seção Sobre --- */
+.about {
+    padding: 80px 0;
+    background-color: var(--cor-branca); /* Uma leve quebra de cor */
+    text-align: center;
+}
+
+    .about p {
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+/* --- Página de Cursos: Título --- */
+.page-title {
+    text-align: center;
+    padding: 60px 0;
+}
+
+    .page-title p {
+        font-size: 1.3rem;
+    }
+
+/* --- Página de Cursos: Lista --- */
+.course-list .container {
+    display: grid;
+    /* Cria colunas automáticas que se ajustam */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    padding-bottom: 60px;
+}
+
+.course-card {
+    background-color: var(--cor-branca);
+    border: 1px solid rgba(109, 76, 61, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Para caso adicione imagem */
+}
+
+    .course-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(109, 76, 61, 0.1);
+    }
+
+    .course-card .course-content {
+        padding: 30px;
+    }
+
+    .course-card h3 {
+        margin-bottom: 10px;
+    }
+
+    .course-card p {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid rgba(109, 76, 61, 0.2);
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+/* --- Homepage: Seção Sobre (MODIFICAÇÕES) --- */
+
+/* Garante que o H2 permaneça centralizado */
+.about h2 {
+    text-align: center;
+    margin-bottom: 40px; /* Mais espaço */
+}
+
+.about-content {
+    display: flex;
+    align-items: center; /* Alinha verticalmente a foto e o texto */
+    gap: 40px;
+    flex-wrap: wrap; /* Permite quebrar em telas menores */
+}
+
+.about-image {
+    flex-basis: 300px; /* Define um tamanho base para a foto */
+    flex-grow: 0;
+    text-align: center; /* Centraliza a foto em telas pequenas */
+}
+
+    .about-image img {
+        max-width: 100%;
+        width: 280px; /* Tamanho da foto */
+        height: 280px;
+        border-radius: 50%; /* Foto perfeitamente circular */
+        object-fit: cover; /* Garante que a foto não fique distorcida */
+        border: 6px solid var(--cor-branca); /* Borda para destacar */
+        box-shadow: 0 5px 15px rgba(109, 76, 61, 0.2); /* Sombra suave */
+    }
+
+.about-text {
+    flex: 1; /* Faz o texto ocupar o espaço restante */
+    min-width: 300px; /* Largura mínima para o texto */
+}
+
+/* Ajuste para telas menores (mobile) */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column; /* Empilha a foto e o texto */
+    }
+
+    .about-text {
+        text-align: left; /* Alinha o texto à esquerda no mobile */
+    }
+}
+
+
+/* --- Homepage: Seção Depoimentos (NOVO) --- */
+.testimonials {
+    padding: 80px 0;
+    /* Usa a cor de fundo principal para alternar com a seção "Sobre" */
+    background-color: var(--cor-fundo);
+}
+
+    .testimonials h2 {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+.testimonial-grid {
+    display: grid;
+    /* Cria colunas automáticas que se ajustam */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.testimonial-card {
+    background-color: var(--cor-branca);
+    border: 1px solid rgba(109, 76, 61, 0.2);
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
 }
 
-.logo {
-    max-width: 220px;
-    height: auto;
+    .testimonial-card p {
+        font-style: italic;
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-left: 20px;
+    }
+
+        /* Aspas decorativas para os depoimentos */
+        .testimonial-card p::before {
+            content: '“';
+            font-family: var(--font-titulo-script); /* Usa a fonte script do logo */
+            font-size: 3.5rem;
+            color: rgba(109, 76, 61, 0.15); /* Cor suave */
+            position: absolute;
+            left: -5px;
+            top: -15px;
+        }
+
+    .testimonial-card cite {
+        font-style: normal;
+        font-weight: 700;
+        color: var(--cor-texto);
+        text-align: right;
+        margin-top: auto; /* Empurra a citação para o final do card */
+    }
+
+/* --- Homepage: Seção Features (NOVO) --- */
+.features {
+    padding: 80px 0;
+    background-color: var(--cor-fundo); /* Fundo bege para alternar */
+}
+
+    .features h2 {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.feature-card {
+    background-color: var(--cor-branca);
+    border: 1px solid rgba(109, 76, 61, 0.1);
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.feature-icon {
+    font-size: 2.5rem; /* 40px */
+    line-height: 1;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.feature-card h3 {
+    font-family: var(--font-corpo);
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--cor-texto);
     margin-bottom: 10px;
 }
 
-/* Header */
-header {
-    background: #a17964; /* marrom m�dio */
-    color: white;
+.feature-card p {
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
-    header h1 {
+/* --- Homepage: Seção Benefits (NOVO) --- */
+.benefits {
+    padding: 80px 0;
+    background-color: var(--cor-branca); /* Fundo branco */
+}
+
+    .benefits h2 {
         text-align: center;
-        padding: 20px 0 10px;
-        font-size: 2rem;
+        margin-bottom: 15px;
     }
 
-nav ul.menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 10px 0;
-    list-style: none;
-    gap: 15px;
+.benefits-intro {
+    text-align: center;
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    font-weight: 300;
 }
 
-    nav ul.menu li a {
-        color: white;
-        text-decoration: none;
-        font-weight: 600;
-        padding: 8px 12px;
-        border-radius: 4px;
+/* Reutilizando o estilo .checklist dos cursos */
+/* Se você ainda não tiver, adicione-o */
+.benefits .checklist {
+    list-style: none;
+    padding-left: 10px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+    .benefits .checklist li {
+        font-size: 1.1rem;
+        font-weight: 400;
+        margin-bottom: 12px;
+        position: relative;
+        padding-left: 35px;
     }
 
-        nav ul.menu li a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+        .benefits .checklist li::before {
+            content: '✅'; /* Ou '✓' */
+            position: absolute;
+            left: 0;
+            top: 1px;
+            font-size: 1.1rem;
         }
 
-/* Hero */
-.hero {
-    background: #f2e7dc; /* bege suave */
-    padding: 60px 20px;
+
+/* --- Homepage: Seção Final CTA (NOVO) --- */
+.final-cta {
+    padding: 80px 20px;
+    background-color: var(--cor-fundo);
     text-align: center;
 }
 
-    .hero h2 {
-        font-size: 2rem;
-        margin-bottom: 15px;
-        color: #4a2e2a;
+    /* Usamos o H1 para ter a fonte script, mas ajustamos o tamanho */
+    .final-cta h1 {
+        font-size: 4rem; /* 64px */
+        margin-bottom: 10px;
     }
 
-    .hero p {
+    .final-cta p {
         font-size: 1.2rem;
-        color: #6e4c46;
+        max-width: 600px;
+        margin: 0 auto 30px auto;
     }
-
-/* Se��es */
-section {
-    padding: 60px 20px;
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #4a2e2a;
-}
-
-.sobre p,
-.depoimentos blockquote,
-.contato p {
-    max-width: 800px;
-    margin: 10px auto;
-    text-align: center;
-    font-size: 1.1rem;
-    color: #4a2e2a;
-}
-
-/* Depoimentos */
-.depoimentos blockquote {
-    font-style: italic;
-    background: #f7f1ec;
-    border-left: 5px solid #a17964;
-    margin: 20px auto;
-    padding: 15px 20px;
-}
-
-/* Contato */
-.contato a {
-    color: #a17964;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-    .contato a:hover {
-        text-decoration: underline;
-    }
-
-/* Footer */
-footer {
-    background: #a17964;
-    color: white;
-    text-align: center;
-    padding: 15px 0;
-    font-size: 0.9rem;
-}
-
-/* Responsivo */
-@media (max-width: 768px) {
-    nav ul.menu {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .hero h2 {
-        font-size: 1.5rem;
-    }
-
-    .hero p, .sobre p, .depoimentos blockquote, .contato p {
-        font-size: 1rem;
-        padding: 0 10px;
-    }
-}

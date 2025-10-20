@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos - Bruna Nardy</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="imgs/logo-site.png" alt="Logo Bruna Nardy">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="cursos.html" class="active">Cursos</a></li>
+                    <li><a href="agendamento.html">Agendamento</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-title">
+            <div class="container">
+                <h1>Nossos Cursos</h1>
+                <p>Encontre o caminho para a sua transformação.</p>
+            </div>
+        </section>
+
+        <section class="course-list">
+            <div class="container">
+
+                <div class="course-card">
+                    <div class="course-content">
+                        <h3>COMUNIQUE-SE: MULHERES</h3>
+                        <p>Um grupo de estudos e discussão para mulheres que desejam construir relacionamentos mais saudáveis e felizes.</p>
+                        <a href="curso-comuniquese.html" class="cta-button">Quero Saber Mais</a>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-content">
+                        <h3>COMUNIQUE-SE: CASAIS</h3>
+                        <p>Um espaço para casais que buscam fortalecer a conexão, aprimorar o diálogo e construir um relacionamento mais saudável.</p>
+                        <a href="curso-comuniquese-casais.html" class="cta-button">Quero Saber Mais</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Bruna Nardy. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
