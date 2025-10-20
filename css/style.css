@@ -89,16 +89,19 @@ header {
         width: auto;
     }
 
-    header nav ul {
+    /* --- Header / Navegação (COM A MODIFICAÇÃO) --- */
+    /* ... (outros estilos do header) ... */
+
+    header .menu-nav ul {
         list-style: none;
         display: flex;
     }
 
-    header nav li {
+    header .menu-nav li {
         margin-left: 30px;
     }
 
-    header nav a {
+    header .menu-nav a {
         text-decoration: none;
         color: var(--cor-texto);
         font-family: var(--font-corpo);
@@ -111,12 +114,12 @@ header {
         border-bottom: 2px solid transparent;
     }
 
-        header nav a:hover {
+        header .menu-nav a:hover {
             color: #A07C6D; /* Um tom mais claro do marrom */
         }
 
         /* Estilo do link ativo */
-        header nav a.active {
+        header .menu-nav a.active {
             border-bottom-color: var(--cor-texto);
         }
 
@@ -442,3 +445,119 @@ footer {
         max-width: 600px;
         margin: 0 auto 30px auto;
     }
+
+/* --- ESTILOS DO MENU RESPONSIVO (MOBILE) --- */
+
+/* 1. Esconde o checkbox */
+#menu-toggle {
+    display: none;
+}
+
+/* 2. O ícone hamburger (escondido no desktop) */
+.menu-icon {
+    display: none; /* Escondido por padrão */
+    width: 30px;
+    height: 25px; /* Altura total do ícone */
+    position: relative;
+    cursor: pointer;
+    z-index: 1001; /* Fica acima de tudo */
+}
+
+    /* 3. As 3 linhas do ícone (feitas com a <span> e ::before/::after) */
+    .menu-icon span,
+    .menu-icon::before,
+    .menu-icon::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 3px; /* Espessura da linha */
+        background-color: var(--cor-texto);
+        border-radius: 2px;
+        position: absolute;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .menu-icon::before {
+        top: 0; /* Linha de cima */
+    }
+
+    .menu-icon span {
+        top: 50%; /* Linha do meio */
+        transform: translateY(-50%);
+    }
+
+    .menu-icon::after {
+        bottom: 0; /* Linha de baixo */
+    }
+
+/* 4. A mágica do "X" (quando o menu está aberto) */
+#menu-toggle:checked + .menu-icon::before {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+#menu-toggle:checked + .menu-icon span {
+    opacity: 0; /* Esconde a linha do meio */
+}
+
+#menu-toggle:checked + .menu-icon::after {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+}
+
+
+/* 5. PONTO DE QUEBRA (TABLETS E CELULARES) */
+/* Quando a tela for menor que 768px... */
+@media (max-width: 768px) {
+
+    /* 5a. Mostra o ícone hamburger */
+    .menu-icon {
+        display: block;
+    }
+
+    /* 5b. Esconde o menu desktop e o transforma em menu "gaveta" */
+    header .menu-nav {
+        position: fixed; /* Fica por cima de todo o site */
+        top: 0;
+        left: 100%; /* Começa escondido fora da tela (à direita) */
+        width: 100%;
+        height: 100vh; /* Altura total da tela */
+        background-color: var(--cor-fundo);
+        z-index: 1000;
+        /* Animação de deslizar */
+        transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        /* Centraliza os links verticalmente */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* 5c. Mostra o menu "gaveta" quando o ícone é clicado */
+    #menu-toggle:checked ~ .menu-nav {
+        left: 0; /* Puxa o menu para a tela */
+    }
+
+    /* 5d. Transforma a lista horizontal em vertical */
+    header .menu-nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header .menu-nav li {
+        margin: 0; /* Remove a margem lateral */
+    }
+
+    /* 5e. Aumenta o tamanho dos links para fácil toque */
+    header .menu-nav a {
+        font-size: 1.8rem; /* Fonte bem grande */
+        font-weight: 400; /* Um pouco mais leve */
+        padding: 20px 30px;
+        display: block;
+        border-bottom: none !important; /* Remove a borda do 'active' */
+    }
+
+        /* 5f. Estilo do link ativo no mobile */
+        header .menu-nav a.active {
+            color: #A07C6D; /* Usa a cor de hover */
+        }
+}
