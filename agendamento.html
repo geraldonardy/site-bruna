@@ -266,111 +266,131 @@
     </footer>
 
     <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+    document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        const form = document.getElementById('agendamentoForm');
-        const inputTelefone = document.getElementById('telefone');
-        const inputData = document.getElementById('data_visual');
-        const selectHora = document.getElementById('hora_visual'); // Agora é um select
-        const inputEmail = document.getElementById('email');
-        const hiddenDataHora = document.getElementById('data_hora_final');
-        const successMsg = document.getElementById('successMessage');
-        const loader = document.getElementById('loader');
+    const form = document.getElementById('agendamentoForm');
+    const inputTelefone = document.getElementById('telefone');
+    const inputData = document.getElementById('data_visual');
+    const selectHora = document.getElementById('hora_visual');
+    const inputEmail = document.getElementById('email');
+    const hiddenDataHora = document.getElementById('data_hora_final');
+    const successMsg = document.getElementById('successMessage');
+    const loader = document.getElementById('loader');
 
-        // --- GERAÇÃO AUTOMÁTICA DOS HORÁRIOS (12:00 as 18:00, a cada 15min) ---
-        function gerarHorarios() {
-            const horaInicio = 12;
-            const horaFim = 18;
+    // --- GERAÇÃO AUTOMÁTICA DOS HORÁRIOS (12:00 as 18:00, a cada 15min) ---
+    function gerarHorarios() {
+        const horaInicio = 12;
+        const horaFim = 18;
 
-            for (let h = horaInicio; h <= horaFim; h++) {
-                // Loop dos minutos: 0, 15, 30, 45
-                for (let m = 0; m < 60; m += 15) {
+        for (let h = horaInicio; h <= horaFim; h++) {
+            for (let m = 0; m < 60; m += 15) {
 
-                    // Se for 18:00, criamos a opção e paramos o loop (para não criar 18:15, 18:30...)
-                    // Se o atendimento só vai ATÉ as 18h (fechamento), remova o sinal de "=" abaixo
-                    if (h === horaFim && m > 0) break;
+                if (h === horaFim && m > 0) break;
 
-                    // Formatação (adiciona zero à esquerda se necessário)
-                    const horaFormatada = h.toString().padStart(2, '0');
-                    const minutoFormatado = m.toString().padStart(2, '0');
-                    const horarioTexto = `${horaFormatada}:${minutoFormatado}`;
+                const horaFormatada = h.toString().padStart(2, '0');
+                const minutoFormatado = m.toString().padStart(2, '0');
+                const horarioTexto = `${horaFormatada}:${minutoFormatado}`;
 
-                    const option = document.createElement('option');
-                    option.value = horarioTexto;
-                    option.textContent = horarioTexto;
-                    selectHora.appendChild(option);
-                }
+                const option = document.createElement('option');
+                option.value = horarioTexto;
+                option.textContent = horarioTexto;
+                selectHora.appendChild(option);
             }
         }
-        gerarHorarios(); // Executa a função ao carregar a página
+    }
+    gerarHorarios();
 
-        // --- CONFIGURAÇÕES DE DATA ---
-        const hoje = new Date();
-        const maxData = new Date();
-        maxData.setDate(hoje.getDate() + 30);
-        const formatarDataISO = (data) => data.toISOString().split('T')[0];
-        inputData.min = formatarDataISO(hoje);
-        inputData.max = formatarDataISO(maxData);
+    // --- CONFIGURAÇÕES DE DATA (com min/max) ---
+    const hoje = new Date();
+    const maxData = new Date();
+    maxData.setDate(hoje.getDate() + 30);
 
-        // --- MÁSCARA DE TELEFONE ---
-        inputTelefone.addEventListener('input', function (e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 11) value = value.slice(0, 11);
-            if (value.length > 2) value = `(${value.substring(0, 2)}) ${value.substring(2)}`;
-            if (value.length > 9) value = `${value.substring(0, 9)}-${value.substring(9)}`;
-            e.target.value = value;
-        });
+    // Funções auxiliares para comparação de datas
+    const formatarDataISO = (data) => data.toISOString().split('T')[0];
+    inputData.min = formatarDataISO(hoje);
+    inputData.max = formatarDataISO(maxData);
 
-        // --- VALIDAÇÃO DE EMAIL ---
-        function validarEmail(email) {
-            const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-            return re.test(String(email).toLowerCase());
+    // Converte a data string para um objeto Date para comparação
+    const parseDate = (dateString) => new Date(dateString + 'T00:00:00');
+
+    // 2. Máscara de Telefone (Mantida)
+    inputTelefone.addEventListener('input', function (e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 11) value = value.slice(0, 11);
+        if (value.length > 2) value = `(${value.substring(0, 2)}) ${value.substring(2)}`;
+        if (value.length > 9) value = `${value.substring(0, 9)}-${value.substring(9)}`;
+        e.target.value = value;
+    });
+
+    // 3. Validação de Email (Mantida)
+    function validarEmail(email) {
+        const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+    // --- ENVIO DO FORMULÁRIO (Validação Reforçada para iOS) ---
+    form.addEventListener('submit', function (e) {
+        let valid = true;
+
+        // Limpar erros
+        document.getElementById('email-error').style.display = 'none';
+        document.getElementById('date-error').style.display = 'none';
+        inputEmail.style.borderColor = '#ccc';
+        inputData.style.borderColor = '#ccc';
+        selectHora.style.borderColor = '#ccc';
+
+        // 1. Validação de Email
+        if (!validarEmail(inputEmail.value)) {
+            document.getElementById('email-error').style.display = 'block';
+            inputEmail.style.borderColor = 'red';
+            valid = false;
         }
 
-        // --- ENVIO DO FORMULÁRIO ---
-        form.addEventListener('submit', function (e) {
-            let valid = true;
+        // 2. Validação de Data (Reforçada)
+        const dataSelecionadaStr = inputData.value;
+        if (!dataSelecionadaStr) {
+             document.getElementById('date-error').textContent = 'Selecione uma data válida.';
+             document.getElementById('date-error').style.display = 'block';
+             inputData.style.borderColor = 'red';
+             valid = false;
+        } else {
+            const dataMin = parseDate(inputData.min);
+            const dataMax = parseDate(inputData.max);
+            const dataSelecionada = parseDate(dataSelecionadaStr);
 
-            if (!validarEmail(inputEmail.value)) {
-                document.getElementById('email-error').style.display = 'block';
-                inputEmail.style.borderColor = 'red';
-                valid = false;
-            } else {
-                document.getElementById('email-error').style.display = 'none';
-                inputEmail.style.borderColor = '#ccc';
-            }
-
-            // Validação de Data (Range)
-            if (inputData.value < inputData.min || inputData.value > inputData.max) {
+            // Verifica se a data está fora do intervalo [hoje, hoje + 30 dias]
+            // Compara os milissegundos
+            if (dataSelecionada < dataMin || dataSelecionada > dataMax) {
+                document.getElementById('date-error').textContent = 'Selecione uma data entre hoje e 30 dias.';
                 document.getElementById('date-error').style.display = 'block';
+                inputData.style.borderColor = 'red';
                 valid = false;
-            } else {
-                document.getElementById('date-error').style.display = 'none';
             }
+        }
 
-            // Validação de Horário (Apenas checa se selecionou algo)
-            if (!selectHora.value) {
-                valid = false;
-                selectHora.style.borderColor = 'red';
-            } else {
-                selectHora.style.borderColor = '#ccc';
-            }
+        // 3. Validação de Horário
+        if (!selectHora.value) {
+            selectHora.style.borderColor = 'red';
+            valid = false;
+        }
 
-            if (!valid) {
-                e.preventDefault();
-            } else {
-                // Concatena Data + Hora
-                hiddenDataHora.value = `${inputData.value} ${selectHora.value}`;
+        // --- Decisão Final ---
+        if (!valid) {
+            e.preventDefault();
+        } else {
+            // Se válido:
+            hiddenDataHora.value = `${inputData.value} ${selectHora.value}`;
 
-                form.classList.add('hidden');
-                loader.classList.remove('hidden');
+            // Efeitos de UI
+            form.classList.add('hidden');
+            loader.classList.remove('hidden');
 
-                setTimeout(() => {
-                    loader.classList.add('hidden');
-                    successMsg.classList.remove('hidden');
-                }, 1500);
-            }
-        });
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                successMsg.classList.remove('hidden');
+            }, 1500);
+        }
+    });
     </script>
 </body>
 </html>
