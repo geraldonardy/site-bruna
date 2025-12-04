@@ -5,7 +5,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendamento - Bruna Nardy</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/png" href="imgs/favicon.png">
+
+    <style>
+        /* --- ESTILOS GERAIS DO FORMULÁRIO --- */
+        .form-container {
+            background-color: #FBF0E4;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 0.5rem;
+                font-weight: bold;
+                color: #6D4C3D;
+            }
+
+            /* Input e Select com mesmo estilo */
+            .form-group input, .form-group select {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 1rem;
+                box-sizing: border-box;
+                background-color: #fff; /* Garante fundo branco no select */
+            }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+            .form-row .form-group {
+                flex: 1;
+            }
+
+        button.btn-submit {
+            background-color: #d4a373;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+            button.btn-submit:hover {
+                background-color: #b08968;
+            }
+
+        .error-msg {
+            color: red;
+            font-size: 0.85rem;
+            display: none;
+            margin-top: 5px;
+        }
+
+        /* --- ESTILOS DE ESTADOS (Success / Loading) --- */
+        .hidden {
+            display: none !important;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-box {
+            padding: 20px;
+        }
+
+        .success-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #d1fae5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem auto;
+        }
+
+            .success-icon svg {
+                width: 30px;
+                height: 30px;
+                fill: #059669;
+            }
+
+        .success-box h3 {
+            font-size: 1.5rem;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .success-box p {
+            color: #4b5563;
+            margin-bottom: 2rem;
+        }
+
+        .loader-box {
+            padding: 40px 0;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #d4a373;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -16,16 +160,13 @@
             </a>
 
             <input type="checkbox" id="menu-toggle">
-
-            <label for="menu-toggle" class="menu-icon">
-                <span></span>
-            </label>
+            <label for="menu-toggle" class="menu-icon"><span></span></label>
 
             <nav class="menu-nav">
                 <ul>
                     <li><a href="index.html">Início</a></li>
                     <li><a href="cursos.html">Cursos</a></li>
-                    <li><a href="agendamento.html" class="active">Agendamento</a></li>  
+                    <li><a href="agendamento.html" class="active">Agendamento</a></li>
                 </ul>
             </nav>
         </div>
@@ -35,7 +176,7 @@
         <section class="page-title">
             <div class="container">
                 <h1>Agende sua Consulta</h1>
-                <p>Um espaço seguro e acolhedor para sua jornada de autoconhecimento.</p>
+                <p>Preencha o formulário abaixo para solicitar seu horário.</p>
             </div>
         </section>
 
@@ -43,22 +184,74 @@
             <div class="container">
                 <div class="course-content-box">
 
-                    <h2>💬 Como funciona o agendamento?</h2>
-                    <p>O primeiro passo para sua transformação começa com uma conversa. O agendamento é feito de forma simples e direta, para que possamos encontrar o melhor horário para você.</p>
+                    <div class="form-container">
 
-                    <ul class="checklist">
-                        <li><strong>Passo 1:</strong> Clique no botão "Agendar pelo WhatsApp" abaixo.</li>
-                        <li><strong>Passo 2:</strong> Você será direcionada para uma conversa, onde poderá tirar todas as suas dúvidas sobre valores e horários.</li>
-                        <li><strong>Passo 3:</strong> Encontraremos o melhor horário na agenda para iniciar sua jornada.</li>
-                    </ul>
+                        <iframe name="hidden_iframe" style="display:none;"></iframe>
 
-                    <h2>✨ Sobre a Sessão</h2>
-                    <p>As sessões são realizadas de forma <strong>online em todo o mundo</strong> e <strong>presencial em nosso consultório em Bragança Paulista</strong>, em um ambiente totalmente sigiloso e seguro, com duração média de 50 minutos. Tudo o que você precisa é de uma conexão estável com a internet e um local privado onde se sinta à vontade.</p>
+                        <form id="agendamentoForm"
+                              action="https://docs.google.com/forms/d/e/1FAIpQLSfWnKWBqlmOcyk1OGE8iuDdNWV0SqYCTzuAtvNxsczHYpvqDA/formResponse"
+                              method="POST"
+                              target="hidden_iframe">
 
-                    <div class="course-final-cta">
-                        <h2>Pronta para começar?</h2>
-                        <p>Dê o primeiro passo para uma vida mais leve. Estou aqui para te esperar.</p>
-                        <a href="https://wa.me/5511974523819?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o%20com%20voc%C3%AA." target="_blank" class="cta-button">Agendar pelo WhatsApp</a>
+                            <div class="form-group">
+                                <label for="nome">Nome Completo</label>
+                                <input type="text" id="nome" name="entry.2092238618" required placeholder="Seu nome completo">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" name="entry.1556369182" required placeholder="seuemail@exemplo.com">
+                                <span id="email-error" class="error-msg">Por favor, insira um e-mail válido.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telefone">WhatsApp / Telefone</label>
+                                <input type="tel" id="telefone" name="entry.479301265" required placeholder="(XX) XXXXX-XXXX" maxlength="15">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="modalidade">Modalidade de Atendimento</label>
+                                <select id="modalidade" name="entry.588393791" required>
+                                    <option value="" disabled selected>Selecione...</option>
+                                    <option value="online">Online</option>
+                                    <option value="presencial">Presencial</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="data_visual">Data</label>
+                                    <input type="date" id="data_visual" required>
+                                    <span id="date-error" class="error-msg">Selecione uma data entre hoje e 30 dias.</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="hora_visual">Horário Disponível</label>
+                                    <select id="hora_visual" required>
+                                        <option value="" disabled selected>Escolha o horário...</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <input type="hidden" id="data_hora_final" name="entry.780969263">
+
+                            <button type="submit" class="btn-submit">Solicitar Agendamento</button>
+                        </form>
+
+                        <div id="loader" class="loader-box hidden">
+                            <div class="spinner"></div>
+                            <p>Processando seu agendamento...</p>
+                        </div>
+
+                        <div id="successMessage" class="success-box hidden fade-in">
+                            <div class="success-icon">
+                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                            </div>
+                            <h3>Solicitação Enviada!</h3>
+                            <p>Sua sessão está pré-agendada. Em breve entraremos em contato pelo WhatsApp para confirmar.</p>
+                            <button onclick="window.location.reload();" class="btn-submit" style="max-width: 200px;">Novo Agendamento</button>
+                        </div>
+
                     </div>
 
                 </div>
@@ -74,7 +267,110 @@
 
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
 
+        const form = document.getElementById('agendamentoForm');
+        const inputTelefone = document.getElementById('telefone');
+        const inputData = document.getElementById('data_visual');
+        const selectHora = document.getElementById('hora_visual'); // Agora é um select
+        const inputEmail = document.getElementById('email');
+        const hiddenDataHora = document.getElementById('data_hora_final');
+        const successMsg = document.getElementById('successMessage');
+        const loader = document.getElementById('loader');
+
+        // --- GERAÇÃO AUTOMÁTICA DOS HORÁRIOS (12:00 as 18:00, a cada 15min) ---
+        function gerarHorarios() {
+            const horaInicio = 12;
+            const horaFim = 18;
+
+            for (let h = horaInicio; h <= horaFim; h++) {
+                // Loop dos minutos: 0, 15, 30, 45
+                for (let m = 0; m < 60; m += 15) {
+
+                    // Se for 18:00, criamos a opção e paramos o loop (para não criar 18:15, 18:30...)
+                    // Se o atendimento só vai ATÉ as 18h (fechamento), remova o sinal de "=" abaixo
+                    if (h === horaFim && m > 0) break;
+
+                    // Formatação (adiciona zero à esquerda se necessário)
+                    const horaFormatada = h.toString().padStart(2, '0');
+                    const minutoFormatado = m.toString().padStart(2, '0');
+                    const horarioTexto = `${horaFormatada}:${minutoFormatado}`;
+
+                    const option = document.createElement('option');
+                    option.value = horarioTexto;
+                    option.textContent = horarioTexto;
+                    selectHora.appendChild(option);
+                }
+            }
+        }
+        gerarHorarios(); // Executa a função ao carregar a página
+
+        // --- CONFIGURAÇÕES DE DATA ---
+        const hoje = new Date();
+        const maxData = new Date();
+        maxData.setDate(hoje.getDate() + 30);
+        const formatarDataISO = (data) => data.toISOString().split('T')[0];
+        inputData.min = formatarDataISO(hoje);
+        inputData.max = formatarDataISO(maxData);
+
+        // --- MÁSCARA DE TELEFONE ---
+        inputTelefone.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            if (value.length > 2) value = `(${value.substring(0, 2)}) ${value.substring(2)}`;
+            if (value.length > 9) value = `${value.substring(0, 9)}-${value.substring(9)}`;
+            e.target.value = value;
+        });
+
+        // --- VALIDAÇÃO DE EMAIL ---
+        function validarEmail(email) {
+            const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        // --- ENVIO DO FORMULÁRIO ---
+        form.addEventListener('submit', function (e) {
+            let valid = true;
+
+            if (!validarEmail(inputEmail.value)) {
+                document.getElementById('email-error').style.display = 'block';
+                inputEmail.style.borderColor = 'red';
+                valid = false;
+            } else {
+                document.getElementById('email-error').style.display = 'none';
+                inputEmail.style.borderColor = '#ccc';
+            }
+
+            // Validação de Data (Range)
+            if (inputData.value < inputData.min || inputData.value > inputData.max) {
+                document.getElementById('date-error').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('date-error').style.display = 'none';
+            }
+
+            // Validação de Horário (Apenas checa se selecionou algo)
+            if (!selectHora.value) {
+                valid = false;
+                selectHora.style.borderColor = 'red';
+            } else {
+                selectHora.style.borderColor = '#ccc';
+            }
+
+            if (!valid) {
+                e.preventDefault();
+            } else {
+                // Concatena Data + Hora
+                hiddenDataHora.value = `${inputData.value} ${selectHora.value}`;
+
+                form.classList.add('hidden');
+                loader.classList.remove('hidden');
+
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                    successMsg.classList.remove('hidden');
+                }, 1500);
+            }
+        });
+    </script>
 </body>
 </html>
