@@ -3,28 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bruna Nardy - Leveza que transforma vidas</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Bruna Nardy | Psicóloga Clínica — Comunicação e Relacionamentos</title>
+    <meta name="description" content="Psicóloga Clínica especializada em comunicação nos relacionamentos. Te ajudo a se comunicar de verdade — sem se abandonar, sem engolir sapo, sem explodir.">
+    <link rel="canonical" href="https://www.brunanardy.com.br/">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Bruna Nardy | Psicóloga Clínica — Comunicação e Relacionamentos">
+    <meta property="og:description" content="Te ajudo a se comunicar de verdade nos seus relacionamentos. Sem se abandonar. Sem engolir sapo. Sem explodir.">
+    <meta property="og:url" content="https://www.brunanardy.com.br/">
+    <meta property="og:image" content="https://www.brunanardy.com.br/imgs/fotoPerfil.jpg">
+    <meta property="og:locale" content="pt_BR">
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="imgs/favicon.png">
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+    <!-- Header -->
     <header>
         <div class="container">
-            <a href="index.html" class="logo">
-                <img src="imgs/logo-site.png" alt="Logo Bruna Nardy">
+            <a href="index.html" class="logo-svg" aria-label="Bruna Nardy — Psicóloga Clínica">
+                <span class="logo-text">Bruna Nardy</span>
+                <svg class="logo-butterfly" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 16c-2-4-7-8-10-6s-1 7 3 9c2 1 5 0 7-3z"/><path d="M16 16c2-4 7-8 10-6s1 7-3 9c-2 1-5 0-7-3z"/><path d="M16 16v10" stroke-linecap="round"/><path d="M14 6c1 3 2 7 2 10" stroke-linecap="round"/><path d="M18 6c-1 3-2 7-2 10" stroke-linecap="round"/></svg>
             </a>
-
             <input type="checkbox" id="menu-toggle">
-
-            <label for="menu-toggle" class="menu-icon">
-                <span></span>
-            </label>
-
+            <label for="menu-toggle" class="menu-icon"><span></span></label>
             <nav class="menu-nav">
                 <ul>
                     <li><a href="index.html" class="active">Início</a></li>
                     <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="testes.html">Testes</a></li>
                     <li><a href="agendamento.html">Agendamento</a></li>
                 </ul>
             </nav>
@@ -32,122 +41,208 @@
     </header>
 
     <main>
-        <section class="hero">
+
+        <!-- 1. Hero Section -->
+        <section class="hero section-oliva">
+            <span class="monogram" aria-hidden="true">BN</span>
             <div class="container">
-                <h1>Leveza que transforma vidas</h1>
-                <p>Descubra uma nova forma de viver com mais propósito, bem-estar e clareza.</p>
-
-                <p><strong>O que começa em você, reverbera.</strong></p>
-                <p>Os resultados da terapia vão além do individual, iniciando um efeito cascata que melhora ativamente suas dinâmicas e seus relacionamentos interpessoais.</p>
-
-                <p><strong>Ouço sua dor, e transformo em propósito.</strong></p>
-                <a href="agendamento.html" class="cta-button">Agende agora sua sessão comigo</a>
-
-                <a href="cursos.html" class="cta-button">Conheça nossos Cursos</a>
+                <h1>Te ajudo a se comunicar de verdade nos seus relacionamentos.</h1>
+                <p class="subtitle">Sem se abandonar. Sem engolir sapo. Sem explodir.</p>
+                <a href="agendamento.html" class="btn btn-primary">Agende sua sessão</a>
             </div>
         </section>
 
-        <section class="features">
+        <!-- 2. Pra quem é -->
+        <section class="section-creme">
             <div class="container">
-                <h2>Como a psicologia pode transformar sua vida?</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <span class="feature-icon">🦋</span>
-                        <h3>Autoconhecimento Profundo</h3>
-                        <p>Entenda a raiz dos seus sentimentos, quebre ciclos repetitivos e aprenda a tomar decisões alinhadas com quem você realmente é.</p>
+                <div class="section-header">
+                    <div class="accent-line"></div>
+                    <h2>Pra quem é</h2>
+                </div>
+                <div class="target-cards">
+                    <!-- Card Mulheres -->
+                    <div class="target-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <h3>Para mulheres</h3>
+                        <p>Que querem parar de se anular pra manter a paz.</p>
+                        <a href="cursos.html" class="btn btn-outline-creme">Saiba mais</a>
                     </div>
-                    <div class="feature-card">
-                        <span class="feature-icon">💬</span>
-                        <h3>Relacionamentos Saudáveis</h3>
-                        <p>Aprenda a estabelecer limites, a comunicar suas necessidades com empatia e a construir conexões mais autênticas e nutritivas.</p>
+                    <!-- Card Homens -->
+                    <div class="target-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <h3>Para homens</h3>
+                        <p>Que sentem tudo, mas não aprenderam a dizer.</p>
+                        <a href="agendamento.html" class="btn btn-outline-creme">Saiba mais</a>
                     </div>
-                    <div class="feature-card">
-                        <span class="feature-icon">🌱</span>
-                        <h3>Equilíbrio Emocional</h3>
-                        <p>Encontre ferramentas práticas para gerenciar a ansiedade, lidar com o estresse do dia a dia e cultivar uma mente mais calma e presente.</p>
+                    <!-- Card Casais -->
+                    <div class="target-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <h3>Para casais</h3>
+                        <p>Que querem se reconectar antes que o silêncio vire distância.</p>
+                        <a href="curso-comuniquese-casais.html" class="btn btn-outline-creme">Saiba mais</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="about">
+        <!-- 3. Sobre a Bruna -->
+        <section class="section-oliva">
             <div class="container">
-                <h2>Sobre Bruna Nardy</h2>
+                <div class="section-header">
+                    <div class="accent-line"></div>
+                    <h2>Sobre a Bruna</h2>
+                </div>
                 <div class="about-content">
                     <div class="about-image">
-                        <img src="imgs/fotoPerfil.jpg" alt="Foto de Bruna Nardy">
+                        <img src="imgs/fotoPerfil.jpg" alt="Bruna Nardy — Psicóloga Clínica">
                     </div>
                     <div class="about-text">
-                        <p>
-                            Sempre senti um chamado para ser diferente, não por vaidade, mas pelo desejo de fazer a diferença de uma forma genuína. A psicologia se tornou minha grande aliada nessa jornada, uma poderosa ferramenta com a qual ajudo a transformar a vida de milhares de pessoas. Minha missão é simples: usar meu conhecimento para que você encontre a leveza que transforma, abrindo portas para uma vida com mais significado, equilíbrio e felicidade.
-                        </p>
-                        <p>
-                            Ao longo da minha carreira, com mais de 10 mil atendimentos, vi em primeira mão o que acontece quando alguém decide trilhar um novo caminho. Acompanhei de perto histórias de superação que levaram à retirada de medicamentos, à cura de relacionamentos e a transições de carreira que trouxeram realização profissional. Cada passo dessa jornada é construído sobre uma base de amor, empatia e leveza, provando que a transformação que você busca não só é possível, como está ao seu alcance.
-                        </p>
+                        <p>Sou psicóloga clínica com mais de 10 mil atendimentos realizados. Minha especialidade é ajudar pessoas e casais a se comunicarem melhor — sem se abandonar, sem explodir, sem fingir que está tudo bem.</p>
+                        <p>Acredito que quando a comunicação melhora, tudo melhora: o relacionamento, a autoestima, a saúde mental. É isso que eu faço: te ensino a dizer o que você sente de um jeito que o outro consiga ouvir.</p>
+                        <span class="crp">CRP 06/152225</span>
+                        <a href="https://www.instagram.com/brunanardy_/" target="_blank" rel="noopener" class="instagram-link">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                            @brunanardy_
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="benefits">
+        <!-- 4. Como funciona -->
+        <section class="section-creme">
             <div class="container">
-                <h2>A terapia é um ato de coragem e autocuidado</h2>
-                <p class="benefits-intro">
-                    Iniciar a terapia é dar a si mesmo um presente: um espaço seguro para ser ouvido sem julgamentos,
-                    para explorar suas dores e celebrar suas conquistas. É o primeiro passo para a vida mais leve que você merece.
-                </p>
-
-                <ul class="checklist">
-                    <li>Um ambiente de escuta sigiloso, empático e acolhedor</li>
-                    <li>Ferramentas para entender e transformar padrões de pensamento</li>
-                    <li>Apoio profissional para atravessar momentos difíceis</li>
-                    <li>Fortalecimento da sua autoestima e inteligência emocional</li>
-                    <li>Clareza para construir relacionamentos e uma carreira com mais propósito</li>
-                </ul>
+                <div class="section-header">
+                    <div class="accent-line"></div>
+                    <h2>Como funciona</h2>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-item">
+                        <div class="step-number">01</div>
+                        <h3>Você agenda</h3>
+                        <p>Escolha o melhor horário no formulário.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">02</div>
+                        <h3>A gente conversa</h3>
+                        <p>Online ou presencial, no seu ritmo.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">03</div>
+                        <h3>Você transforma</h3>
+                        <p>Com ferramentas práticas pra aplicar no dia a dia.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="testimonials">
+        <!-- 5. Depoimentos -->
+        <section class="section-oliva">
             <div class="container">
-                <h2>O que dizem sobre mim</h2>
+                <div class="section-header">
+                    <div class="accent-line"></div>
+                    <h2>O que dizem sobre mim</h2>
+                </div>
                 <div class="testimonial-grid">
                     <div class="testimonial-card">
-                        <p>"Eu vivia em um ciclo constante de ansiedade e exaustão, achando que era 'normal'. A terapia com a Bruna foi um divisor de águas. Ela me ensinou a olhar para dentro com gentileza e me deu ferramentas para finalmente encontrar a calma. Hoje, a palavra 'leveza' faz parte do meu vocabulário e da minha vida. Sou imensamente grata."</p>
-                        <cite>M.S</cite>
+                        <span class="quote-icon" aria-hidden="true">"</span>
+                        <p>Eu vivia em um ciclo constante de ansiedade e exaustão, achando que era 'normal'. A terapia com a Bruna foi um divisor de águas. Ela me ensinou a olhar para dentro com gentileza e me deu ferramentas para finalmente encontrar a calma. Hoje, a palavra 'leveza' faz parte do meu vocabulário e da minha vida. Sou imensamente grata.</p>
+                        <cite>— M.S</cite>
                     </div>
                     <div class="testimonial-card">
-                        <p>"Fazer parte do grupo 'Comunique-se' mudou a forma como eu me relaciono com todos ao meu redor, especialmente com meu parceiro. Aprendi a comunicar meus sentimentos sem culpa e a ouvir com mais empatia. O acolhimento da Bruna e a força do grupo foram essenciais. Eu me sinto mais forte e minhas relações nunca foram tão saudáveis."</p>
-                        <cite>J.P</cite>
+                        <span class="quote-icon" aria-hidden="true">"</span>
+                        <p>Fazer parte do grupo 'Comunique-se' mudou a forma como eu me relaciono com todos ao meu redor, especialmente com meu parceiro. Aprendi a comunicar meus sentimentos sem culpa e a ouvir com mais empatia. O acolhimento da Bruna e a força do grupo foram essenciais. Eu me sinto mais forte e minhas relações nunca foram tão saudáveis.</p>
+                        <cite>— J.P</cite>
                     </div>
                     <div class="testimonial-card">
-                        <p>"Eu me sentia perdida, sem propósito e infeliz na minha carreira. O processo com a Bruna foi uma jornada profunda de autoconhecimento. Ela me ajudou a entender meus valores e a ter coragem para fazer a transição que eu tanto adiava. Mais do que uma psicóloga, encontrei uma guia que me mostrou que a transformação é, sim, possível."</p>
-                        <cite>R.F</cite>
+                        <span class="quote-icon" aria-hidden="true">"</span>
+                        <p>Eu me sentia perdida, sem propósito e infeliz na minha carreira. O processo com a Bruna foi uma jornada profunda de autoconhecimento. Ela me ajudou a entender meus valores e a ter coragem para fazer a transição que eu tanto adiava. Mais do que uma psicóloga, encontrei uma guia que me mostrou que a transformação é, sim, possível.</p>
+                        <cite>— R.F</cite>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="final-cta">
+        <!-- 6. Cursos -->
+        <section class="section-creme">
             <div class="container">
-                <h1>A leveza está ao seu alcance</h1>
-                <p>
-                    Se você sente que é o momento de mudar, de se redescobrir e de construir uma vida com mais significado,
-                    eu estou aqui para te guiar.
-                </p>
-                <a href="cursos.html" class="cta-button">Comece Sua Jornada</a>
+                <div class="section-header">
+                    <div class="accent-line"></div>
+                    <h2>Cursos e Grupos</h2>
+                </div>
+                <div class="courses-grid">
+                    <div class="course-card">
+                        <div class="course-card-header">
+                            <span class="monogram-sm" aria-hidden="true">BN</span>
+                            <h3>Comunique-se: Mulheres</h3>
+                            <p>Grupo de estudos e discussão para mulheres.</p>
+                        </div>
+                        <div class="course-card-body">
+                            <p>Um espaço para mulheres que desejam construir relacionamentos mais saudáveis, comunicar suas necessidades com clareza e parar de se anular.</p>
+                            <a href="curso-comuniquese.html" class="btn btn-primary">Quero saber mais</a>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-card-header">
+                            <span class="monogram-sm" aria-hidden="true">BN</span>
+                            <h3>Comunique-se: Casais</h3>
+                            <p>Espaço para casais que querem se reconectar.</p>
+                        </div>
+                        <div class="course-card-body">
+                            <p>Guiado pela Psicóloga Bruna Nardy e seu esposo. Para casais que querem fortalecer a conexão, aprimorar o diálogo e construir uma relação mais saudável.</p>
+                            <a href="curso-comuniquese-casais.html" class="btn btn-primary">Quero saber mais</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
+
+        <!-- 7. CTA Final -->
+        <section class="section-oliva cta-final">
+            <div class="container">
+                <div class="accent-line"></div>
+                <h2>A mudança começa quando você decide falar.</h2>
+                <a href="agendamento.html" class="btn btn-primary" style="margin-top: 12px;">Agende sua sessão</a>
+            </div>
+        </section>
+
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; <span id="current-year"></span> Bruna Nardy. Todos os direitos reservados.</p>
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2026 Bruna Nardy. Todos os direitos reservados.</p>
+                    <p class="footer-crp">CRP 06/152225</p>
+                </div>
+                <div class="footer-right">
+                    <a href="https://www.instagram.com/brunanardy_/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        Instagram
+                    </a>
+                    <a href="https://wa.me/5511974523819?text=Ol%C3%A1!%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>www.brunanardy.com.br</p>
+            </div>
         </div>
     </footer>
 
-    <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5511974523819?text=Ol%C3%A1!%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Fale conosco pelo WhatsApp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </a>
 
 </body>
 </html>

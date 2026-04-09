@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linguagens do Amor | Bruna Nardy — Psicóloga Clínica</title>
+    <meta name="description" content="Descubra sua linguagem do amor predominante e como isso transforma seus relacionamentos. Teste gratuito pela Psicóloga Bruna Nardy.">
+    <link rel="canonical" href="https://www.brunanardy.com.br/testes.html">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Linguagens do Amor | Bruna Nardy — Psicóloga Clínica">
+    <meta property="og:description" content="Descubra sua linguagem do amor predominante. Teste gratuito com a Psicóloga Bruna Nardy.">
+    <meta property="og:url" content="https://www.brunanardy.com.br/testes.html">
+    <meta property="og:image" content="https://www.brunanardy.com.br/imgs/fotoPerfil.jpg">
+    <meta property="og:locale" content="pt_BR">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="imgs/favicon.png">
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* --- Love Languages Test Styles --- */
+        .test-container {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .test-intro {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .test-intro p {
+            color: var(--creme-text-secondary);
+            font-size: 1.05rem;
+            max-width: 560px;
+            margin: 0 auto 16px;
+        }
+
+        /* Progress Bar */
+        .progress-bar-wrap {
+            background-color: var(--creme-subtle);
+            border-radius: 20px;
+            height: 8px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: var(--creme-accent);
+            border-radius: 20px;
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--creme-text-secondary);
+            margin-bottom: 12px;
+        }
+
+        /* Question Card */
+        .question-card {
+            background-color: #fff;
+            border-radius: var(--radius-lg);
+            padding: 40px 36px;
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.4s ease;
+        }
+
+        .question-card h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--creme-text);
+            margin-bottom: 28px;
+            line-height: 1.4;
+        }
+
+        .question-number {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--creme-accent);
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        /* Options */
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 16px 20px;
+            background-color: var(--creme-bg);
+            border: 2px solid var(--creme-subtle);
+            border-radius: var(--radius);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--creme-text);
+            cursor: pointer;
+            transition: all var(--transition);
+            line-height: 1.5;
+        }
+
+        .option-btn:hover {
+            border-color: var(--creme-accent);
+            background-color: rgba(180, 140, 90, 0.06);
+        }
+
+        .option-btn:active {
+            transform: scale(0.99);
+        }
+
+        /* Result */
+        .result-card {
+            background-color: #fff;
+            border-radius: var(--radius-lg);
+            padding: 48px 40px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+            display: none;
+        }
+
+        .result-card .result-temperament {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .result-card .result-subtitle {
+            font-size: 0.95rem;
+            color: var(--creme-accent);
+            font-weight: 500;
+            margin-bottom: 28px;
+        }
+
+        .result-card .result-description {
+            text-align: left;
+            color: var(--creme-text-secondary);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .result-card .result-traits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 28px 0;
+        }
+
+        .result-card .trait-tag {
+            background-color: var(--creme-bg);
+            border: 1px solid var(--creme-subtle);
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 0.85rem;
+            color: var(--creme-text);
+            font-weight: 500;
+        }
+
+        .result-card .result-note {
+            font-size: 0.85rem;
+            color: var(--creme-footer);
+            font-style: italic;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--creme-subtle);
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+
+        .result-actions .btn {
+            min-width: 180px;
+        }
+
+        /* Scores breakdown */
+        .scores-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin: 28px 0;
+            text-align: left;
+        }
+
+        .score-item {
+            background-color: var(--creme-bg);
+            border-radius: var(--radius);
+            padding: 14px 16px;
+        }
+
+        .score-item .score-label {
+            font-size: 0.85rem;
+            color: var(--creme-text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .score-item .score-bar-bg {
+            background-color: var(--creme-subtle);
+            border-radius: 10px;
+            height: 6px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .score-item .score-bar-val {
+            height: 100%;
+            background-color: var(--creme-accent);
+            border-radius: 10px;
+            transition: width 0.6s ease;
+        }
+
+        .score-item .score-percent {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--creme-text);
+        }
+
+        .score-item.is-winner {
+            border: 2px solid var(--creme-accent);
+        }
+
+        @media (max-width: 480px) {
+            .question-card {
+                padding: 28px 20px;
+            }
+
+            .result-card {
+                padding: 36px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo-svg" aria-label="Bruna Nardy — Psicóloga Clínica">
+                <span class="logo-text">Bruna Nardy</span>
+                <svg class="logo-butterfly" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 16c-2-4-7-8-10-6s-1 7 3 9c2 1 5 0 7-3z"/><path d="M16 16c2-4 7-8 10-6s1 7-3 9c-2 1-5 0-7-3z"/><path d="M16 16v10" stroke-linecap="round"/><path d="M14 6c1 3 2 7 2 10" stroke-linecap="round"/><path d="M18 6c-1 3-2 7-2 10" stroke-linecap="round"/></svg>
+            </a>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon"><span></span></label>
+            <nav class="menu-nav">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="testes.html" class="active">Testes</a></li>
+                    <li><a href="agendamento.html">Agendamento</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Page Hero -->
+        <section class="page-hero section-oliva">
+            <div class="container">
+                <h1>Linguagens do Amor</h1>
+                <p>Descubra como você prefere dar e receber amor — e como isso transforma seus relacionamentos.</p>
+            </div>
+        </section>
+
+        <!-- Test Section -->
+        <section class="section-creme">
+            <div class="container">
+                <div class="test-container">
+
+                    <div class="test-intro" id="testIntro">
+                        <p>Responda às 15 perguntas escolhendo a alternativa que mais tem a ver com você. Não existe resposta certa ou errada.</p>
+                        <button class="btn btn-primary" onclick="startTest()">Começar o Teste</button>
+                    </div>
+
+                    <!-- Progress -->
+                    <div id="progressArea" style="display:none;">
+                        <div class="progress-text">Pergunta <span id="currentNum">1</span> de <span id="totalNum">15</span></div>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar-fill" id="progressBar"></div>
+                        </div>
+                    </div>
+
+                    <!-- Question -->
+                    <div class="question-card" id="questionCard" style="display:none;">
+                        <span class="question-number" id="questionLabel"></span>
+                        <h3 id="questionText"></h3>
+                        <div class="options" id="optionsArea"></div>
+                    </div>
+
+                    <!-- Result -->
+                    <div class="result-card" id="resultCard">
+                        <div class="result-subtitle" id="resultSubtitle"></div>
+                        <div class="result-temperament" id="resultTitle"></div>
+
+                        <div class="scores-grid" id="scoresGrid"></div>
+
+                        <div class="result-description" id="resultDescription"></div>
+
+                        <div class="result-traits" id="resultTraits"></div>
+
+                        <div class="result-actions">
+                            <button class="btn btn-primary" onclick="location.reload()">Refazer o Teste</button>
+                            <a href="agendamento.html" class="btn btn-outline-creme">Agendar uma sessão</a>
+                        </div>
+
+                        <p class="result-note">Este teste é uma ferramenta de autoconhecimento e não substitui uma avaliação psicológica profissional. Para se aprofundar nos seus resultados, agende uma sessão.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2026 Bruna Nardy. Todos os direitos reservados.</p>
+                    <p class="footer-crp">CRP 06/152225</p>
+                </div>
+                <div class="footer-right">
+                    <a href="https://www.instagram.com/brunanardy_/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        Instagram
+                    </a>
+                    <a href="https://wa.me/5511974523819?text=Ol%C3%A1!%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>www.brunanardy.com.br</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5511974523819?text=Ol%C3%A1!%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Fale conosco pelo WhatsApp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- JavaScript — Love Languages Test -->
+    <script>
+    const _qd="W3sicSI6Ik8gcXVlIGZheiB2b2PDqiBzZSBzZW50aXIgbWFpcyBhbWFkbyhhKSBubyBkaWEgYSBkaWE/Iiwib3B0aW9ucyI6W3sidGV4dCI6Ik91dmlyIHVtICdldSB0ZSBhbW8nIG91IHVtIGVsb2dpbyBzaW5jZXJvIiwidHlwZSI6IlBBIn0seyJ0ZXh0IjoiUXVhbmRvIGFsZ3XDqW0gZmF6IGFsZ28gcHLDoXRpY28gcHJhIGZhY2lsaXRhciBtaW5oYSB2aWRhIiwidHlwZSI6IkFTIn0seyJ0ZXh0IjoiUmVjZWJlciB1bSBwcmVzZW50ZSBwZW5zYWRvIGNvbSBjYXJpbmhvIiwidHlwZSI6IlBSIn0seyJ0ZXh0IjoiVGVyIGEgYXRlbsOnw6NvIHRvdGFsIGRlIGFsZ3XDqW0sIHNlbSBjZWx1bGFyLCBzZW0gZGlzdHJhw6fDtWVzIiwidHlwZSI6IlRRIn0seyJ0ZXh0IjoiVW0gYWJyYcOnbyBhcGVydGFkbyBvdSB1bSBjYXJpbmhvIG5vIGNhYmVsbyIsInR5cGUiOiJURiJ9XX0seyJxIjoiUXVhbmRvIHZvY8OqIGVzdMOhIHRyaXN0ZSwgbyBxdWUgbWFpcyB0ZSBjb25mb3J0YT8iLCJvcHRpb25zIjpbeyJ0ZXh0IjoiUGFsYXZyYXMgZGUgZW5jb3JhamFtZW50byBlIGFjb2xoaW1lbnRvIiwidHlwZSI6IlBBIn0seyJ0ZXh0IjoiQWxndcOpbSByZXNvbHZlciB1bWEgcGVuZMOqbmNpYSBwcmEgbWltIHNlbSBldSBwZWRpciIsInR5cGUiOiJBUyJ9LHsidGV4dCI6IkdhbmhhciBhbGdvIHF1ZSBtb3N0cmUgcXVlIGEgcGVzc29hIHBlbnNvdSBlbSBtaW0iLCJ0eXBlIjoiUFIifSx7InRleHQiOiJBbGd1w6ltIHNlbnRhciBkbyBtZXUgbGFkbyBlIG1lIG91dmlyIGNvbSBjYWxtYSIsInR5cGUiOiJUUSJ9LHsidGV4dCI6IlVtIGFicmHDp28gZGVtb3JhZG8sIHNlbSBwcmVzc2EiLCJ0eXBlIjoiVEYifV19LHsicSI6Ik8gcXVlIG1haXMgdGUgaW5jb21vZGEgbnVtIHJlbGFjaW9uYW1lbnRvPyIsIm9wdGlvbnMiOlt7InRleHQiOiJGYWx0YSBkZSByZWNvbmhlY2ltZW50byBlIHBhbGF2cmFzIGRlIGNhcmluaG8iLCJ0eXBlIjoiUEEifSx7InRleHQiOiJBIHBlc3NvYSBudW5jYSBzZSBvZmVyZWNlciBwcmEgYWp1ZGFyIGVtIG5hZGEiLCJ0eXBlIjoiQVMifSx7InRleHQiOiJFc3F1ZWNlcmVtIGRlIGRhdGFzIGltcG9ydGFudGVzIG91IG51bmNhIHByZXNlbnRlYXJlbSIsInR5cGUiOiJQUiJ9LHsidGV4dCI6Ik51bmNhIHRlciB1bSBtb21lbnRvIGRlIHF1YWxpZGFkZSBqdW50b3MiLCJ0eXBlIjoiVFEifSx7InRleHQiOiJQb3VjbyBjb250YXRvIGbDrXNpY28gZSBkZW1vbnN0cmHDp8OjbyBkZSBhZmV0byBjb3Jwb3JhbCIsInR5cGUiOiJURiJ9XX0seyJxIjoiQ29tbyB2b2PDqiBwcmVmZXJlIGRlbW9uc3RyYXIgYW1vcj8iLCJvcHRpb25zIjpbeyJ0ZXh0IjoiRGl6ZW5kbyBvIHF1ZSBzaW50bywgZWxvZ2lhbmRvIGUgaW5jZW50aXZhbmRvIiwidHlwZSI6IlBBIn0seyJ0ZXh0IjoiRmF6ZW5kbyBjb2lzYXMgcHLDoXRpY2FzIHByYSBmYWNpbGl0YXIgbyBkaWEgZGEgcGVzc29hIiwidHlwZSI6IkFTIn0seyJ0ZXh0IjoiRXNjb2xoZW5kbyBwcmVzZW50ZXMgZXNwZWNpYWlzIGNvbSBzaWduaWZpY2FkbyIsInR5cGUiOiJQUiJ9LHsidGV4dCI6IlBsYW5lamFuZG8gbW9tZW50b3MgYSBkb2lzIGNvbSBhdGVuw6fDo28gdG90YWwiLCJ0eXBlIjoiVFEifSx7InRleHQiOiJDb20gY2FyaW5obyBmw61zaWNvLCBhYnJhw6dvcyBlIHByb3hpbWlkYWRlIiwidHlwZSI6IlRGIn1dfSx7InEiOiJRdWFsIGF0aXR1ZGUgZGUgdW0oYSkgcGFyY2Vpcm8oYSkgbWFpcyB0ZSBtYXJjYXJpYT8iLCJvcHRpb25zIjpbeyJ0ZXh0IjoiRXNjcmV2ZXIgdW1hIGNhcnRhIG91IG1lbnNhZ2VtIGRpemVuZG8gbyBxdWUgc2VudGUgcG9yIG1pbSIsInR5cGUiOiJQQSJ9LHsidGV4dCI6IlByZXBhcmFyIG8gamFudGFyIHF1YW5kbyBwZXJjZWJlIHF1ZSBlc3RvdSBjYW5zYWRvKGEpIiwidHlwZSI6IkFTIn0seyJ0ZXh0IjoiTWUgc3VycHJlZW5kZXIgY29tIGFsZ28gcXVlIGV1IGNvbWVudGVpIHF1ZSBxdWVyaWEiLCJ0eXBlIjoiUFIifSx7InRleHQiOiJEZXNsaWdhciB0dWRvIGUgcGFzc2FyIGEgbm9pdGUgaW50ZWlyYSBjb252ZXJzYW5kbyBjb21pZ28iLCJ0eXBlIjoiVFEifSx7InRleHQiOiJNZSBwZWdhciBwZWxhIG3Do28gZW0gcMO6YmxpY28sIG5hdHVyYWxtZW50ZSIsInR5cGUiOiJURiJ9XX0seyJxIjoiTyBxdWUgdGUgZmF6IHNlbnRpciBtYWlzIHNlZ3VybyhhKSBuYSByZWxhw6fDo28/Iiwib3B0aW9ucyI6W3sidGV4dCI6Ik91dmlyIGNvbSBmcmVxdcOqbmNpYSBxdWUgc291IGltcG9ydGFudGUgcHJhIHBlc3NvYSIsInR5cGUiOiJQQSJ9LHsidGV4dCI6IlZlciBxdWUgYSBwZXNzb2Egc2UgZXNmb3LDp2EgcHJhIGN1aWRhciBkYSBub3NzYSB2aWRhIGp1bnRvcyIsInR5cGUiOiJBUyJ9LHsidGV4dCI6IlJlY2ViZXIgbGVtYnJhbsOnYXMgZSBtaW1vcyBxdWUgbW9zdHJhbSBxdWUgcGVuc2FtIGVtIG1pbSIsInR5cGUiOiJQUiJ9LHsidGV4dCI6IlRlciByb3RpbmFzIGRlIGNvbmV4w6NvLCBjb21vIHVtIGNhZsOpIGp1bnRvcyB0b2RhIG1hbmjDoyIsInR5cGUiOiJUUSJ9LHsidGV4dCI6IkNvbnRhdG8gZsOtc2ljbyBjb25zdGFudGU6IG3Do28gbmEgbcOjbywgYWJyYcOnbywgY2FmdW7DqSIsInR5cGUiOiJURiJ9XX0seyJxIjoiRW0gdW1hIHZpYWdlbSBhIGRvaXMsIG8gcXVlIG1haXMgaW1wb3J0YSBwcmEgdm9jw6o/Iiwib3B0aW9ucyI6W3sidGV4dCI6IlF1ZSBhIHBlc3NvYSBkaWdhIG8gcXVhbnRvIGVzdMOhIGZlbGl6IGRlIGVzdGFyIGNvbWlnbyIsInR5cGUiOiJQQSJ9LHsidGV4dCI6IlF1ZSBhIHBlc3NvYSBhanVkZSBhIG9yZ2FuaXphciB0dWRvIHNlbSBldSBwcmVjaXNhciBwZWRpciIsInR5cGUiOiJBUyJ9LHsidGV4dCI6IlF1ZSBhIHBlc3NvYSB0cmFnYSB1bWEgbGVtYnJhbmNpbmhhIGRhIHZpYWdlbSBwcmEgbWltIiwidHlwZSI6IlBSIn0seyJ0ZXh0IjoiUXVlIGEgZ2VudGUgdGVuaGEgdGVtcG8gbGl2cmUganVudG9zLCBzZW0gY29ycmVyaWEiLCJ0eXBlIjoiVFEifSx7InRleHQiOiJRdWUgYSBnZW50ZSBhbmRlIGRlIG3Do29zIGRhZGFzIGUgZmlxdWUgYmVtIHBlcnRpbmhvIiwidHlwZSI6IlRGIn1dfSx7InEiOiJPIHF1ZSB2b2PDqiBtYWlzIHZhbG9yaXphIGVtIHVtYSBhbWl6YWRlIHByw7N4aW1hPyIsIm9wdGlvbnMiOlt7InRleHQiOiJBbWlnb3MgcXVlIG1lIGluY2VudGl2YW0gZSBmYWxhbSBjb2lzYXMgYm9hcyBzb2JyZSBtaW0iLCJ0eXBlIjoiUEEifSx7InRleHQiOiJBbWlnb3MgcXVlIGFwYXJlY2VtIHByYSBhanVkYXIgcXVhbmRvIHByZWNpc28iLCJ0eXBlIjoiQVMifSx7InRleHQiOiJBbWlnb3MgcXVlIGxlbWJyYW0gZG8gbWV1IGFuaXZlcnPDoXJpbyBlIHRyYXplbSBhbGdvIGVzcGVjaWFsIiwidHlwZSI6IlBSIn0seyJ0ZXh0IjoiQW1pZ29zIHF1ZSByZXNlcnZhbSB0ZW1wbyBwcmEgZ2VudGUgZmljYXIganVudG8gZGUgdmVyZGFkZSIsInR5cGUiOiJUUSJ9LHsidGV4dCI6IkFtaWdvcyBxdWUgbWUgYWJyYcOnYW0gZm9ydGUgcXVhbmRvIGEgZ2VudGUgc2UgZW5jb250cmEiLCJ0eXBlIjoiVEYifV19LHsicSI6IlNlIHZvY8OqIHB1ZGVzc2UgcGVkaXIgdW1hIGNvaXNhIGFvIHNldSBwYXIsIHNlcmlhOiIsIm9wdGlvbnMiOlt7InRleHQiOiJRdWUgbWUgZGlnYSBtYWlzIHZlemVzIG8gcXVlIGFkbWlyYSBlbSBtaW0iLCJ0eXBlIjoiUEEifSx7InRleHQiOiJRdWUgbWUgYWp1ZGUgbWFpcyBuYXMgdGFyZWZhcyBkbyBkaWEgYSBkaWEiLCJ0eXBlIjoiQVMifSx7InRleHQiOiJRdWUgbWUgc3VycHJlZW5kYSBjb20gcHJlc2VudGVzIGRlIHZleiBlbSBxdWFuZG8iLCJ0eXBlIjoiUFIifSx7InRleHQiOiJRdWUgYSBnZW50ZSB0ZW5oYSBtYWlzIG1vbWVudG9zIHPDsyBub3Nzb3MiLCJ0eXBlIjoiVFEifSx7InRleHQiOiJRdWUgdGVuaGEgbWFpcyBjYXJpbmhvIGbDrXNpY28gbm8gY290aWRpYW5vIiwidHlwZSI6IlRGIn1dfSx7InEiOiJPIHF1ZSB0ZSBkZWl4YSBjb20gbyBjb3Jhw6fDo28gbWFpcyBxdWVudGluaG8/Iiwib3B0aW9ucyI6W3sidGV4dCI6IlVtIGJpbGhldGluaG8gY2FyaW5ob3NvIG5vIHRyYXZlc3NlaXJvIiwidHlwZSI6IlBBIn0seyJ0ZXh0IjoiQ2hlZ2FyIGVtIGNhc2EgZSB2ZXIgcXVlIGFsZ3XDqW0gasOhIGFkaWFudG91IGFsZ28gcHJhIG1pbSIsInR5cGUiOiJBUyJ9LHsidGV4dCI6IlJlY2ViZXIgZmxvcmVzIG91IHVtIG1pbW8gaW5lc3BlcmFkbyIsInR5cGUiOiJQUiJ9LHsidGV4dCI6IlVtYSB0YXJkZSBpbnRlaXJhIGRlIGNvbnZlcnNhIGUgcmlzYWRhcyBqdW50b3MiLCJ0eXBlIjoiVFEifSx7InRleHQiOiJEb3JtaXIgZGUgY29uY2hpbmhhIG91IHJlY2ViZXIgdW0gY2FmdW7DqSIsInR5cGUiOiJURiJ9XX0seyJxIjoiUXVhbmRvIGFsZ3XDqW0gdGUgZGVjZXBjaW9uYSwgbyBxdWUgbWFpcyBkw7NpPyIsIm9wdGlvbnMiOlt7InRleHQiOiJSZWNlYmVyIGNyw610aWNhcyBkdXJhcyBvdSBudW5jYSBvdXZpciBhbGdvIHBvc2l0aXZvIiwidHlwZSI6IlBBIn0seyJ0ZXh0IjoiQSBwZXNzb2EgbsOjbyBzZSBkaXNwb3IgYSBtZSBhanVkYXIgcXVhbmRvIHByZWNpc28iLCJ0eXBlIjoiQVMifSx7InRleHQiOiJQZXJjZWJlciBxdWUgYSBwZXNzb2EgbsOjbyBzZSBpbXBvcnRhIGVtIG1lIGFncmFkYXIiLCJ0eXBlIjoiUFIifSx7InRleHQiOiJBIHBlc3NvYSBlc3RhciBzZW1wcmUgb2N1cGFkYSBkZW1haXMgcHJhIG1pbSIsInR5cGUiOiJUUSJ9LHsidGV4dCI6IkEgcGVzc29hIHNlciBmcmlhIGUgZGlzdGFudGUgZmlzaWNhbWVudGUiLCJ0eXBlIjoiVEYifV19LHsicSI6Ik5vIHNldSBhbml2ZXJzw6FyaW8sIG8gcXVlIG1haXMgdGUgZmFyaWEgZmVsaXo/Iiwib3B0aW9ucyI6W3sidGV4dCI6IlVtYSBtZW5zYWdlbSBlbW9jaW9uYW50ZSBkaXplbmRvIG8gcXVlIHNpZ25pZmljbyBwcmEgcGVzc29hIiwidHlwZSI6IlBBIn0seyJ0ZXh0IjoiQSBwZXNzb2Egb3JnYW5pemFyIHR1ZG8gcHJhIGV1IG7Do28gbWUgcHJlb2N1cGFyIGNvbSBuYWRhIiwidHlwZSI6IkFTIn0seyJ0ZXh0IjoiVW0gcHJlc2VudGUgZXNjb2xoaWRvIGEgZGVkbywgcXVlIHRlbmhhIGEgbWluaGEgY2FyYSIsInR5cGUiOiJQUiJ9LHsidGV4dCI6IlVtIGRpYSBpbnRlaXJvIGRlZGljYWRvIHPDsyBhIG7Ds3MgZG9pcyIsInR5cGUiOiJUUSJ9LHsidGV4dCI6Ik11aXRvIGNhcmluaG8sIGFicmHDp28gZSBwcm94aW1pZGFkZSBvIGRpYSB0b2RvIiwidHlwZSI6IlRGIn1dfSx7InEiOiJDb21vIHZvY8OqIHBlcmNlYmUgcXVlIGFsZ3XDqW0gZ29zdGEgZGUgdm9jw6ogZGUgdmVyZGFkZT8iLCJvcHRpb25zIjpbeyJ0ZXh0IjoiQSBwZXNzb2EgdmVyYmFsaXphIG8gcXVlIHNlbnRlIGUgbWUgZWxvZ2lhIGNvbSBmcmVxdcOqbmNpYSIsInR5cGUiOiJQQSJ9LHsidGV4dCI6IkEgcGVzc29hIGRlbW9uc3RyYSBjdWlkYWRvIG5hcyBwZXF1ZW5hcyBhw6fDtWVzIGRvIGRpYSBhIGRpYSIsInR5cGUiOiJBUyJ9LHsidGV4dCI6IkEgcGVzc29hIGFwYXJlY2UgY29tIHByZXNlbnRlcyBlIGxlbWJyYW5jaW5oYXMgcHJhIG1pbSIsInR5cGUiOiJQUiJ9LHsidGV4dCI6IkEgcGVzc29hIGZheiBxdWVzdMOjbyBkZSBwYXNzYXIgdGVtcG8gZGUgcXVhbGlkYWRlIGNvbWlnbyIsInR5cGUiOiJUUSJ9LHsidGV4dCI6IkEgcGVzc29hIGJ1c2NhIGNvbnRhdG8gZsOtc2ljbyBlIHByb3hpbWlkYWRlIHNlbXByZSIsInR5cGUiOiJURiJ9XX0seyJxIjoiRW0gdW0gbW9tZW50byBkaWbDrWNpbCwgbyBxdWUgbWFpcyB0ZSBhanVkYT8iLCJvcHRpb25zIjpbeyJ0ZXh0IjoiT3V2aXIgcXVlIGV1IHNvdSBjYXBheiBlIHF1ZSB2YWkgZmljYXIgdHVkbyBiZW0iLCJ0eXBlIjoiUEEifSx7InRleHQiOiJBIHBlc3NvYSBhc3N1bWlyIGFsZ3VtYSByZXNwb25zYWJpbGlkYWRlIG1pbmhhIHByYSBldSBkZXNjYW5zYXIiLCJ0eXBlIjoiQVMifSx7InRleHQiOiJSZWNlYmVyIGFsZ28gcXVlIG1lIGFuaW1lLCBjb21vIG1pbmhhIGNvbWlkYSBmYXZvcml0YSIsInR5cGUiOiJQUiJ9LHsidGV4dCI6IlRlciBhbGd1w6ltIHByZXNlbnRlLCBkZWRpY2FuZG8gdGVtcG8gcHJhIG1lIG91dmlyIiwidHlwZSI6IlRRIn0seyJ0ZXh0IjoiVW0gYWJyYcOnbyBhY29saGVkb3IgcXVlIGRpeiBtYWlzIHF1ZSBxdWFscXVlciBwYWxhdnJhIiwidHlwZSI6IlRGIn1dfSx7InEiOiJPIHF1ZSBmYXogdm9jw6ogc2VudGlyIHF1ZSBhIHJlbGHDp8OjbyBlc3TDoSBmb3J0ZSBlIHNhdWTDoXZlbD8iLCJvcHRpb25zIjpbeyJ0ZXh0IjoiT3V2aXIgZGVjbGFyYcOnw7VlcyBlIHJlY29uaGVjaW1lbnRvIGNvbSBmcmVxdcOqbmNpYSIsInR5cGUiOiJQQSJ9LHsidGV4dCI6IlBlcmNlYmVyIHF1ZSBkaXZpZGltb3MgYXMgcmVzcG9uc2FiaWxpZGFkZXMgY29tIHBhcmNlcmlhIiwidHlwZSI6IkFTIn0seyJ0ZXh0IjoiVHJvY2FyIHByZXNlbnRlcyBlIGdlc3RvcyBzaW1iw7NsaWNvcyBkZSBjYXJpbmhvIiwidHlwZSI6IlBSIn0seyJ0ZXh0IjoiVGVyIG1vbWVudG9zIHJlZ3VsYXJlcyBkZSBjb25leMOjbyBlIHByZXNlbsOnYSByZWFsIiwidHlwZSI6IlRRIn0seyJ0ZXh0IjoiTWFudGVyIHVtYSB2aWRhIGFmZXRpdmEgY29tIGJhc3RhbnRlIHRvcXVlIGUgcHJveGltaWRhZGUiLCJ0eXBlIjoiVEYifV19XQ==";
+    const _td="eyJQQSI6eyJuYW1lIjoiUGFsYXZyYXMgZGUgQWZpcm1hY2FvIiwic3VidGl0bGUiOiJPIGFtb3IgcXVlIHNlIG91dmUiLCJkZXNjcmlwdGlvbiI6IlBhcmEgdm9jZSwgbyBhbW9yIGdhbmhhIGZvcm1hIGF0cmF2ZXMgZGFzIHBhbGF2cmFzLiBFbG9naW9zIHNpbmNlcm9zLCBtZW5zYWdlbnMgY2FyaW5ob3NhcyBlIGV4cHJlc3NvZXMgdmVyYmFpcyBkZSBhZmV0byBzYW8gbyBxdWUgZmF6ZW0gc2V1IGNvcmFjYW8gYmF0ZXIgbWFpcyBmb3J0ZS4gUXVhbmRvIGFsZ3VlbSB2ZXJiYWxpemEgbyBxdWUgc2VudGUgcG9yIHZvY2UsIHZvY2Ugc2Ugc2VudGUgdmVyZGFkZWlyYW1lbnRlIHZpc3RvKGEpIGUgdmFsb3JpemFkbyhhKS4gQSBhdXNlbmNpYSBkZSBwYWxhdnJhcyBkZSBjYXJpbmhvIHBvZGUgZ2VyYXIgaW5zZWd1cmFuY2EsIHBvciBpc3NvIGEgY29tdW5pY2FjYW8gYWJlcnRhIGUgZXNzZW5jaWFsIG5vcyBzZXVzIHJlbGFjaW9uYW1lbnRvcy4iLCJ0cmFpdHMiOlsiVmFsb3JpemEgZWxvZ2lvcyBzaW5jZXJvcyIsIlNlIGVtb2Npb25hIGNvbSBtZW5zYWdlbnMgZXNjcml0YXMiLCJQcmVjaXNhIG91dmlyICdldSB0ZSBhbW8nIiwiU2UgbW90aXZhIGNvbSBpbmNlbnRpdm8gdmVyYmFsIiwiR3VhcmRhIGJpbGhldGVzIGUgbWVuc2FnZW5zIGVzcGVjaWFpcyIsIlNlIG1hZ29hIGNvbSBjcml0aWNhcyBkdXJhcyJdLCJ0aXAiOiJEaWdhIGFvIHNldSBwYXIgcXVlIHZvY2UgcHJlY2lzYSBvdXZpciBvIHF1ZSBlbGUoYSkgc2VudGUuIE5hbyB0ZW5oYSB2ZXJnb25oYSBkZSBwZWRpciBwYWxhdnJhcyBkZSBjYXJpbmhvIC0gaXNzbyBuYW8gZGltaW51aSBvIHZhbG9yIGRlbGFzLiJ9LCJBUyI6eyJuYW1lIjoiQXRvcyBkZSBTZXJ2aWNvIiwic3VidGl0bGUiOiJPIGFtb3IgcXVlIHNlIGZheiIsImRlc2NyaXB0aW9uIjoiVm9jZSBzZW50ZSBhbW9yIHF1YW5kbyBhbGd1ZW0gZGVtb25zdHJhIGN1aWRhZG8gYXRyYXZlcyBkZSBhY29lcyBwcmF0aWNhcy4gTWFpcyBkbyBxdWUgcGFsYXZyYXMsIHZvY2UgdmFsb3JpemEgYXRpdHVkZXMgY29uY3JldGFzOiBhbGd1ZW0gcXVlIGNvemluaGEgcHJhIHZvY2UsIHF1ZSByZXNvbHZlIHVtIHByb2JsZW1hIHNlbSB2b2NlIHBlZGlyLCBxdWUgYWxpdmlhIHN1YSBjYXJnYS4gUGFyYSB2b2NlLCBhbW9yIGUgdmVyYm8gLSBlIHNlIGNvbmp1Z2EgZmF6ZW5kby4gUXVhbmRvIGEgcGVzc29hIG5hbyBzZSBkaXNwb2UgYSBhanVkYXIsIHZvY2UgcG9kZSBzZSBzZW50aXIgc29icmVjYXJyZWdhZG8oYSkgZSBzb3ppbmhvKGEpLiIsInRyYWl0cyI6WyJWYWxvcml6YSBhanVkYSBlc3BvbnRhbmVhIiwiRGVtb25zdHJhIGFtb3IgY3VpZGFuZG8iLCJQZXJjZWJlIGRldGFsaGVzIHByYXRpY29zIiwiU2Ugc2VudGUgYW1hZG8oYSkgcXVhbmRvIGFsaXZpYW0gc3VhIGNhcmdhIiwiR29zdGEgZGUgcmVzb2x2ZXIgYXMgY29pc2FzIGVtIHBhcmNlcmlhIiwiU2UgZnJ1c3RyYSBjb20gcHJvbWVzc2FzIG5hbyBjdW1wcmlkYXMiXSwidGlwIjoiQ29tdW5pcXVlIGNsYXJhbWVudGUgbyBxdWUgdGUgYWp1ZGFyaWEgbm8gZGlhIGEgZGlhLiBTZXUgcGFyIHBvZGUgbmFvIHBlcmNlYmVyIHNvemluaG8oYSkgLSBkaXplciBvIHF1ZSBwcmVjaXNhIG5hbyBlIGZyYXF1ZXphLCBlIGludGVsaWdlbmNpYSBlbW9jaW9uYWwuIn0sIlBSIjp7Im5hbWUiOiJSZWNlYmVyIFByZXNlbnRlcyIsInN1YnRpdGxlIjoiTyBhbW9yIHF1ZSBzZSB2ZSIsImRlc2NyaXB0aW9uIjoiUGFyYSB2b2NlLCBwcmVzZW50ZXMgc2FvIHNpbWJvbG9zIHZpc2l2ZWlzIGRvIGFtb3IuIE5hbyBzZSB0cmF0YSBkZSB2YWxvciBmaW5hbmNlaXJvLCBtYXMgZG8gc2lnbmlmaWNhZG8gcG9yIHRyYXMgZG8gZ2VzdG8uIFF1YW5kbyBhbGd1ZW0gZXNjb2xoZSBhbGdvIHBlbnNhbmRvIGVtIHZvY2UsIHZvY2Ugc2VudGUgcXVlIGUgbGVtYnJhZG8oYSkgZSBlc3BlY2lhbC4gTyBwcmVzZW50ZSBtYXRlcmlhbGl6YSBvIGNhcmluaG8gZSBvIGN1aWRhZG8sIGUgYSBmYWx0YSBkZXNzZXMgZ2VzdG9zIHBvZGUgZmF6ZXIgdm9jZSBzZSBzZW50aXIgZXNxdWVjaWRvKGEpIG91IHBvdWNvIGltcG9ydGFudGUuIiwidHJhaXRzIjpbIlZhbG9yaXphIGdlc3RvcyBzaW1ib2xpY29zIiwiR3VhcmRhIHByZXNlbnRlcyBjb20gY2FyaW5obyIsIlNlIGVtb2Npb25hIGNvbSBzdXJwcmVzYXMiLCJMZW1icmEgZGUgZGF0YXMgaW1wb3J0YW50ZXMiLCJHb3N0YSBkZSBkYXIgZSByZWNlYmVyIG1pbW9zIiwiU2UgZW50cmlzdGVjZSBxdWFuZG8gbmFvIGUgbGVtYnJhZG8oYSkiXSwidGlwIjoiRXhwbGlxdWUgYW8gc2V1IHBhciBxdWUgcHJlc2VudGVzIHNhbyBzdWEgZm9ybWEgZGUgc2VudGlyIGFtb3IgLSBlIHF1ZSB1bSBnZXN0byBzaW1wbGVzIHZhbGUgbWFpcyBxdWUgYWxnbyBjYXJvLiBPIHF1ZSBpbXBvcnRhIGUgbyBwZW5zYW1lbnRvIHBvciB0cmFzLiJ9LCJUUSI6eyJuYW1lIjoiVGVtcG8gZGUgUXVhbGlkYWRlIiwic3VidGl0bGUiOiJPIGFtb3IgcXVlIHNlIHZpdmUiLCJkZXNjcmlwdGlvbiI6IlZvY2Ugc2Ugc2VudGUgbWFpcyBhbWFkbyhhKSBxdWFuZG8gdGVtIGEgYXRlbmNhbyBwbGVuYSBkZSBhbGd1ZW0uIE5hbyBiYXN0YSBlc3RhciBubyBtZXNtbyBlc3BhY28gLSB2b2NlIHByZWNpc2EgZGUgcHJlc2VuY2EgcmVhbCwgb2xobyBubyBvbGhvLCBjb25leGFvIGdlbnVpbmEuIE1vbWVudG9zIGNvbXBhcnRpbGhhZG9zIGNvbSBpbnRlbmNhbyBzYW8gbyBxdWUgYWxpbWVudGFtIHNldSBjb3JhY2FvLiBRdWFuZG8gYSBwZXNzb2EgZXN0YSBzZW1wcmUgZGlzdHJhaWRhIG91IG9jdXBhZGEgZGVtYWlzIHByYSB2b2NlLCBpc3NvIG1hY2h1Y2EgcHJvZnVuZGFtZW50ZS4iLCJ0cmFpdHMiOlsiVmFsb3JpemEgcHJlc2VuY2EgZ2VudWluYSIsIlByZWZlcmUgcXVhbGlkYWRlIGEgcXVhbnRpZGFkZSIsIkdvc3RhIGRlIHByb2dyYW1hcyBhIGRvaXMiLCJTZSBpbmNvbW9kYSBjb20gZGlzdHJhY2FvIGRvIGNlbHVsYXIiLCJDcmlhIG1lbW9yaWFzIGVtIG1vbWVudG9zIGp1bnRvcyIsIlNlIHNlbnRlIHJlamVpdGFkbyhhKSBjb20gY2FuY2VsYW1lbnRvcyJdLCJ0aXAiOiJQcm9wb25oYSBtb21lbnRvcyBkZSBjb25leGFvIGNvbSBpbnRlbmNhbzogdW0gamFudGFyIHNlbSBjZWx1bGFyLCB1bWEgY2FtaW5oYWRhIGp1bnRvcy4gTW9zdHJlIGFvIHNldSBwYXIgcXVlIGVzdGFyIHByZXNlbnRlIGUgbyBtYWlvciBwcmVzZW50ZSBxdWUgZWxlKGEpIHBvZGUgdGUgZGFyLiJ9LCJURiI6eyJuYW1lIjoiVG9xdWUgRmlzaWNvIiwic3VidGl0bGUiOiJPIGFtb3IgcXVlIHNlIHNlbnRlIiwiZGVzY3JpcHRpb24iOiJQYXJhIHZvY2UsIG8gYW1vciBzZSBleHByZXNzYSBwZWxvIGNvcnBvLiBBYnJhY29zLCBiZWlqb3MsIGNhcmluaG9zLCBtYW9zIGRhZGFzIC0gbyB0b3F1ZSBmaXNpY28gZSBhIGxpbmd1YWdlbSBxdWUgc2V1IGNvcmFjYW8gZW50ZW5kZSBtZWxob3IuIFZvY2UgcHJlY2lzYSBkZSBwcm94aW1pZGFkZSBjb3Jwb3JhbCBwcmEgc2Ugc2VudGlyIHNlZ3VybyhhKSBlIGNvbmVjdGFkbyhhKS4gQSBkaXN0YW5jaWEgZmlzaWNhIG91IGEgZnJpZXphIG5vIGNvbnRhdG8gcG9kZW0gZ2VyYXIgdW1hIHNlbnNhY2FvIGRlIHJlamVpY2FvIGUgc29saWRhby4iLCJ0cmFpdHMiOlsiVmFsb3JpemEgcHJveGltaWRhZGUgY29ycG9yYWwiLCJTZSBzZW50ZSBzZWd1cm8oYSkgY29tIGFicmFjb3MiLCJHb3N0YSBkZSBhbmRhciBkZSBtYW9zIGRhZGFzIiwiRGVtb25zdHJhIGFmZXRvIHBlbG8gdG9xdWUiLCJQcmVjaXNhIGRlIGNvbnRhdG8gZmlzaWNvIGZyZXF1ZW50ZSIsIlNlIHNlbnRlIHJlamVpdGFkbyhhKSBjb20gZnJpZXphIGZpc2ljYSJdLCJ0aXAiOiJDb211bmlxdWUgYW8gc2V1IHBhciBxdWUgdm9jZSBwcmVjaXNhIGRlIGNvbnRhdG8gZmlzaWNvIHByYSBzZSBzZW50aXIgYW1hZG8oYSkuIFBlcXVlbm9zIHRvcXVlcyBubyBkaWEgYSBkaWEgLSB1bSBjYWZ1bmUsIHVtYSBtYW8gbm8gb21icm8gLSBmYXplbSB0b2RhIGEgZGlmZXJlbmNhIHByYSB2b2NlLiJ9fQ==";
+    function _d(s){return decodeURIComponent(atob(s).split('').map(function(c){return'%'+('00'+c.charCodeAt(0).toString(16)).slice(-2)}).join(''));}
+    const questions=JSON.parse(_d(_qd));
+    const loveLanguages=JSON.parse(_d(_td));
+
+    let currentQuestion = 0;
+    let scores = { PA: 0, AS: 0, PR: 0, TQ: 0, TF: 0 };
+
+    function startTest() {
+        document.getElementById('testIntro').style.display = 'none';
+        document.getElementById('progressArea').style.display = 'block';
+        document.getElementById('questionCard').style.display = 'block';
+        document.getElementById('totalNum').textContent = questions.length;
+        showQuestion();
+    }
+
+    function showQuestion() {
+        const q = questions[currentQuestion];
+        document.getElementById('currentNum').textContent = currentQuestion + 1;
+        document.getElementById('progressBar').style.width = ((currentQuestion) / questions.length * 100) + '%';
+        document.getElementById('questionLabel').textContent = `PERGUNTA ${currentQuestion + 1} DE ${questions.length}`;
+        document.getElementById('questionText').textContent = q.q;
+
+        const optionsArea = document.getElementById('optionsArea');
+        optionsArea.innerHTML = '';
+
+        // Shuffle options
+        const shuffled = [...q.options].sort(() => Math.random() - 0.5);
+
+        shuffled.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.textContent = opt.text;
+            btn.addEventListener('click', () => selectAnswer(opt.type));
+            optionsArea.appendChild(btn);
+        });
+
+        // Re-trigger animation
+        const card = document.getElementById('questionCard');
+        card.style.animation = 'none';
+        card.offsetHeight;
+        card.style.animation = 'fadeIn 0.4s ease';
+    }
+
+    function selectAnswer(type) {
+        scores[type]++;
+        currentQuestion++;
+
+        if (currentQuestion < questions.length) {
+            showQuestion();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        document.getElementById('progressArea').style.display = 'none';
+        document.getElementById('questionCard').style.display = 'none';
+        document.getElementById('progressBar').style.width = '100%';
+
+        // Find winner
+        const maxScore = Math.max(...Object.values(scores));
+        const winner = Object.keys(scores).find(k => scores[k] === maxScore);
+        const total = Object.values(scores).reduce((a, b) => a + b, 0);
+        const temp = loveLanguages[winner];
+
+        document.getElementById('resultSubtitle').textContent = temp.subtitle;
+        document.getElementById('resultTitle').textContent = temp.name;
+        document.getElementById('resultDescription').innerHTML =
+            `<p>${temp.description}</p><p><strong>Dica para seus relacionamentos:</strong> ${temp.tip}</p>`;
+
+        // Traits
+        const traitsArea = document.getElementById('resultTraits');
+        traitsArea.innerHTML = '';
+        temp.traits.forEach(t => {
+            const tag = document.createElement('span');
+            tag.className = 'trait-tag';
+            tag.textContent = t;
+            traitsArea.appendChild(tag);
+        });
+
+        // Scores
+        const grid = document.getElementById('scoresGrid');
+        grid.innerHTML = '';
+        const order = [
+            { key: 'PA', label: 'Palavras de Afirmação' },
+            { key: 'AS', label: 'Atos de Serviço' },
+            { key: 'PR', label: 'Receber Presentes' },
+            { key: 'TQ', label: 'Tempo de Qualidade' },
+            { key: 'TF', label: 'Toque Físico' }
+        ];
+        order.forEach(item => {
+            const pct = Math.round((scores[item.key] / total) * 100);
+            const div = document.createElement('div');
+            div.className = 'score-item' + (item.key === winner ? ' is-winner' : '');
+            div.innerHTML = `
+                <div class="score-label">${item.label}</div>
+                <div class="score-percent">${pct}%</div>
+                <div class="score-bar-bg">
+                    <div class="score-bar-val" style="width: 0%"></div>
+                </div>
+            `;
+            grid.appendChild(div);
+            // Animate bar
+            setTimeout(() => {
+                div.querySelector('.score-bar-val').style.width = pct + '%';
+            }, 100);
+        });
+
+        document.getElementById('resultCard').style.display = 'block';
+        window.scrollTo({ top: document.getElementById('resultCard').offsetTop - 120, behavior: 'smooth' });
+    }
+    </script>
+
+</body>
+</html>

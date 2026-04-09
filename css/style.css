@@ -1,503 +1,338 @@
-﻿/* --- Importações e Variáveis --- */
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;700&display=swap');
+/* ============================================
+   BRUNA NARDY — PSICÓLOGA CLÍNICA
+   Design System & Global Styles
+   ============================================ */
 
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Carattere&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;700&display=swap');
+
+/* --- CSS Variables (Design Tokens) --- */
 :root {
-    --cor-fundo: #FBF0E4; /* Cor de fundo exata do logo */
-    --cor-texto: #6D4C3D; /* Cor do texto exata do logo */
-    --cor-branca: #FFFFFF;
-    --font-titulo-script: 'Great Vibes', cursive; /* Fonte script do logo */
-    --font-corpo: 'Montserrat', sans-serif; /* Fonte da tagline */
+    /* Tema Claro (Creme) */
+    --creme-bg: #F2EDE6;
+    --creme-text: #4A4540;
+    --creme-text-secondary: #7A7570;
+    --creme-subtle: #E5DED5;
+    --creme-footer: #968D8A;
+    --creme-accent: #B48C5A;
+
+    /* Tema Escuro (Oliva) */
+    --oliva-bg: #6B6B57;
+    --oliva-text: #F2EDE6;
+    --oliva-text-secondary: #D5D0C5;
+    --oliva-subtle: #7A7A66;
+    --oliva-footer: #B4B2A5;
+    --oliva-accent: #C8C3AF;
+
+    /* Tipografia */
+    --font-heading: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'DM Sans', 'Segoe UI', sans-serif;
+    --font-monogram: 'Carattere', cursive;
+
+    /* Spacing */
+    --section-padding: 100px 0;
+    --section-padding-mobile: 60px 0;
+
+    /* Misc */
+    --radius: 8px;
+    --radius-lg: 16px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow: 0 4px 20px rgba(74, 69, 64, 0.08);
+    --shadow-hover: 0 8px 30px rgba(74, 69, 64, 0.15);
 }
 
-/* --- Reset Básico --- */
-* {
+/* --- Reset --- */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* --- Estilos Globais --- */
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+/* --- Global Styles --- */
 body {
-    font-family: var(--font-corpo);
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
+    font-family: var(--font-body);
+    background-color: var(--creme-bg);
+    color: var(--creme-text);
     line-height: 1.7;
-    font-weight: 300;
-}
-
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-h1, h2, h3 {
-    margin-bottom: 15px;
     font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* H1 usa a fonte script */
-h1 {
-    font-family: var(--font-titulo-script);
-    font-size: 4.5rem; /* 72px */
-    font-weight: normal;
-    color: var(--cor-texto);
-    line-height: 1.2;
-}
-
-/* H2 para títulos de seção */
-h2 {
-    font-family: var(--font-corpo);
-    font-weight: 700;
-    font-size: 1.8rem; /* 29px */
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-h3 {
-    font-family: var(--font-corpo);
-    font-weight: 700;
-    font-size: 1.4rem;
-    color: var(--cor-texto);
-}
-
-p {
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-}
-
-/* --- Header / Navegação --- */
-header {
-    background-color: var(--cor-fundo);
-    border-bottom: 1px solid rgba(109, 76, 61, 0.2);
-    padding: 10px 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-    header .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    header .logo img {
-        max-height: 90px; /* Ajuste a altura do logo conforme necessário */
-        width: auto;
-    }
-
-    /* --- Header / Navegação (COM A MODIFICAÇÃO) --- */
-    /* ... (outros estilos do header) ... */
-
-    header .menu-nav ul {
-        list-style: none;
-        display: flex;
-    }
-
-    header .menu-nav li {
-        margin-left: 30px;
-    }
-
-    header .menu-nav a {
-        text-decoration: none;
-        color: var(--cor-texto);
-        font-family: var(--font-corpo);
-        font-weight: 700;
-        text-transform: uppercase;
-        font-size: 0.9rem;
-        letter-spacing: 1px;
-        transition: color 0.3s ease;
-        padding-bottom: 5px;
-        border-bottom: 2px solid transparent;
-    }
-
-        header .menu-nav a:hover {
-            color: #A07C6D; /* Um tom mais claro do marrom */
-        }
-
-        /* Estilo do link ativo */
-        header .menu-nav a.active {
-            border-bottom-color: var(--cor-texto);
-        }
-
-
-/* --- Botão CTA (Call to Action) --- */
-.cta-button {
-    display: inline-block;
-    background-color: var(--cor-texto);
-    color: var(--cor-branca);
-    padding: 12px 30px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-family: var(--font-corpo);
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-    .cta-button:hover {
-        background-color: #8a6a5b; /* Marrom mais claro no hover */
-        transform: translateY(-2px);
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    }
-
-/* --- Homepage: Seção Hero --- */
-.hero {
-    text-align: center;
-    padding: 100px 0;
-}
-
-    .hero p {
-        font-size: 1.3rem;
-        margin-bottom: 30px;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-/* --- Homepage: Seção Sobre --- */
-.about {
-    padding: 80px 0;
-    background-color: var(--cor-branca); /* Uma leve quebra de cor */
-    text-align: center;
-}
-
-    .about p {
-        max-width: 750px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-/* --- Página de Cursos: Título --- */
-.page-title {
-    text-align: center;
-    padding: 60px 0;
-}
-
-    .page-title p {
-        font-size: 1.3rem;
-    }
-
-/* --- Página de Cursos: Lista --- */
-.course-list .container {
-    display: grid;
-    /* Cria colunas automáticas que se ajustam */
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    padding-bottom: 60px;
-}
-
-.course-card {
-    background-color: var(--cor-branca);
-    border: 1px solid rgba(109, 76, 61, 0.2);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden; /* Para caso adicione imagem */
-}
-
-    .course-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(109, 76, 61, 0.1);
-    }
-
-    .course-card .course-content {
-        padding: 30px;
-    }
-
-    .course-card h3 {
-        margin-bottom: 10px;
-    }
-
-    .course-card p {
-        font-size: 1rem;
-        margin-bottom: 25px;
-    }
-
-
-/* --- Footer --- */
-footer {
-    text-align: center;
-    padding: 40px 0;
-    border-top: 1px solid rgba(109, 76, 61, 0.2);
-    margin-top: 40px;
-    font-size: 0.9rem;
-}
-/* --- Homepage: Seção Sobre (MODIFICAÇÕES) --- */
-
-/* Garante que o H2 permaneça centralizado */
-.about h2 {
-    text-align: center;
-    margin-bottom: 40px; /* Mais espaço */
-}
-
-.about-content {
-    display: flex;
-    align-items: center; /* Alinha verticalmente a foto e o texto */
-    gap: 40px;
-    flex-wrap: wrap; /* Permite quebrar em telas menores */
-}
-
-.about-image {
-    flex-basis: 300px; /* Define um tamanho base para a foto */
-    flex-grow: 0;
-    text-align: center; /* Centraliza a foto em telas pequenas */
-}
-
-    .about-image img {
-        max-width: 100%;
-        width: 280px; /* Tamanho da foto */
-        height: 280px;
-        border-radius: 50%; /* Foto perfeitamente circular */
-        object-fit: cover; /* Garante que a foto não fique distorcida */
-        border: 6px solid var(--cor-branca); /* Borda para destacar */
-        box-shadow: 0 5px 15px rgba(109, 76, 61, 0.2); /* Sombra suave */
-    }
-
-.about-text {
-    flex: 1; /* Faz o texto ocupar o espaço restante */
-    min-width: 300px; /* Largura mínima para o texto */
-}
-
-/* Ajuste para telas menores (mobile) */
-@media (max-width: 768px) {
-    .about-content {
-        flex-direction: column; /* Empilha a foto e o texto */
-    }
-
-    .about-text {
-        text-align: left; /* Alinha o texto à esquerda no mobile */
-    }
-}
-
-
-/* --- Homepage: Seção Depoimentos (NOVO) --- */
-.testimonials {
-    padding: 80px 0;
-    /* Usa a cor de fundo principal para alternar com a seção "Sobre" */
-    background-color: var(--cor-fundo);
-}
-
-    .testimonials h2 {
-        text-align: center;
-        margin-bottom: 40px;
-    }
-
-.testimonial-grid {
-    display: grid;
-    /* Cria colunas automáticas que se ajustam */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-}
-
-.testimonial-card {
-    background-color: var(--cor-branca);
-    border: 1px solid rgba(109, 76, 61, 0.2);
-    border-radius: 8px;
-    padding: 30px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-    .testimonial-card p {
-        font-style: italic;
-        font-size: 1.1rem;
-        margin-bottom: 20px;
-        position: relative;
-        padding-left: 20px;
-    }
-
-        /* Aspas decorativas para os depoimentos */
-        .testimonial-card p::before {
-            content: '“';
-            font-family: var(--font-titulo-script); /* Usa a fonte script do logo */
-            font-size: 3.5rem;
-            color: rgba(109, 76, 61, 0.15); /* Cor suave */
-            position: absolute;
-            left: -5px;
-            top: -15px;
-        }
-
-    .testimonial-card cite {
-        font-style: normal;
-        font-weight: 700;
-        color: var(--cor-texto);
-        text-align: right;
-        margin-top: auto; /* Empurra a citação para o final do card */
-    }
-
-/* --- Homepage: Seção Features (NOVO) --- */
-.features {
-    padding: 80px 0;
-    background-color: var(--cor-fundo); /* Fundo bege para alternar */
-}
-
-    .features h2 {
-        text-align: center;
-        margin-bottom: 40px;
-    }
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-}
-
-.feature-card {
-    background-color: var(--cor-branca);
-    border: 1px solid rgba(109, 76, 61, 0.1);
-    border-radius: 8px;
-    padding: 30px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.feature-icon {
-    font-size: 2.5rem; /* 40px */
-    line-height: 1;
-    margin-bottom: 15px;
+img {
+    max-width: 100%;
+    height: auto;
     display: block;
 }
 
-.feature-card h3 {
-    font-family: var(--font-corpo);
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: var(--cor-texto);
-    margin-bottom: 10px;
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition);
 }
 
-.feature-card p {
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-/* --- Homepage: Seção Benefits (NOVO) --- */
-.benefits {
-    padding: 80px 0;
-    background-color: var(--cor-branca); /* Fundo branco */
-}
-
-    .benefits h2 {
-        text-align: center;
-        margin-bottom: 15px;
-    }
-
-.benefits-intro {
-    text-align: center;
-    font-size: 1.2rem;
-    max-width: 800px;
-    margin: 0 auto 30px auto;
-    font-weight: 300;
-}
-
-/* Reutilizando o estilo .checklist dos cursos */
-/* Se você ainda não tiver, adicione-o */
-.benefits .checklist {
-    list-style: none;
-    padding-left: 10px;
-    max-width: 700px;
+.container {
+    max-width: 1140px;
     margin: 0 auto;
+    padding: 0 24px;
 }
 
-    .benefits .checklist li {
-        font-size: 1.1rem;
-        font-weight: 400;
-        margin-bottom: 12px;
-        position: relative;
-        padding-left: 35px;
+/* --- Typography --- */
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+}
+
+h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+    margin-bottom: 12px;
+}
+
+p {
+    margin-bottom: 16px;
+    font-size: 1.05rem;
+}
+
+/* --- Section Themes --- */
+.section-creme {
+    background-color: var(--creme-bg);
+    color: var(--creme-text);
+}
+
+.section-oliva {
+    background-color: var(--oliva-bg);
+    color: var(--oliva-text);
+}
+
+.section-oliva .text-secondary {
+    color: var(--oliva-text-secondary);
+}
+
+.section-creme .text-secondary {
+    color: var(--creme-text-secondary);
+}
+
+/* --- Sections --- */
+section {
+    padding: var(--section-padding);
+    position: relative;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: var(--section-padding-mobile);
     }
+}
 
-        .benefits .checklist li::before {
-            content: '✅'; /* Ou '✓' */
-            position: absolute;
-            left: 0;
-            top: 1px;
-            font-size: 1.1rem;
-        }
-
-
-/* --- Homepage: Seção Final CTA (NOVO) --- */
-.final-cta {
-    padding: 80px 20px;
-    background-color: var(--cor-fundo);
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    padding: 14px 36px;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition);
     text-align: center;
 }
 
-    /* Usamos o H1 para ter a fonte script, mas ajustamos o tamanho */
-    .final-cta h1 {
-        font-size: 4rem; /* 64px */
-        margin-bottom: 10px;
+.btn-primary {
+    background-color: var(--creme-accent);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(180, 140, 90, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #a07a4a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(180, 140, 90, 0.4);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--oliva-text);
+    border: 2px solid var(--oliva-accent);
+}
+
+.btn-outline:hover {
+    background-color: var(--oliva-accent);
+    color: var(--oliva-bg);
+}
+
+.btn-outline-creme {
+    background-color: transparent;
+    color: var(--creme-text);
+    border: 2px solid var(--creme-accent);
+}
+
+.btn-outline-creme:hover {
+    background-color: var(--creme-accent);
+    color: #fff;
+}
+
+/* --- Header --- */
+header {
+    background-color: var(--creme-bg);
+    border-bottom: 1px solid var(--creme-subtle);
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo img {
+    max-height: 70px;
+    width: auto;
+}
+
+header .logo-svg {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 0;
+    position: relative;
+}
+
+header .logo-svg .logo-text {
+    font-family: var(--font-monogram);
+    font-size: 2.4rem;
+    color: var(--creme-text);
+    line-height: 1;
+    letter-spacing: 0.5px;
+}
+
+header .logo-svg .logo-butterfly {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: -8px;
+    right: -16px;
+    stroke: var(--creme-text);
+    fill: none;
+    stroke-width: 1.2;
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    header .logo-svg .logo-text {
+        font-size: 2rem;
     }
-
-    .final-cta p {
-        font-size: 1.2rem;
-        max-width: 600px;
-        margin: 0 auto 30px auto;
+    header .logo-svg .logo-butterfly {
+        width: 20px;
+        height: 20px;
+        top: -6px;
+        right: -12px;
     }
+}
 
-/* --- ESTILOS DO MENU RESPONSIVO (MOBILE) --- */
+header .menu-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+}
 
-/* 1. Esconde o checkbox */
+header .menu-nav a {
+    display: block;
+    text-decoration: none;
+    color: var(--creme-text);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all var(--transition);
+    position: relative;
+}
+
+header .menu-nav a:hover {
+    color: var(--creme-accent);
+    background-color: rgba(180, 140, 90, 0.08);
+}
+
+header .menu-nav a.active {
+    color: var(--creme-accent);
+}
+
+header .menu-nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 16px;
+    right: 16px;
+    height: 2px;
+    background-color: var(--creme-accent);
+    border-radius: 1px;
+}
+
+/* --- Mobile Menu --- */
 #menu-toggle {
     display: none;
 }
 
-/* 2. O ícone hamburger (escondido no desktop) */
 .menu-icon {
-    display: none; /* Escondido por padrão */
-    width: 30px;
-    height: 25px; /* Altura total do ícone */
+    display: none;
+    width: 28px;
+    height: 22px;
     position: relative;
     cursor: pointer;
-    z-index: 1001; /* Fica acima de tudo */
+    z-index: 1001;
 }
 
-    /* 3. As 3 linhas do ícone (feitas com a <span> e ::before/::after) */
-    .menu-icon span,
-    .menu-icon::before,
-    .menu-icon::after {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 3px; /* Espessura da linha */
-        background-color: var(--cor-texto);
-        border-radius: 2px;
-        position: absolute;
-        transition: all 0.3s ease-in-out;
-    }
+.menu-icon span,
+.menu-icon::before,
+.menu-icon::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--creme-text);
+    border-radius: 2px;
+    position: absolute;
+    transition: all 0.35s ease-in-out;
+}
 
-    .menu-icon::before {
-        top: 0; /* Linha de cima */
-    }
+.menu-icon::before { top: 0; }
+.menu-icon span { top: 50%; transform: translateY(-50%); }
+.menu-icon::after { bottom: 0; }
 
-    .menu-icon span {
-        top: 50%; /* Linha do meio */
-        transform: translateY(-50%);
-    }
-
-    .menu-icon::after {
-        bottom: 0; /* Linha de baixo */
-    }
-
-/* 4. A mágica do "X" (quando o menu está aberto) */
 #menu-toggle:checked + .menu-icon::before {
     top: 50%;
     transform: translateY(-50%) rotate(45deg);
 }
 
 #menu-toggle:checked + .menu-icon span {
-    opacity: 0; /* Esconde a linha do meio */
+    opacity: 0;
 }
 
 #menu-toggle:checked + .menu-icon::after {
@@ -505,59 +340,887 @@ footer {
     transform: translateY(50%) rotate(-45deg);
 }
 
-
-/* 5. PONTO DE QUEBRA (TABLETS E CELULARES) */
-/* Quando a tela for menor que 768px... */
 @media (max-width: 768px) {
-
-    /* 5a. Mostra o ícone hamburger */
     .menu-icon {
         display: block;
     }
 
-    /* 5b. Esconde o menu desktop e o transforma em menu "gaveta" */
     header .menu-nav {
-        position: fixed; /* Fica por cima de todo o site */
+        position: fixed;
         top: 0;
-        left: 100%; /* Começa escondido fora da tela (à direita) */
+        left: 100%;
         width: 100%;
-        height: 100vh; /* Altura total da tela */
-        background-color: var(--cor-fundo);
+        height: 100vh;
+        height: 100dvh;
+        background-color: var(--creme-bg);
         z-index: 1000;
-        /* Animação de deslizar */
         transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-        /* Centraliza os links verticalmente */
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    /* 5c. Mostra o menu "gaveta" quando o ícone é clicado */
     #menu-toggle:checked ~ .menu-nav {
-        left: 0; /* Puxa o menu para a tela */
+        left: 0;
     }
 
-    /* 5d. Transforma a lista horizontal em vertical */
     header .menu-nav ul {
         flex-direction: column;
         text-align: center;
+        gap: 0;
     }
 
-    header .menu-nav li {
-        margin: 0; /* Remove a margem lateral */
-    }
-
-    /* 5e. Aumenta o tamanho dos links para fácil toque */
     header .menu-nav a {
-        font-size: 1.8rem; /* Fonte bem grande */
-        font-weight: 400; /* Um pouco mais leve */
+        font-size: 1.6rem;
+        font-family: var(--font-heading);
+        font-weight: 600;
         padding: 20px 30px;
-        display: block;
-        border-bottom: none !important; /* Remove a borda do 'active' */
     }
 
-        /* 5f. Estilo do link ativo no mobile */
-        header .menu-nav a.active {
-            color: #A07C6D; /* Usa a cor de hover */
-        }
+    header .menu-nav a.active::after {
+        display: none;
+    }
+}
+
+/* --- Hero Section --- */
+.hero {
+    padding: 120px 0 100px;
+    text-align: center;
+    position: relative;
+}
+
+.hero .monogram {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-monogram);
+    font-style: normal;
+    font-size: clamp(14rem, 28vw, 26rem);
+    color: var(--oliva-subtle);
+    opacity: 0.3;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+    z-index: 0;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    color: var(--oliva-text);
+    max-width: 700px;
+    margin: 0 auto 24px;
+}
+
+.hero .subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    color: var(--oliva-text-secondary);
+    max-width: 520px;
+    margin: 0 auto 40px;
+    font-weight: 300;
+}
+
+/* --- "Pra quem é" Cards --- */
+.target-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 20px;
+}
+
+.target-card {
+    background-color: #fff;
+    border: 1px solid var(--creme-subtle);
+    border-radius: var(--radius-lg);
+    padding: 40px 28px 32px;
+    text-align: center;
+    transition: all var(--transition);
+    position: relative;
+}
+
+.target-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.target-card .card-icon {
+    width: 56px;
+    height: 56px;
+    background-color: var(--creme-subtle);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.target-card .card-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke: var(--creme-accent);
+    fill: none;
+    stroke-width: 1.5;
+}
+
+.target-card h3 {
+    color: var(--creme-text);
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+}
+
+.target-card p {
+    color: var(--creme-text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+.target-card .btn {
+    font-size: 0.85rem;
+    padding: 10px 24px;
+}
+
+@media (max-width: 900px) {
+    .target-cards {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* --- About Section --- */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.about-image {
+    flex-shrink: 0;
+}
+
+.about-image img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid var(--oliva-subtle);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text p {
+    color: var(--oliva-text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.about-text .crp {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--oliva-accent);
+    margin-top: 24px;
+    display: block;
+}
+
+.about-text .instagram-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--oliva-text);
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-top: 8px;
+    padding: 6px 0;
+    border-bottom: 1px solid transparent;
+    transition: all var(--transition);
+}
+
+.about-text .instagram-link:hover {
+    border-bottom-color: var(--oliva-text);
+}
+
+.about-text .instagram-link svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .about-image img {
+        width: 240px;
+        height: 240px;
+    }
+
+    .about-text {
+        text-align: left;
+    }
+}
+
+/* --- Steps Section --- */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    counter-reset: step;
+}
+
+.step-item {
+    text-align: center;
+    counter-increment: step;
+    position: relative;
+}
+
+.step-number {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--creme-accent);
+    opacity: 0.4;
+    line-height: 1;
+    margin-bottom: 16px;
+}
+
+.step-item h3 {
+    color: var(--creme-text);
+    margin-bottom: 10px;
+}
+
+.step-item p {
+    color: var(--creme-text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Step connector line */
+.step-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 32px;
+    right: -20px;
+    width: 40px;
+    height: 2px;
+    background-color: var(--creme-subtle);
+}
+
+@media (max-width: 768px) {
+    .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        max-width: 360px;
+        margin: 0 auto;
+    }
+
+    .step-item:not(:last-child)::after {
+        display: none;
+    }
+}
+
+/* --- Testimonials --- */
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+}
+
+.testimonial-card {
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--oliva-subtle);
+    border-radius: var(--radius-lg);
+    padding: 36px 32px 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.testimonial-card .quote-icon {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--oliva-accent);
+    opacity: 0.4;
+    margin-bottom: 12px;
+}
+
+.testimonial-card p {
+    color: var(--oliva-text-secondary);
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.7;
+    flex: 1;
+}
+
+.testimonial-card cite {
+    display: block;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--oliva-text);
+    margin-top: 20px;
+    font-size: 0.95rem;
+}
+
+/* --- Courses Cards --- */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 32px;
+}
+
+.course-card {
+    background-color: #fff;
+    border: 1px solid var(--creme-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition);
+}
+
+.course-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.course-card-body {
+    padding: 36px 32px;
+}
+
+.course-card-header {
+    background-color: var(--oliva-bg);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+}
+
+.course-card-header .monogram-sm {
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    transform: translateY(-50%);
+    font-family: var(--font-monogram);
+    font-style: normal;
+    font-size: 7rem;
+    color: var(--oliva-subtle);
+    opacity: 0.4;
+    pointer-events: none;
+    user-select: none;
+}
+
+.course-card-header h3 {
+    color: var(--oliva-text);
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.course-card-header p {
+    color: var(--oliva-text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.course-card-body p {
+    color: var(--creme-text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+}
+
+.course-card-body .btn {
+    width: 100%;
+}
+
+/* --- CTA Final --- */
+.cta-final {
+    text-align: center;
+}
+
+.cta-final h2 {
+    color: var(--oliva-text);
+    max-width: 600px;
+    margin: 0 auto 20px;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.cta-final p {
+    display: none;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--creme-bg);
+    border-top: 1px solid var(--creme-subtle);
+    padding: 48px 0 32px;
+    color: var(--creme-footer);
+    font-size: 0.9rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+.footer-left p {
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+    color: var(--creme-footer);
+}
+
+.footer-left .footer-crp {
+    font-size: 0.85rem;
+    color: var(--creme-text-secondary);
+}
+
+.footer-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.footer-right a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--creme-text-secondary);
+    font-size: 0.9rem;
+    transition: color var(--transition);
+}
+
+.footer-right a:hover {
+    color: var(--creme-accent);
+}
+
+.footer-right a svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--creme-subtle);
+    font-size: 0.85rem;
+    color: var(--creme-footer);
+}
+
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* --- WhatsApp Floating Button --- */
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+    z-index: 999;
+    transition: all var(--transition);
+    animation: pulse-whatsapp 2s ease-in-out infinite;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+    animation: none;
+}
+
+.whatsapp-float svg {
+    width: 28px;
+    height: 28px;
+    fill: #fff;
+}
+
+@keyframes pulse-whatsapp {
+    0%, 100% { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4); }
+    50% { box-shadow: 0 4px 24px rgba(37, 211, 102, 0.6); }
+}
+
+/* --- Page Hero (Inner Pages) --- */
+.page-hero {
+    text-align: center;
+    padding: 80px 0 60px;
+}
+
+.page-hero h1 {
+    color: var(--oliva-text);
+    margin-bottom: 16px;
+}
+
+.page-hero p {
+    color: var(--oliva-text-secondary);
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- Course Detail Page --- */
+.course-detail {
+    padding: 80px 0;
+}
+
+.course-detail-content {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.course-detail-content h2 {
+    font-size: 1.8rem;
+    color: var(--creme-text);
+    margin-top: 48px;
+    margin-bottom: 16px;
+}
+
+.course-detail-content h2:first-child {
+    margin-top: 0;
+}
+
+.course-detail-content p {
+    color: var(--creme-text-secondary);
+    line-height: 1.8;
+}
+
+.checklist {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 24px;
+}
+
+.checklist li {
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 14px;
+    font-size: 1.05rem;
+    color: var(--creme-text-secondary);
+    line-height: 1.6;
+}
+
+.checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--creme-accent);
+    border-radius: 50%;
+}
+
+.checklist li::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 11px;
+    width: 8px;
+    height: 4px;
+    border-left: 2px solid var(--creme-accent);
+    border-bottom: 2px solid var(--creme-accent);
+    transform: rotate(-45deg);
+}
+
+.course-cta-box {
+    background-color: var(--oliva-bg);
+    border-radius: var(--radius-lg);
+    padding: 48px 40px;
+    text-align: center;
+    margin-top: 56px;
+    position: relative;
+    overflow: hidden;
+}
+
+.course-cta-box .monogram-sm {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-family: var(--font-monogram);
+    font-style: normal;
+    font-size: 9rem;
+    color: var(--oliva-subtle);
+    opacity: 0.3;
+    pointer-events: none;
+    user-select: none;
+}
+
+.course-cta-box h2 {
+    color: var(--oliva-text);
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.course-cta-box p {
+    color: var(--oliva-text-secondary);
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+}
+
+.course-cta-box .btn {
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Scheduling Form --- */
+.form-section {
+    padding: 80px 0;
+}
+
+.form-container {
+    background-color: #fff;
+    padding: 48px 40px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--creme-text);
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--creme-subtle);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--creme-text);
+    background-color: #fff;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--creme-accent);
+    box-shadow: 0 0 0 3px rgba(180, 140, 90, 0.15);
+}
+
+.form-group input::placeholder {
+    color: var(--creme-footer);
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.error-msg {
+    color: #d44;
+    font-size: 0.85rem;
+    display: none;
+    margin-top: 6px;
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 14px 24px;
+    background-color: var(--creme-accent);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.btn-submit:hover {
+    background-color: #a07a4a;
+    transform: translateY(-1px);
+}
+
+.form-info {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 0.9rem;
+    color: var(--creme-text-secondary);
+}
+
+.form-info a {
+    color: var(--creme-accent);
+    font-weight: 500;
+}
+
+.form-info a:hover {
+    text-decoration: underline;
+}
+
+/* Form states */
+.hidden {
+    display: none !important;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.success-box {
+    padding: 20px;
+    text-align: center;
+}
+
+.success-icon {
+    width: 64px;
+    height: 64px;
+    background-color: rgba(180, 140, 90, 0.12);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px auto;
+}
+
+.success-icon svg {
+    width: 30px;
+    height: 30px;
+    fill: var(--creme-accent);
+}
+
+.success-box h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--creme-text);
+    margin-bottom: 8px;
+}
+
+.success-box p {
+    color: var(--creme-text-secondary);
+    margin-bottom: 28px;
+}
+
+.loader-box {
+    padding: 48px 0;
+    text-align: center;
+}
+
+.spinner {
+    border: 3px solid var(--creme-subtle);
+    border-top: 3px solid var(--creme-accent);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 16px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loader-box p {
+    color: var(--creme-text-secondary);
+    font-size: 0.95rem;
+}
+
+/* --- Section Headers (Reusable) --- */
+.section-header {
+    text-align: center;
+    margin-bottom: 56px;
+}
+
+.section-header h2 {
+    margin-bottom: 12px;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+.section-oliva .section-header p {
+    color: var(--oliva-text-secondary);
+}
+
+.section-creme .section-header p {
+    color: var(--creme-text-secondary);
+}
+
+/* --- Accent Line Decoration --- */
+.accent-line {
+    width: 48px;
+    height: 3px;
+    background-color: var(--creme-accent);
+    border-radius: 2px;
+    margin: 0 auto 20px;
+}
+
+.section-oliva .accent-line {
+    background-color: var(--oliva-accent);
+}
+
+/* --- Utilities --- */
+.text-center { text-align: center; }
+.mt-40 { margin-top: 40px; }
+.mb-0 { margin-bottom: 0; }
+
+@media (max-width: 480px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-container {
+        padding: 32px 24px;
+    }
+
+    .course-cta-box {
+        padding: 36px 24px;
+    }
 }

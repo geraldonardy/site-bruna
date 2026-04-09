@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estilo de Comunicação | Bruna Nardy — Psicóloga Clínica</title>
+    <meta name="description" content="Descubra seu estilo de comunicação: passivo, agressivo, passivo-agressivo ou assertivo. Teste gratuito pela Psicóloga Bruna Nardy.">
+    <link rel="canonical" href="https://www.brunanardy.com.br/testes.html">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Estilo de Comunicação | Bruna Nardy — Psicóloga Clínica">
+    <meta property="og:description" content="Descubra seu estilo de comunicação. Teste gratuito com a Psicóloga Bruna Nardy.">
+    <meta property="og:url" content="https://www.brunanardy.com.br/testes.html">
+    <meta property="og:image" content="https://www.brunanardy.com.br/imgs/fotoPerfil.jpg">
+    <meta property="og:locale" content="pt_BR">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="imgs/favicon.png">
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* --- Communication Style Test Styles --- */
+        .test-container {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .test-intro {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .test-intro p {
+            color: var(--creme-text-secondary);
+            font-size: 1.05rem;
+            max-width: 560px;
+            margin: 0 auto 16px;
+        }
+
+        /* Progress Bar */
+        .progress-bar-wrap {
+            background-color: var(--creme-subtle);
+            border-radius: 20px;
+            height: 8px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: var(--creme-accent);
+            border-radius: 20px;
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--creme-text-secondary);
+            margin-bottom: 12px;
+        }
+
+        /* Question Card */
+        .question-card {
+            background-color: #fff;
+            border-radius: var(--radius-lg);
+            padding: 40px 36px;
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.4s ease;
+        }
+
+        .question-card h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--creme-text);
+            margin-bottom: 28px;
+            line-height: 1.4;
+        }
+
+        .question-number {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--creme-accent);
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        /* Options */
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 16px 20px;
+            background-color: var(--creme-bg);
+            border: 2px solid var(--creme-subtle);
+            border-radius: var(--radius);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--creme-text);
+            cursor: pointer;
+            transition: all var(--transition);
+            line-height: 1.5;
+        }
+
+        .option-btn:hover {
+            border-color: var(--creme-accent);
+            background-color: rgba(180, 140, 90, 0.06);
+        }
+
+        .option-btn:active {
+            transform: scale(0.99);
+        }
+
+        /* Result */
+        .result-card {
+            background-color: #fff;
+            border-radius: var(--radius-lg);
+            padding: 48px 40px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+            display: none;
+        }
+
+        .result-card .result-temperament {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .result-card .result-subtitle {
+            font-size: 0.95rem;
+            color: var(--creme-accent);
+            font-weight: 500;
+            margin-bottom: 28px;
+        }
+
+        .result-card .result-description {
+            text-align: left;
+            color: var(--creme-text-secondary);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .result-card .result-traits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 28px 0;
+        }
+
+        .result-card .trait-tag {
+            background-color: var(--creme-bg);
+            border: 1px solid var(--creme-subtle);
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 0.85rem;
+            color: var(--creme-text);
+            font-weight: 500;
+        }
+
+        .result-card .result-note {
+            font-size: 0.85rem;
+            color: var(--creme-footer);
+            font-style: italic;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--creme-subtle);
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+
+        .result-actions .btn {
+            min-width: 180px;
+        }
+
+        /* Scores breakdown */
+        .scores-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 28px 0;
+            text-align: left;
+        }
+
+        .score-item {
+            background-color: var(--creme-bg);
+            border-radius: var(--radius);
+            padding: 14px 16px;
+        }
+
+        .score-item .score-label {
+            font-size: 0.85rem;
+            color: var(--creme-text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .score-item .score-bar-bg {
+            background-color: var(--creme-subtle);
+            border-radius: 10px;
+            height: 6px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .score-item .score-bar-val {
+            height: 100%;
+            background-color: var(--creme-accent);
+            border-radius: 10px;
+            transition: width 0.6s ease;
+        }
+
+        .score-item .score-percent {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--creme-text);
+        }
+
+        .score-item.is-winner {
+            border: 2px solid var(--creme-accent);
+        }
+
+        @media (max-width: 480px) {
+            .question-card {
+                padding: 28px 20px;
+            }
+
+            .result-card {
+                padding: 36px 24px;
+            }
+
+            .scores-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo-svg" aria-label="Bruna Nardy — Psicóloga Clínica">
+                <span class="logo-text">Bruna Nardy</span>
+                <svg class="logo-butterfly" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 16c-2-4-7-8-10-6s-1 7 3 9c2 1 5 0 7-3z"/><path d="M16 16c2-4 7-8 10-6s1 7-3 9c-2 1-5 0-7-3z"/><path d="M16 16v10" stroke-linecap="round"/><path d="M14 6c1 3 2 7 2 10" stroke-linecap="round"/><path d="M18 6c-1 3-2 7-2 10" stroke-linecap="round"/></svg>
+            </a>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon"><span></span></label>
+            <nav class="menu-nav">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="testes.html" class="active">Testes</a></li>
+                    <li><a href="agendamento.html">Agendamento</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Page Hero -->
+        <section class="page-hero section-oliva">
+            <div class="container">
+                <h1>Estilo de Comunicação</h1>
+                <p>Descubra como você se comunica e aprenda a construir diálogos mais saudáveis.</p>
+            </div>
+        </section>
+
+        <!-- Test Section -->
+        <section class="section-creme">
+            <div class="container">
+                <div class="test-container">
+
+                    <div class="test-intro" id="testIntro">
+                        <p>Responda às 15 perguntas escolhendo a alternativa que mais tem a ver com você. Não existe resposta certa ou errada.</p>
+                        <button class="btn btn-primary" onclick="startTest()">Começar o Teste</button>
+                    </div>
+
+                    <!-- Progress -->
+                    <div id="progressArea" style="display:none;">
+                        <div class="progress-text">Pergunta <span id="currentNum">1</span> de <span id="totalNum">15</span></div>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar-fill" id="progressBar"></div>
+                        </div>
+                    </div>
+
+                    <!-- Question -->
+                    <div class="question-card" id="questionCard" style="display:none;">
+                        <span class="question-number" id="questionLabel"></span>
+                        <h3 id="questionText"></h3>
+                        <div class="options" id="optionsArea"></div>
+                    </div>
+
+                    <!-- Result -->
+                    <div class="result-card" id="resultCard">
+                        <div class="result-subtitle" id="resultSubtitle"></div>
+                        <div class="result-temperament" id="resultTitle"></div>
+
+                        <div class="scores-grid" id="scoresGrid"></div>
+
+                        <div class="result-description" id="resultDescription"></div>
+
+                        <div class="result-traits" id="resultTraits"></div>
+
+                        <div class="result-actions">
+                            <button class="btn btn-primary" onclick="location.reload()">Refazer o Teste</button>
+                            <a href="agendamento.html" class="btn btn-outline-creme">Agendar uma sessão</a>
+                        </div>
+
+                        <p class="result-note">Este teste é uma ferramenta de autoconhecimento e não substitui uma avaliação psicológica profissional. Para se aprofundar nos seus resultados, agende uma sessão.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2026 Bruna Nardy. Todos os direitos reservados.</p>
+                    <p class="footer-crp">CRP 06/152225</p>
+                </div>
+                <div class="footer-right">
+                    <a href="https://www.instagram.com/brunanardy_/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        Instagram
+                    </a>
+                    <a href="https://wa.me/5511974523819?text=Ol%C3%A1!%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>www.brunanardy.com.br</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5511974523819?text=Ol%C3%A1!%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Fale conosco pelo WhatsApp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- JavaScript — Communication Style Test -->
+    <script>
+    const _qd="W3sicXVlc3Rpb24iOiJRdWFuZG8gYWxndWVtIGludGVycm9tcGUgdm9jZSBubyBtZWlvIGRlIHVtYSBjb252ZXJzYSwgY29tbyB2b2NlIHJlYWdlPyIsIm9wdGlvbnMiOlt7InRleHQiOiJGaWNvIGVtIHNpbGVuY2lvIGUgZGVpeG8gYSBwZXNzb2EgZmFsYXIsIG1lc21vIHF1ZXJlbmRvIGNvbnRpbnVhci4iLCJzdHlsZSI6IlBBIn0seyJ0ZXh0IjoiRmFsbyBtYWlzIGFsdG8gZSBleGlqbyBxdWUgbWUgZGVpeGVtIHRlcm1pbmFyLiIsInN0eWxlIjoiQUcifSx7InRleHQiOiJQYXJvIGRlIGZhbGFyLCBtYXMgZGVwb2lzIGZhw6dvIGNvbWVudMOhcmlvcyBpcsO0bmljb3Mgc29icmUgYSBzaXR1YcOnw6NvLiIsInN0eWxlIjoiUFAifSx7InRleHQiOiJEaWdvIGNvbSBjYWxtYTogJ1Bvc3NvIHRlcm1pbmFyIG1ldSByYWNpb2PDrW5pbz8gRGVwb2lzIHF1ZXJvIG91dmlyIHZvY8OqLiciLCJzdHlsZSI6IkFTIn1dfSx7InF1ZXN0aW9uIjoiU2V1IGNvbGVnYSBkZSB0cmFiYWxobyByZWNlYmUgbyBjcsOpZGl0byBwb3IgdW1hIGlkZWlhIHF1ZSBmb2kgc3VhLiBPIHF1ZSB2b2PDqiBmYXo/Iiwib3B0aW9ucyI6W3sidGV4dCI6Ik7Do28gZmFsbyBuYWRhIHBhcmEgZXZpdGFyIGNvbmZ1c8Ojby4iLCJzdHlsZSI6IlBBIn0seyJ0ZXh0IjoiQ29uZnJvbnRvIGEgcGVzc29hIG5hIGZyZW50ZSBkZSB0b2RvcyBlIGV4aWpvIHJlY29uaGVjaW1lbnRvLiIsInN0eWxlIjoiQUcifSx7InRleHQiOiJOw6NvIGRpZ28gbmFkYSBkaXJldGFtZW50ZSwgbWFzIGNvbWVudG8gY29tIG91dHJvcyBjb2xlZ2FzIG8gcXVlIGFjb250ZWNldS4iLCJzdHlsZSI6IlBQIn0seyJ0ZXh0IjoiQ29udmVyc28gcmVzZXJ2YWRhbWVudGUgY29tIGEgcGVzc29hIGUgZXNjbGFyZcOnbyBxdWUgYSBpZGVpYSBwYXJ0aXUgZGUgbWltLiIsInN0eWxlIjoiQVMifV19LHsicXVlc3Rpb24iOiJVbSBhbWlnbyBwZWRlIHBhcmEgdm9jw6ogZmF6ZXIgdW0gZmF2b3IgcXVlIHZhaSBhdHJhcGFsaGFyIHNldXMgcGxhbm9zLiBDb21vIHJlc3BvbmRlPyIsIm9wdGlvbnMiOlt7InRleHQiOiJBY2VpdG8gbyBmYXZvciBtZXNtbyBzYWJlbmRvIHF1ZSB2b3UgbWUgcHJlanVkaWNhci4iLCJzdHlsZSI6IlBBIn0seyJ0ZXh0IjoiRGlnbyAnbsOjbycgZGUgZm9ybWEgcsOtc3BpZGEgZSBzZW0gZGFyIGV4cGxpY2HDp8O1ZXMuIiwic3R5bGUiOiJBRyJ9LHsidGV4dCI6IkRpZ28gcXVlIHNpbSwgbWFzIGRlcG9pcyBjYW5jZWxvIGVtIGNpbWEgZGEgaG9yYSBjb20gdW1hIGRlc2N1bHBhLiIsInN0eWxlIjoiUFAifSx7InRleHQiOiJFeHBsaWNvIHF1ZSBuw6NvIHBvc3NvIG5hcXVlbGUgbW9tZW50byBlIHN1Z2lybyBvdXRyYSBmb3JtYSBkZSBhanVkYXIuIiwic3R5bGUiOiJBUyJ9XX0seyJxdWVzdGlvbiI6IkR1cmFudGUgdW1hIGRpc2N1c3PDo28gY29tIHNldSBwYXJjZWlybyhhKSwgdm9jw6ogcGVyY2ViZSBxdWUgZGlzY29yZGEgdG90YWxtZW50ZS4gTyBxdWUgZmF6PyIsIm9wdGlvbnMiOlt7InRleHQiOiJDb25jb3JkbyBwYXJhIGVuY2VycmFyIGxvZ28gYSBkaXNjdXNzw6NvLCBtZXNtbyBkaXNjb3JkYW5kbyBwb3IgZGVudHJvLiIsInN0eWxlIjoiUEEifSx7InRleHQiOiJMZXZhbnRvIGEgdm96IGUgaW5zaXN0byBxdWUgbWV1IHBvbnRvIGRlIHZpc3RhIMOpIG8gY29ycmV0by4iLCJzdHlsZSI6IkFHIn0seyJ0ZXh0IjoiRmluam8gY29uY29yZGFyLCBtYXMgZGVwb2lzIGFqbyBkbyBtZXUgamVpdG8gc2VtIGF2aXNhci4iLCJzdHlsZSI6IlBQIn0seyJ0ZXh0IjoiRXhwcmVzc28gbWluaGEgb3BpbmnDo28gY29tIHJlc3BlaXRvIGUgcHJvY3VybyBlbnRlbmRlciBvIGxhZG8gZGEgb3V0cmEgcGVzc29hLiIsInN0eWxlIjoiQVMifV19LHsicXVlc3Rpb24iOiJWb2PDqiByZWNlYmUgdW1hIGNyw610aWNhIG5vIHRyYWJhbGhvIHF1ZSBjb25zaWRlcmEgaW5qdXN0YS4gUXVhbCDDqSBzdWEgcmVhw6fDo28/Iiwib3B0aW9ucyI6W3sidGV4dCI6IkFiYWl4byBhIGNhYmXDp2EgZSBhY2VpdG8gc2VtIHF1ZXN0aW9uYXIuIiwic3R5bGUiOiJQQSJ9LHsidGV4dCI6IlJlYWpvIG5hIGhvcmEsIGRpemVuZG8gcXVlIGEgY3LDrXRpY2Egw6kgYWJzdXJkYS4iLCJzdHlsZSI6IkFHIn0seyJ0ZXh0IjoiQWNlaXRvIG5hIGhvcmEsIG1hcyBkZXBvaXMgcmVjbGFtbyBwYXJhIHRvZG8gbXVuZG8uIiwic3R5bGUiOiJQUCJ9LHsidGV4dCI6IkFncmFkZcOnbyBvIGZlZWRiYWNrIGUgZXhwbGljbyBtaW5oYSBwZXJzcGVjdGl2YSBkZSBmb3JtYSBjbGFyYS4iLCJzdHlsZSI6IkFTIn1dfSx7InF1ZXN0aW9uIjoiQWxndcOpbSBmdXJhIGEgZmlsYSBuYSBzdWEgZnJlbnRlLiBDb21vIHZvY8OqIGxpZGEgY29tIGlzc28/Iiwib3B0aW9ucyI6W3sidGV4dCI6IkZpY28gaXJyaXRhZG8oYSkgcG9yIGRlbnRybywgbWFzIG7Do28gZmFsbyBuYWRhLiIsInN0eWxlIjoiUEEifSx7InRleHQiOiJDaGFtbyBhIGF0ZW7Dp8OjbyBkYSBwZXNzb2EgZGUgZm9ybWEgYWdyZXNzaXZhIG5hIGZyZW50ZSBkZSB0b2Rvcy4iLCJzdHlsZSI6IkFHIn0seyJ0ZXh0IjoiRmHDp28gY29tZW50w6FyaW9zIGVtIHZveiBhbHRhIHBhcmEgcXVlIGEgcGVzc29hIHBlcmNlYmEsIHNlbSBmYWxhciBkaXJldGFtZW50ZS4iLCJzdHlsZSI6IlBQIn0seyJ0ZXh0IjoiRGlnbyBlZHVjYWRhbWVudGU6ICdDb20gbGljZW7Dp2EsIGEgZmlsYSBjb21lw6dhIGFsaSBhdHLDoXMuJyIsInN0eWxlIjoiQVMifV19LHsicXVlc3Rpb24iOiJTZXUgY2hlZmUgcGVkZSBwYXJhIHZvY8OqIHRyYWJhbGhhciBubyBmaW0gZGUgc2VtYW5hLCBtYXMgdm9jw6ogasOhIHRlbSBjb21wcm9taXNzb3MuIE8gcXVlIGZhej8iLCJvcHRpb25zIjpbeyJ0ZXh0IjoiQ2FuY2VsbyBtZXVzIHBsYW5vcyBlIGFjZWl0byBzZW0gcXVlc3Rpb25hci4iLCJzdHlsZSI6IlBBIn0seyJ0ZXh0IjoiUmVjdXNvIGRlIGZvcm1hIGJydXNjYSBlIGRpZ28gcXVlIG7Do28gc291IG9icmlnYWRvKGEpLiIsInN0eWxlIjoiQUcifSx7InRleHQiOiJBY2VpdG8sIG1hcyBmYcOnbyBvIHRyYWJhbGhvIGRlIHF1YWxxdWVyIGplaXRvIGNvbW8gZm9ybWEgZGUgcHJvdGVzdG8uIiwic3R5bGUiOiJQUCJ9LHsidGV4dCI6IkV4cGxpY28gcXVlIHRlbmhvIGNvbXByb21pc3NvcyBlIHByb3BvbmhvIHVtYSBhbHRlcm5hdGl2YSB2acOhdmVsLiIsInN0eWxlIjoiQVMifV19LHsicXVlc3Rpb24iOiJWb2PDqiBwcmVjaXNhIGRhciB1bSBmZWVkYmFjayBuZWdhdGl2byBwYXJhIGFsZ3XDqW0gZGEgc3VhIGVxdWlwZS4gQ29tbyBmYXo/Iiwib3B0aW9ucyI6W3sidGV4dCI6IkV2aXRvIGRhciBvIGZlZWRiYWNrIHBhcmEgbsOjbyBtYWdvYXIgYSBwZXNzb2EuIiwic3R5bGUiOiJQQSJ9LHsidGV4dCI6IlNvdSBkaXJldG8oYSkgZSBkdXJvKGEpLCBzZW0gbWUgcHJlb2N1cGFyIGNvbSBvIGltcGFjdG8gZW1vY2lvbmFsLiIsInN0eWxlIjoiQUcifSx7InRleHQiOiJEb3UgaW5kaXJldGFzIGVzcGVyYW5kbyBxdWUgYSBwZXNzb2EgZW50ZW5kYSBzb3ppbmhhLiIsInN0eWxlIjoiUFAifSx7InRleHQiOiJFc2NvbGhvIHVtIG1vbWVudG8gYWRlcXVhZG8gZSBmYWxvIGNvbSBjbGFyZXphLCBhcG9udGFuZG8gY2FtaW5ob3MgZGUgbWVsaG9yaWEuIiwic3R5bGUiOiJBUyJ9XX0seyJxdWVzdGlvbiI6IkVtIHVtYSByZXVuacOjbyBkZSBmYW3DrWxpYSwgYWxndcOpbSBmYXogdW0gY29tZW50w6FyaW8gcXVlIHRlIGluY29tb2RhLiBRdWFsIHN1YSBhdGl0dWRlPyIsIm9wdGlvbnMiOlt7InRleHQiOiJFbmd1bG8gbyBkZXNjb25mb3J0byBlIG11ZG8gZGUgYXNzdW50by4iLCJzdHlsZSI6IlBBIn0seyJ0ZXh0IjoiUmVzcG9uZG8gbmEgbGF0YSBlIGNyaW8gdW0gY2xpbWEgdGVuc28uIiwic3R5bGUiOiJBRyJ9LHsidGV4dCI6Ik7Do28gZmFsbyBuYWRhIG5hIGhvcmEsIG1hcyBkZXBvaXMgbWFuZG8gdW1hIG1lbnNhZ2VtIGluZGlyZXRhIG5hcyByZWRlcyBzb2NpYWlzLiIsInN0eWxlIjoiUFAifSx7InRleHQiOiJEaWdvIGNvbSB0cmFucXVpbGlkYWRlIHF1ZSBhcXVlbGUgY29tZW50w6FyaW8gbWUgaW5jb21vZG91IGUgZXhwbGljbyBwb3IgcXXDqi4iLCJzdHlsZSI6IkFTIn1dfSx7InF1ZXN0aW9uIjoiVm9jw6ogcGVyY2ViZSBxdWUgc2VtcHJlIGNlZGUgbmFzIGRlY2lzw7VlcyBkbyBncnVwby4gTyBxdWUgcGVuc2Egc29icmUgaXNzbz8iLCJvcHRpb25zIjpbeyJ0ZXh0IjoiQWNobyBub3JtYWwsIMOpIG1lbGhvciBtYW50ZXIgYSBwYXogZG8gcXVlIGNhdXNhciBhdHJpdG8uIiwic3R5bGUiOiJQQSJ9LHsidGV4dCI6IkZpY28gY29tIHJhaXZhIGUgZGVjaWRvIHF1ZSBkYSBwcsOzeGltYSB2ZXogdm91IGltcG9yIG1pbmhhIHZvbnRhZGUuIiwic3R5bGUiOiJBRyJ9LHsidGV4dCI6IkFjZWl0byBuYSBob3JhLCBtYXMgZGVwb2lzIHNhYm90byBzdXRpbG1lbnRlIG8gcGxhbm8gZG8gZ3J1cG8uIiwic3R5bGUiOiJQUCJ9LHsidGV4dCI6IlJlY29uaGXDp28gbyBwYWRyw6NvIGUgY29tZcOnbyBhIGV4cHJlc3NhciBtaW5oYXMgcHJlZmVyw6puY2lhcyBjb20gbWFpcyBmcmVxdcOqbmNpYS4iLCJzdHlsZSI6IkFTIn1dfSx7InF1ZXN0aW9uIjoiVW0gcHJlc3RhZG9yIGRlIHNlcnZpw6dvIGZheiB1bSB0cmFiYWxobyBtYWwgZmVpdG8gbmEgc3VhIGNhc2EuIENvbW8gdm9jw6ogcmVzb2x2ZT8iLCJvcHRpb25zIjpbeyJ0ZXh0IjoiUGFnbyBzZW0gcmVjbGFtYXIgcGFyYSBldml0YXIgY29uZnJvbnRvLiIsInN0eWxlIjoiUEEifSx7InRleHQiOiJSZWNsYW1vIGRlIGZvcm1hIGV4YWx0YWRhIGUgYW1lYcOnbyBuw6NvIHBhZ2FyLiIsInN0eWxlIjoiQUcifSx7InRleHQiOiJQYWdvLCBtYXMgZGVpeG8gdW1hIGF2YWxpYcOnw6NvIG5lZ2F0aXZhIG5hIGludGVybmV0IHNlbSBhdmlzYXIuIiwic3R5bGUiOiJQUCJ9LHsidGV4dCI6Ik1vc3RybyBvcyBwb250b3MgcXVlIHByZWNpc2FtIHNlciBjb3JyaWdpZG9zIGUgcGXDp28gcXVlIHJlZmHDp2EgbyBzZXJ2acOnby4iLCJzdHlsZSI6IkFTIn1dfSx7InF1ZXN0aW9uIjoiU2V1IGFtaWdvIHNlbXByZSBhdHJhc2Egbm9zIGVuY29udHJvcyBlIHZvY8OqIGVzdMOhIGNhbnNhZG8oYSkgZGlzc28uIE8gcXVlIGZhej8iLCJvcHRpb25zIjpbeyJ0ZXh0IjoiQ29udGludW8gZXNwZXJhbmRvIHNlbSBmYWxhciBuYWRhLCBhZmluYWwgbsOjbyBxdWVybyBwZXJkZXIgYSBhbWl6YWRlLiIsInN0eWxlIjoiUEEifSx7InRleHQiOiJEaWdvIHF1ZSBuw6NvIGFndWVudG8gbWFpcyBlIHF1ZSB2b3UgcGFyYXIgZGUgbWFyY2FyIGVuY29udHJvcy4iLCJzdHlsZSI6IkFHIn0seyJ0ZXh0IjoiQ29tZcOnbyBhIGF0cmFzYXIgdGFtYsOpbSBwYXJhICdkYXIgbyB0cm9jbycuIiwic3R5bGUiOiJQUCJ9LHsidGV4dCI6IkNvbnZlcnNvIGFiZXJ0YW1lbnRlIHNvYnJlIGNvbW8gb3MgYXRyYXNvcyBtZSBhZmV0YW0gZSBwZcOnbyBtYWlzIHBvbnR1YWxpZGFkZS4iLCJzdHlsZSI6IkFTIn1dfSx7InF1ZXN0aW9uIjoiVm9jw6ogZXN0w6EgZW0gdW0gcmVzdGF1cmFudGUgZSBvIHByYXRvIHZlaW8gZGlmZXJlbnRlIGRvIHF1ZSBwZWRpdS4gTyBxdWUgZmF6PyIsIm9wdGlvbnMiOlt7InRleHQiOiJDb21vIGFzc2ltIG1lc21vIHBhcmEgbsOjbyBpbmNvbW9kYXIgbyBnYXLDp29tLiIsInN0eWxlIjoiUEEifSx7InRleHQiOiJDaGFtbyBvIGdhcsOnb20gZSByZWNsYW1vIGVtIHRvbSBhbHRvLCBkaXplbmRvIHF1ZSBvIHNlcnZpw6dvIMOpIHDDqXNzaW1vLiIsInN0eWxlIjoiQUcifSx7InRleHQiOiJDb21vIG8gcHJhdG8sIG1hcyBkZXBvaXMgZmHDp28gdW1hIHJlY2xhbWHDp8OjbyBleGFnZXJhZGEgbmFzIHJlZGVzIHNvY2lhaXMuIiwic3R5bGUiOiJQUCJ9LHsidGV4dCI6IkNoYW1vIG8gZ2Fyw6dvbSBlZHVjYWRhbWVudGUgZSBwZcOnbyBwYXJhIHRyb2NhciBvIHByYXRvLiIsInN0eWxlIjoiQVMifV19LHsicXVlc3Rpb24iOiJBbGd1w6ltIHF1ZSB2b2PDqiBnb3N0YSBmYXogdW1hIHBpYWRhIHF1ZSB0ZSBtYWdvYS4gQ29tbyByZWFnZT8iLCJvcHRpb25zIjpbeyJ0ZXh0IjoiUmlvIGp1bnRvIHBhcmEgZGlzZmFyw6dhciwgbWVzbW8gZXN0YW5kbyBtYWdvYWRvKGEpLiIsInN0eWxlIjoiUEEifSx7InRleHQiOiJSZXNwb25kbyBjb20gb3V0cmEgcGlhZGEgYWluZGEgbWFpcyBwZXNhZGEgcGFyYSByZXZpZGFyLiIsInN0eWxlIjoiQUcifSx7InRleHQiOiJOw6NvIGRlbW9uc3RybyBuYSBob3JhLCBtYXMgZGVwb2lzIGZpY28gZGlzdGFudGUgc2VtIGV4cGxpY2FyIG8gbW90aXZvLiIsInN0eWxlIjoiUFAifSx7InRleHQiOiJEaWdvIHF1ZSBhIHBpYWRhIG1lIGluY29tb2RvdSBlIHBlw6dvIHBhcmEgbsOjbyByZXBldGlyLiIsInN0eWxlIjoiQVMifV19LHsicXVlc3Rpb24iOiJWb2PDqiBwcmVjaXNhIG5lZ29jaWFyIHVtIGF1bWVudG8gZGUgc2Fsw6FyaW8uIENvbW8gYWJvcmRhIGEgY29udmVyc2E/Iiwib3B0aW9ucyI6W3sidGV4dCI6IkZpY28gZXNwZXJhbmRvIHF1ZSBtZXUgY2hlZmUgcGVyY2ViYSBtZXUgdmFsb3Igc296aW5oby4iLCJzdHlsZSI6IlBBIn0seyJ0ZXh0IjoiRXhpam8gbyBhdW1lbnRvIGRlIGZvcm1hIGRpcmV0YSwgZGl6ZW5kbyBxdWUgbWVyZcOnbyBlIHBvbnRvIGZpbmFsLiIsInN0eWxlIjoiQUcifSx7InRleHQiOiJGYcOnbyBjb21lbnTDoXJpb3MgaW5kaXJldG9zIHNvYnJlIHNhbMOhcmlvcyBkZSBvdXRyb3MgY29sZWdhcyBwYXJhIHByZXNzaW9uYXIuIiwic3R5bGUiOiJQUCJ9LHsidGV4dCI6IlByZXBhcm8gYXJndW1lbnRvcyBjb25jcmV0b3Mgc29icmUgbWluaGFzIGVudHJlZ2FzIGUgcHJvcG9uaG8gdW1hIGNvbnZlcnNhIGZyYW5jYS4iLCJzdHlsZSI6IkFTIn1dfV0=";
+    const _td="eyJQQSI6eyJuYW1lIjoiQ29tdW5pY2HDp8OjbyBQYXNzaXZhIiwic3VidGl0bGUiOiJPIHNpbMOqbmNpbyBxdWUgZmFsYSBwb3IgZGVudHJvIiwiZGVzY3JpcHRpb24iOiJWb2PDqiB0ZW5kZSBhIGNvbG9jYXIgYXMgbmVjZXNzaWRhZGVzIGRvcyBvdXRyb3MgYWNpbWEgZGFzIHN1YXMsIGV2aXRhbmRvIGNvbmZsaXRvcyBhIHF1YWxxdWVyIGN1c3RvLiBFbWJvcmEgaXNzbyBkZW1vbnN0cmUgZW1wYXRpYSBlIGNvbnNpZGVyYcOnw6NvLCBjb20gbyB0ZW1wbyBwb2RlIGdlcmFyIGZydXN0cmHDp8OjbyBhY3VtdWxhZGEgZSBhIHNlbnNhw6fDo28gZGUgcXVlIHN1YXMgb3BpbmnDtWVzIG7Do28gaW1wb3J0YW0uIFZvY8OqIG1lcmVjZSBzZXIgb3V2aWRvKGEpIHRhbnRvIHF1YW50byBvdXZlIG9zIG91dHJvcy4iLCJ0cmFpdHMiOlsiRGlmaWN1bGRhZGUgZW0gZGl6ZXIgbsOjbyIsIkV2aXRhIGNvbmZyb250b3MgZSBkaXNjdXNzw7VlcyIsIkNvbG9jYSBhcyBuZWNlc3NpZGFkZXMgZG9zIG91dHJvcyBlbSBwcmltZWlybyBsdWdhciIsIlRlbmRlIGEgZ3VhcmRhciBzZW50aW1lbnRvcyBwYXJhIHNpIiwiQnVzY2EgYXByb3Zhw6fDo28gZSBhY2VpdGHDp8OjbyBjb25zdGFudGVtZW50ZSIsIlNlbnRlIGN1bHBhIGFvIGV4cHJlc3NhciBvcGluacO1ZXMgY29udHLDoXJpYXMiXSwidGlwIjoiQ29tZWNlIHByYXRpY2FuZG8gcGVxdWVuYXMgYWZpcm1hw6fDtWVzIG5vIGRpYSBhIGRpYS4gRGlnYSAnZXUgcHJlZmlybycgb3UgJ2V1IGdvc3RhcmlhJyBlbSBzaXR1YcOnw7VlcyBzaW1wbGVzLCBjb21vIGVzY29saGVyIHVtIHJlc3RhdXJhbnRlIG91IHVtIGZpbG1lLiBBb3MgcG91Y29zLCB2b2PDqiB2YWkgcGVyY2ViZXIgcXVlIGV4cHJlc3NhciBzdWFzIHZvbnRhZGVzIG7Do28gYWZhc3RhIGFzIHBlc3NvYXMg4oCUIHBlbG8gY29udHLDoXJpbywgZm9ydGFsZWNlIHN1YXMgcmVsYcOnw7Vlcy4ifSwiQUciOnsibmFtZSI6IkNvbXVuaWNhw6fDo28gQWdyZXNzaXZhIiwic3VidGl0bGUiOiJBIGZvcsOnYSBxdWUgbmVtIHNlbXByZSBjb25lY3RhIiwiZGVzY3JpcHRpb24iOiJWb2PDqiDDqSB1bWEgcGVzc29hIGRpcmV0YSBlIGludGVuc2EsIHF1ZSBuw6NvIHRlbSBtZWRvIGRlIHNlIHBvc2ljaW9uYXIuIE5vIGVudGFudG8sIGEgZm9ybWEgY29tbyBleHByZXNzYSBzdWFzIG9waW5pw7VlcyBwb2RlIGludGltaWRhciBvdSBhZmFzdGFyIGFzIHBlc3NvYXMgYW8gc2V1IHJlZG9yLiBTdWEgZW5lcmdpYSDDqSBwb2Rlcm9zYSDigJQgcXVhbmRvIGNhbmFsaXphZGEgY29tIGVtcGF0aWEsIHBvZGUgc2UgdG9ybmFyIHVtYSBsaWRlcmFuw6dhIGluc3BpcmFkb3JhLiIsInRyYWl0cyI6WyJUZW5kw6puY2lhIGEgaW1wb3Igb3BpbmnDtWVzIGUgdm9udGFkZXMiLCJEaWZpY3VsZGFkZSBlbSBvdXZpciBvIG91dHJvIGNvbSBwYWNpw6puY2lhIiwiUmVhZ2UgZGUgZm9ybWEgaW50ZW5zYSBhIGZydXN0cmHDp8O1ZXMiLCJVc2EgdG9tIGRlIHZveiBlbGV2YWRvIGNvbSBmcmVxdcOqbmNpYSIsIkludGVycm9tcGUgb3Mgb3V0cm9zIGR1cmFudGUgY29udmVyc2FzIiwiUHJpb3JpemEgJ3ZlbmNlcicgYSBkaXNjdXNzw6NvIGVtIHZleiBkZSByZXNvbHZlciBvIHByb2JsZW1hIl0sInRpcCI6IkFudGVzIGRlIHJlYWdpciwgZXhwZXJpbWVudGUgYSByZWdyYSBkb3MgMyBzZWd1bmRvczogcmVzcGlyZSBmdW5kbyB0csOqcyB2ZXplcyBhbnRlcyBkZSByZXNwb25kZXIuIFBlcmd1bnRlLXNlICdjb21vIGV1IGdvc3RhcmlhIGRlIG91dmlyIGlzc28/JyBlIHRlbnRlIHJlZm9ybXVsYXIgc3VhIGZhbGEuIFN1YSBvcGluacOjbyBjb250aW51YSB2w6FsaWRhIOKAlCBhIG11ZGFuw6dhIGVzdMOhIG5hIGZvcm1hIGRlIGVudHJlZ8OhLWxhLiJ9LCJQUCI6eyJuYW1lIjoiQ29tdW5pY2HDp8OjbyBQYXNzaXZvLUFncmVzc2l2YSIsInN1YnRpdGxlIjoiRW50cmUgbyBzaWzDqm5jaW8gZSBhIHRlbXBlc3RhZGUiLCJkZXNjcmlwdGlvbiI6IlZvY8OqIHNlbnRlIGFzIGNvaXNhcyBjb20gaW50ZW5zaWRhZGUsIG1hcyBlbmNvbnRyYSBkaWZpY3VsZGFkZSBlbSBleHByZXNzw6EtbGFzIGRpcmV0YW1lbnRlLiBJc3NvIGZheiBjb20gcXVlIHN1YSBpbnNhdGlzZmHDp8OjbyBhcGFyZcOnYSBkZSBmb3JtYXMgaW5kaXJldGFzIOKAlCBjb21vIGlyb25pYSwgcHJvY3Jhc3RpbmHDp8OjbyBvdSBhZmFzdGFtZW50by4gUmVjb25oZWNlciBlc3NlIHBhZHLDo28gw6kgbyBwcmltZWlybyBwYXNzbyBwYXJhIGNvbnN0cnVpciByZWxhw6fDtWVzIG1haXMgdHJhbnNwYXJlbnRlcyBlIGxldmVzLiIsInRyYWl0cyI6WyJVc2EgaXJvbmlhIGUgc2FyY2FzbW8gcGFyYSBleHByZXNzYXIgZGVzY29udGVudGFtZW50byIsIkV2aXRhIGNvbmZyb250byBkaXJldG8sIG1hcyBkZW1vbnN0cmEgaW5zYXRpc2Zhw6fDo28gaW5kaXJldGFtZW50ZSIsIlRlbmRlIGEgcHJvY3Jhc3RpbmFyIGNvbW8gZm9ybWEgZGUgcHJvdGVzdG8iLCJEaXogcXVlIGVzdMOhIHR1ZG8gYmVtIHF1YW5kbyBuw6NvIGVzdMOhIiwiR3VhcmRhIHJlc3NlbnRpbWVudG9zIHBvciBsb25nb3MgcGVyw61vZG9zIiwiRGlmaWN1bGRhZGUgZW0gaWRlbnRpZmljYXIgZSBub21lYXIgb3MgcHLDs3ByaW9zIHNlbnRpbWVudG9zIl0sInRpcCI6IlF1YW5kbyBwZXJjZWJlciBxdWUgZXN0w6EgZW5nb2xpbmRvIGFsZ28gcXVlIHRlIGluY29tb2RhLCB0ZW50ZSBlc2NyZXZlciBvIHF1ZSBzZW50ZSBhbnRlcyBkZSBhZ2lyLiBEZXBvaXMsIHRyYW5zZm9ybWUgaXNzbyBlbSB1bWEgZnJhc2UgY29tZcOnYW5kbyBjb20gJ0V1IG1lIHNpbnRvLi4uIHF1YW5kby4uLiBwb3JxdWUuLi4nLiBJc3NvIGFqdWRhIGEgdHJhemVyIGNsYXJlemEgcGFyYSB2b2PDqiBlIHBhcmEgbyBvdXRyby4ifSwiQVMiOnsibmFtZSI6IkNvbXVuaWNhw6fDo28gQXNzZXJ0aXZhIiwic3VidGl0bGUiOiJBIHZveiBxdWUgYWNvbGhlIGUgc2UgcG9zaWNpb25hIiwiZGVzY3JpcHRpb24iOiJWb2PDqiBjb25zZWd1ZSBleHByZXNzYXIgc2V1cyBwZW5zYW1lbnRvcyBlIHNlbnRpbWVudG9zIGRlIGZvcm1hIGNsYXJhLCByZXNwZWl0YW5kbyB0YW50byBhIHNpIG1lc21vKGEpIHF1YW50byBhb3Mgb3V0cm9zLiBJc3NvIG7Do28gc2lnbmlmaWNhIHF1ZSB2b2PDqiBudW5jYSBlcnJhIG91IG51bmNhIHNlIGRlc2NvbmZvcnRhIOKAlCBzaWduaWZpY2EgcXVlIHZvY8OqIGVzY29saGUgYSBob25lc3RpZGFkZSBjb20gZ2VudGlsZXphLiBFc3NlIMOpIHVtIGVzdGlsbyBkZSBjb211bmljYcOnw6NvIHF1ZSBmb3J0YWxlY2UgdsOtbmN1bG9zIGUgaW5zcGlyYSBjb25maWFuw6dhLiIsInRyYWl0cyI6WyJFeHByZXNzYSBvcGluacO1ZXMgY29tIGNsYXJlemEgZSByZXNwZWl0byIsIlNhYmUgb3V2aXIgc2VtIHNlIGFudWxhciIsIkVzdGFiZWxlY2UgbGltaXRlcyBkZSBmb3JtYSBzYXVkw6F2ZWwiLCJMaWRhIGJlbSBjb20gY3LDrXRpY2FzIGUgZmVlZGJhY2tzIiwiQnVzY2Egc29sdcOnw7VlcyBlbSB2ZXogZGUgY3VscGFkb3MiLCJDb25zZWd1ZSBkaXplciBuw6NvIHNlbSBjdWxwYSBleGNlc3NpdmEiXSwidGlwIjoiQ29udGludWUgY3VsdGl2YW5kbyBlc3NhIGhhYmlsaWRhZGUhIEVtIG1vbWVudG9zIGRlIGVzdHJlc3NlLCBsZW1icmUtc2UgZGUgcXVlIGF0w6kgY29tdW5pY2Fkb3JlcyBhc3NlcnRpdm9zIHBvZGVtIGVzY29ycmVnYXIuIFF1YW5kbyBpc3NvIGFjb250ZWNlciwgbsOjbyBzZSBjb2JyZSDigJQgYXBlbmFzIHJlY29uaGXDp2EsIHBlw6dhIGRlc2N1bHBhcyBzZSBuZWNlc3PDoXJpbywgZSByZXRvbWUgbyBkacOhbG9nbyBjb20gaW50ZW7Dp8Ojby4gQSBhc3NlcnRpdmlkYWRlIMOpIHVtYSBwcsOhdGljYSBkacOhcmlhLCBuw6NvIHVtYSBwZXJmZWnDp8Ojby4ifX0=";
+    function _d(s){return decodeURIComponent(atob(s).split('').map(function(c){return'%'+('00'+c.charCodeAt(0).toString(16)).slice(-2)}).join(''));}
+    const questions=JSON.parse(_d(_qd));
+    const styles=JSON.parse(_d(_td));
+
+    let currentQuestion = 0;
+    let scores = { PA: 0, AG: 0, PP: 0, AS: 0 };
+
+    function startTest() {
+        document.getElementById('testIntro').style.display = 'none';
+        document.getElementById('progressArea').style.display = 'block';
+        document.getElementById('questionCard').style.display = 'block';
+        document.getElementById('totalNum').textContent = questions.length;
+        showQuestion();
+    }
+
+    function showQuestion() {
+        const q = questions[currentQuestion];
+        document.getElementById('currentNum').textContent = currentQuestion + 1;
+        document.getElementById('progressBar').style.width = ((currentQuestion) / questions.length * 100) + '%';
+        document.getElementById('questionLabel').textContent = `PERGUNTA ${currentQuestion + 1} DE ${questions.length}`;
+        document.getElementById('questionText').textContent = q.question;
+
+        const optionsArea = document.getElementById('optionsArea');
+        optionsArea.innerHTML = '';
+
+        // Shuffle options
+        const shuffled = [...q.options].sort(() => Math.random() - 0.5);
+
+        shuffled.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.textContent = opt.text;
+            btn.addEventListener('click', () => selectAnswer(opt.style));
+            optionsArea.appendChild(btn);
+        });
+
+        // Re-trigger animation
+        const card = document.getElementById('questionCard');
+        card.style.animation = 'none';
+        card.offsetHeight;
+        card.style.animation = 'fadeIn 0.4s ease';
+    }
+
+    function selectAnswer(style) {
+        scores[style]++;
+        currentQuestion++;
+
+        if (currentQuestion < questions.length) {
+            showQuestion();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        document.getElementById('progressArea').style.display = 'none';
+        document.getElementById('questionCard').style.display = 'none';
+        document.getElementById('progressBar').style.width = '100%';
+
+        // Find winner
+        const maxScore = Math.max(...Object.values(scores));
+        const winner = Object.keys(scores).find(k => scores[k] === maxScore);
+        const total = Object.values(scores).reduce((a, b) => a + b, 0);
+        const temp = styles[winner];
+
+        document.getElementById('resultSubtitle').textContent = temp.subtitle;
+        document.getElementById('resultTitle').textContent = temp.name;
+        document.getElementById('resultDescription').innerHTML =
+            `<p>${temp.description}</p><p><strong>Dica para sua comunicação:</strong> ${temp.tip}</p>`;
+
+        // Traits
+        const traitsArea = document.getElementById('resultTraits');
+        traitsArea.innerHTML = '';
+        temp.traits.forEach(t => {
+            const tag = document.createElement('span');
+            tag.className = 'trait-tag';
+            tag.textContent = t;
+            traitsArea.appendChild(tag);
+        });
+
+        // Scores
+        const grid = document.getElementById('scoresGrid');
+        grid.innerHTML = '';
+        const order = [
+            { key: 'PA', label: 'Passivo' },
+            { key: 'AG', label: 'Agressivo' },
+            { key: 'PP', label: 'Passivo-Agressivo' },
+            { key: 'AS', label: 'Assertivo' }
+        ];
+        order.forEach(item => {
+            const pct = Math.round((scores[item.key] / total) * 100);
+            const div = document.createElement('div');
+            div.className = 'score-item' + (item.key === winner ? ' is-winner' : '');
+            div.innerHTML = `
+                <div class="score-label">${item.label}</div>
+                <div class="score-percent">${pct}%</div>
+                <div class="score-bar-bg">
+                    <div class="score-bar-val" style="width: 0%"></div>
+                </div>
+            `;
+            grid.appendChild(div);
+            // Animate bar
+            setTimeout(() => {
+                div.querySelector('.score-bar-val').style.width = pct + '%';
+            }, 100);
+        });
+
+        document.getElementById('resultCard').style.display = 'block';
+        window.scrollTo({ top: document.getElementById('resultCard').offsetTop - 120, behavior: 'smooth' });
+    }
+    </script>
+
+</body>
+</html>

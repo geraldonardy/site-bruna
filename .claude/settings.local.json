@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ':*)",
+      "Bash(node -e \"const fs=require\\('fs'\\);const html=fs.readFileSync\\('testes.html','utf8'\\);const qMatch=html.match\\(/const questions = \\(\\\\[[\\\\s\\\\S]*?\\\\]\\);/\\);const tMatch=html.match\\(/const temperaments = \\(\\\\{[\\\\s\\\\S]*?\\\\}\\);/\\);if\\(qMatch&&tMatch\\){const q=eval\\(qMatch[1]\\);const t=eval\\(tMatch[1]\\);console.log\\('Q:'\\);console.log\\(Buffer.from\\(JSON.stringify\\(q\\)\\).toString\\('base64'\\)\\);console.log\\('T:'\\);console.log\\(Buffer.from\\(JSON.stringify\\(t\\)\\).toString\\('base64'\\)\\);}\")",
+      "Bash(node encode.js)",
+      "Bash(node \"e:/AzureRepos/site-bruna/_encode_apego.js\")",
+      "Bash(ls -la \"e:/AzureRepos/site-bruna/_encode\"*)",
+      "Bash(node \"e:/AzureRepos/site-bruna/_encode_amor.js\")",
+      "Bash(node \"e:/AzureRepos/site-bruna/_encode_comunicacao.js\")",
+      "Bash(ls \"e:/AzureRepos/site-bruna/teste-\"*.html)",
+      "Bash(grep -c 'class=\"logo\"' e:/AzureRepos/site-bruna/*.html)"
+    ]
+  }
+}

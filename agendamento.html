@@ -1,171 +1,39 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendamento - Bruna Nardy</title>
+    <title>Agende sua Sessão | Bruna Nardy — Psicóloga Clínica</title>
+    <meta name="description" content="Agende sua sessão de psicoterapia com a Psicóloga Bruna Nardy. Atendimento online e presencial focado em comunicação e relacionamentos.">
+    <link rel="canonical" href="https://www.brunanardy.com.br/agendamento.html">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Agende sua Sessão | Bruna Nardy — Psicóloga Clínica">
+    <meta property="og:description" content="Agende sua sessão de psicoterapia. Atendimento online e presencial focado em comunicação e relacionamentos.">
+    <meta property="og:url" content="https://www.brunanardy.com.br/agendamento.html">
+    <meta property="og:image" content="https://www.brunanardy.com.br/imgs/fotoPerfil.jpg">
+    <meta property="og:locale" content="pt_BR">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="imgs/favicon.png">
+    <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
-
-    <style>
-        /* --- ESTILOS GERAIS DO FORMULÁRIO --- */
-        .form-container {
-            background-color: #FBF0E4;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
-
-            .form-group label {
-                display: block;
-                margin-bottom: 0.5rem;
-                font-weight: bold;
-                color: #6D4C3D;
-            }
-
-            /* Input e Select com mesmo estilo */
-            .form-group input, .form-group select {
-                width: 100%;
-                padding: 10px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                font-size: 1rem;
-                box-sizing: border-box;
-                background-color: #fff; /* Garante fundo branco no select */
-            }
-
-        .form-row {
-            display: flex;
-            gap: 1rem;
-        }
-
-            .form-row .form-group {
-                flex: 1;
-            }
-
-        button.btn-submit {
-            background-color: #d4a373;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            width: 100%;
-            transition: background 0.3s;
-        }
-
-            button.btn-submit:hover {
-                background-color: #b08968;
-            }
-
-        .error-msg {
-            color: red;
-            font-size: 0.85rem;
-            display: none;
-            margin-top: 5px;
-        }
-
-        /* --- ESTILOS DE ESTADOS (Success / Loading) --- */
-        .hidden {
-            display: none !important;
-        }
-
-        .fade-in {
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .success-box {
-            padding: 20px;
-        }
-
-        .success-icon {
-            width: 60px;
-            height: 60px;
-            background-color: #d1fae5;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem auto;
-        }
-
-            .success-icon svg {
-                width: 30px;
-                height: 30px;
-                fill: #059669;
-            }
-
-        .success-box h3 {
-            font-size: 1.5rem;
-            color: #111827;
-            margin-bottom: 0.5rem;
-        }
-
-        .success-box p {
-            color: #4b5563;
-            margin-bottom: 2rem;
-        }
-
-        .loader-box {
-            padding: 40px 0;
-        }
-
-        .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #d4a373;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem auto;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
 </head>
 <body>
 
+    <!-- Header -->
     <header>
         <div class="container">
-            <a href="index.html" class="logo">
-                <img src="imgs/logo-site.png" alt="Logo Bruna Nardy">
+            <a href="index.html" class="logo-svg" aria-label="Bruna Nardy — Psicóloga Clínica">
+                <span class="logo-text">Bruna Nardy</span>
+                <svg class="logo-butterfly" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 16c-2-4-7-8-10-6s-1 7 3 9c2 1 5 0 7-3z"/><path d="M16 16c2-4 7-8 10-6s1 7-3 9c-2 1-5 0-7-3z"/><path d="M16 16v10" stroke-linecap="round"/><path d="M14 6c1 3 2 7 2 10" stroke-linecap="round"/><path d="M18 6c-1 3-2 7-2 10" stroke-linecap="round"/></svg>
             </a>
-
             <input type="checkbox" id="menu-toggle">
             <label for="menu-toggle" class="menu-icon"><span></span></label>
-
             <nav class="menu-nav">
                 <ul>
                     <li><a href="index.html">Início</a></li>
                     <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="testes.html">Testes</a></li>
                     <li><a href="agendamento.html" class="active">Agendamento</a></li>
                 </ul>
             </nav>
@@ -173,103 +41,130 @@
     </header>
 
     <main>
-        <section class="page-title">
+
+        <!-- Page Hero -->
+        <section class="page-hero section-oliva">
             <div class="container">
-                <h1>Agende sua Consulta</h1>
-                <p>Preencha o formulário abaixo para solicitar seu horário.</p>
-                <p>Não atendemos convênio, e não temos parcerias com plataformas de atendimento online.</p>
+                <h1>Agende sua Sessão</h1>
+                <p>Preencha o formulário abaixo para solicitar seu horário. Não atendemos convênio e não temos parcerias com plataformas de atendimento online.</p>
             </div>
         </section>
 
-        <section class="course-details">
+        <!-- Form Section -->
+        <section class="form-section section-creme">
             <div class="container">
-                <div class="course-content-box">
+                <div class="form-container">
 
-                    <div class="form-container">
+                    <iframe name="hidden_iframe" style="display:none;"></iframe>
 
-                        <iframe name="hidden_iframe" style="display:none;"></iframe>
+                    <form id="agendamentoForm"
+                          action="https://docs.google.com/forms/d/e/1FAIpQLSfWnKWBqlmOcyk1OGE8iuDdNWV0SqYCTzuAtvNxsczHYpvqDA/formResponse"
+                          method="POST"
+                          target="hidden_iframe">
 
-                        <form id="agendamentoForm"
-                              action="https://docs.google.com/forms/d/e/1FAIpQLSfWnKWBqlmOcyk1OGE8iuDdNWV0SqYCTzuAtvNxsczHYpvqDA/formResponse"
-                              method="POST"
-                              target="hidden_iframe">
-
-                            <div class="form-group">
-                                <label for="nome">Nome Completo</label>
-                                <input type="text" id="nome" name="entry.2092238618" required placeholder="Seu nome completo">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">E-mail</label>
-                                <input type="email" id="email" name="entry.1556369182" required placeholder="seuemail@exemplo.com">
-                                <span id="email-error" class="error-msg">Por favor, insira um e-mail válido.</span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="telefone">WhatsApp / Telefone</label>
-                                <input type="tel" id="telefone" name="entry.479301265" required placeholder="(XX) XXXXX-XXXX" maxlength="15">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="modalidade">Modalidade de Atendimento</label>
-                                <select id="modalidade" name="entry.588393791" required>
-                                    <option value="" disabled selected>Selecione...</option>
-                                    <option value="online">Online</option>
-                                    <option value="presencial">Presencial</option>
-                                </select>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="data_visual">Data</label>
-                                    <input type="date" id="data_visual" required>
-                                    <span id="date-error" class="error-msg">Selecione uma data entre hoje e 30 dias.</span>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="form-group">
-                                    <label for="hora_visual">Horário Disponível</label>
-                                    <select id="hora_visual" required>
-                                        <option value="" disabled selected>Escolha o horário...</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <input type="hidden" id="data_hora_final" name="entry.780969263">
-
-                            <button type="submit" class="btn-submit">Solicitar Agendamento</button>
-                        </form>
-
-                        <div id="loader" class="loader-box hidden">
-                            <div class="spinner"></div>
-                            <p>Processando seu agendamento...</p>
+                        <div class="form-group">
+                            <label for="nome">Nome Completo</label>
+                            <input type="text" id="nome" name="entry.2092238618" required placeholder="Seu nome completo">
                         </div>
 
-                        <div id="successMessage" class="success-box hidden fade-in">
-                            <div class="success-icon">
-                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                            </div>
-                            <h3>Solicitação Enviada!</h3>
-                            <p>Sua sessão está pré-agendada. Em breve entraremos em contato pelo WhatsApp para confirmar.</p>
-                            <button onclick="window.location.reload();" class="btn-submit" style="max-width: 200px;">Novo Agendamento</button>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="entry.1556369182" required placeholder="seuemail@exemplo.com">
+                            <span id="email-error" class="error-msg">Por favor, insira um e-mail válido.</span>
                         </div>
 
+                        <div class="form-group">
+                            <label for="telefone">WhatsApp / Telefone</label>
+                            <input type="tel" id="telefone" name="entry.479301265" required placeholder="(XX) XXXXX-XXXX" maxlength="15">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="modalidade">Modalidade de Atendimento</label>
+                            <select id="modalidade" name="entry.588393791" required>
+                                <option value="" disabled selected>Selecione...</option>
+                                <option value="online">Online</option>
+                                <option value="presencial">Presencial</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="data_visual">Data</label>
+                                <input type="date" id="data_visual" required>
+                                <span id="date-error" class="error-msg">Selecione uma data entre hoje e 30 dias.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hora_visual">Horário Disponível</label>
+                            <select id="hora_visual" required>
+                                <option value="" disabled selected>Escolha o horário...</option>
+                            </select>
+                        </div>
+
+                        <input type="hidden" id="data_hora_final" name="entry.780969263">
+
+                        <button type="submit" class="btn-submit">Solicitar Agendamento</button>
+                    </form>
+
+                    <!-- Loader -->
+                    <div id="loader" class="loader-box hidden">
+                        <div class="spinner"></div>
+                        <p>Processando seu agendamento...</p>
+                    </div>
+
+                    <!-- Success -->
+                    <div id="successMessage" class="success-box hidden fade-in">
+                        <div class="success-icon">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        </div>
+                        <h3>Solicitação Enviada!</h3>
+                        <p>Sua sessão está pré-agendada. Em breve entraremos em contato pelo WhatsApp para confirmar.</p>
+                        <button onclick="window.location.reload();" class="btn-submit" style="max-width: 240px; margin: 0 auto;">Novo Agendamento</button>
                     </div>
 
                 </div>
+
+                <div class="form-info">
+                    <p>Consulte valores pelo <a href="https://wa.me/5511974523819?text=Ol%C3%A1!%20Gostaria%20de%20saber%20os%20valores%20da%20consulta." target="_blank" rel="noopener">WhatsApp</a>.</p>
+                </div>
             </div>
         </section>
+
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; <span id="current-year"></span> Bruna Nardy. Todos os direitos reservados.</p>
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2026 Bruna Nardy. Todos os direitos reservados.</p>
+                    <p class="footer-crp">CRP 06/152225</p>
+                </div>
+                <div class="footer-right">
+                    <a href="https://www.instagram.com/brunanardy_/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        Instagram
+                    </a>
+                    <a href="https://wa.me/5511974523819?text=Ol%C3%A1!%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>www.brunanardy.com.br</p>
+            </div>
         </div>
     </footer>
 
-    <script>
-    document.getElementById('current-year').textContent = new Date().getFullYear();
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5511974523819?text=Ol%C3%A1!%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Fale conosco pelo WhatsApp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </a>
 
+    <!-- JavaScript — Form Logic (preserved) -->
+    <script>
     const form = document.getElementById('agendamentoForm');
     const inputTelefone = document.getElementById('telefone');
     const inputData = document.getElementById('data_visual');
@@ -279,20 +174,16 @@
     const successMsg = document.getElementById('successMessage');
     const loader = document.getElementById('loader');
 
-    // --- GERAÇÃO AUTOMÁTICA DOS HORÁRIOS (12:00 as 18:00, a cada 15min) ---
+    // --- Time slots generation (12:00 to 18:00, every 15min) ---
     function gerarHorarios() {
         const horaInicio = 12;
         const horaFim = 18;
-
         for (let h = horaInicio; h <= horaFim; h++) {
             for (let m = 0; m < 60; m += 15) {
-
                 if (h === horaFim && m > 0) break;
-
                 const horaFormatada = h.toString().padStart(2, '0');
                 const minutoFormatado = m.toString().padStart(2, '0');
                 const horarioTexto = `${horaFormatada}:${minutoFormatado}`;
-
                 const option = document.createElement('option');
                 option.value = horarioTexto;
                 option.textContent = horarioTexto;
@@ -302,20 +193,16 @@
     }
     gerarHorarios();
 
-    // --- CONFIGURAÇÕES DE DATA (com min/max) ---
+    // --- Date config (min/max) ---
     const hoje = new Date();
     const maxData = new Date();
     maxData.setDate(hoje.getDate() + 30);
-
-    // Funções auxiliares para comparação de datas
     const formatarDataISO = (data) => data.toISOString().split('T')[0];
     inputData.min = formatarDataISO(hoje);
     inputData.max = formatarDataISO(maxData);
-
-    // Converte a data string para um objeto Date para comparação
     const parseDate = (dateString) => new Date(dateString + 'T00:00:00');
 
-    // 2. Máscara de Telefone (Mantida)
+    // --- Phone mask ---
     inputTelefone.addEventListener('input', function (e) {
         let value = e.target.value.replace(/\D/g, '');
         if (value.length > 11) value = value.slice(0, 11);
@@ -324,69 +211,62 @@
         e.target.value = value;
     });
 
-    // 3. Validação de Email (Mantida)
+    // --- Email validation ---
     function validarEmail(email) {
         const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
         return re.test(String(email).toLowerCase());
     }
 
-    // --- ENVIO DO FORMULÁRIO (Validação Reforçada para iOS) ---
+    // --- Form submission ---
     form.addEventListener('submit', function (e) {
         let valid = true;
 
-        // Limpar erros
+        // Clear errors
         document.getElementById('email-error').style.display = 'none';
         document.getElementById('date-error').style.display = 'none';
-        inputEmail.style.borderColor = '#ccc';
-        inputData.style.borderColor = '#ccc';
-        selectHora.style.borderColor = '#ccc';
+        inputEmail.style.borderColor = '';
+        inputData.style.borderColor = '';
+        selectHora.style.borderColor = '';
 
-        // 1. Validação de Email
+        // Email validation
         if (!validarEmail(inputEmail.value)) {
             document.getElementById('email-error').style.display = 'block';
-            inputEmail.style.borderColor = 'red';
+            inputEmail.style.borderColor = '#d44';
             valid = false;
         }
 
-        // 2. Validação de Data (Reforçada)
+        // Date validation
         const dataSelecionadaStr = inputData.value;
         if (!dataSelecionadaStr) {
-             document.getElementById('date-error').textContent = 'Selecione uma data válida.';
-             document.getElementById('date-error').style.display = 'block';
-             inputData.style.borderColor = 'red';
-             valid = false;
+            document.getElementById('date-error').textContent = 'Selecione uma data válida.';
+            document.getElementById('date-error').style.display = 'block';
+            inputData.style.borderColor = '#d44';
+            valid = false;
         } else {
             const dataMin = parseDate(inputData.min);
             const dataMax = parseDate(inputData.max);
             const dataSelecionada = parseDate(dataSelecionadaStr);
-
-            // Verifica se a data está fora do intervalo [hoje, hoje + 30 dias]
-            // Compara os milissegundos
             if (dataSelecionada < dataMin || dataSelecionada > dataMax) {
                 document.getElementById('date-error').textContent = 'Selecione uma data entre hoje e 30 dias.';
                 document.getElementById('date-error').style.display = 'block';
-                inputData.style.borderColor = 'red';
+                inputData.style.borderColor = '#d44';
                 valid = false;
             }
         }
 
-        // 3. Validação de Horário
+        // Time validation
         if (!selectHora.value) {
-            selectHora.style.borderColor = 'red';
+            selectHora.style.borderColor = '#d44';
             valid = false;
         }
 
-        // --- Decisão Final ---
+        // Final decision
         if (!valid) {
             e.preventDefault();
         } else {
-            // Se válido:
             hiddenDataHora.value = `${inputData.value} ${selectHora.value}`;
-
-            // Efeitos de UI
             form.classList.add('hidden');
             loader.classList.remove('hidden');
-
             setTimeout(() => {
                 loader.classList.add('hidden');
                 successMsg.classList.remove('hidden');
@@ -394,5 +274,6 @@
         }
     });
     </script>
+
 </body>
 </html>

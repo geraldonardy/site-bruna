@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estilo de Apego | Bruna Nardy — Psicóloga Clínica</title>
+    <meta name="description" content="Descubra seu estilo de apego predominante e entenda como ele influencia seus relacionamentos. Teste gratuito pela Psicóloga Bruna Nardy.">
+    <link rel="canonical" href="https://www.brunanardy.com.br/testes.html">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Estilo de Apego | Bruna Nardy — Psicóloga Clínica">
+    <meta property="og:description" content="Descubra seu estilo de apego predominante. Teste gratuito com a Psicóloga Bruna Nardy.">
+    <meta property="og:url" content="https://www.brunanardy.com.br/testes.html">
+    <meta property="og:image" content="https://www.brunanardy.com.br/imgs/fotoPerfil.jpg">
+    <meta property="og:locale" content="pt_BR">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="imgs/favicon.png">
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* --- Attachment Style Test Styles --- */
+        .test-container {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .test-intro {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .test-intro p {
+            color: var(--creme-text-secondary);
+            font-size: 1.05rem;
+            max-width: 560px;
+            margin: 0 auto 16px;
+        }
+
+        /* Progress Bar */
+        .progress-bar-wrap {
+            background-color: var(--creme-subtle);
+            border-radius: 20px;
+            height: 8px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: var(--creme-accent);
+            border-radius: 20px;
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--creme-text-secondary);
+            margin-bottom: 12px;
+        }
+
+        /* Question Card */
+        .question-card {
+            background-color: #fff;
+            border-radius: var(--radius-lg);
+            padding: 40px 36px;
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.4s ease;
+        }
+
+        .question-card h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--creme-text);
+            margin-bottom: 28px;
+            line-height: 1.4;
+        }
+
+        .question-number {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--creme-accent);
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        /* Options */
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 16px 20px;
+            background-color: var(--creme-bg);
+            border: 2px solid var(--creme-subtle);
+            border-radius: var(--radius);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--creme-text);
+            cursor: pointer;
+            transition: all var(--transition);
+            line-height: 1.5;
+        }
+
+        .option-btn:hover {
+            border-color: var(--creme-accent);
+            background-color: rgba(180, 140, 90, 0.06);
+        }
+
+        .option-btn:active {
+            transform: scale(0.99);
+        }
+
+        /* Result */
+        .result-card {
+            background-color: #fff;
+            border-radius: var(--radius-lg);
+            padding: 48px 40px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+            display: none;
+        }
+
+        .result-card .result-temperament {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .result-card .result-subtitle {
+            font-size: 0.95rem;
+            color: var(--creme-accent);
+            font-weight: 500;
+            margin-bottom: 28px;
+        }
+
+        .result-card .result-description {
+            text-align: left;
+            color: var(--creme-text-secondary);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .result-card .result-traits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 28px 0;
+        }
+
+        .result-card .trait-tag {
+            background-color: var(--creme-bg);
+            border: 1px solid var(--creme-subtle);
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 0.85rem;
+            color: var(--creme-text);
+            font-weight: 500;
+        }
+
+        .result-card .result-note {
+            font-size: 0.85rem;
+            color: var(--creme-footer);
+            font-style: italic;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--creme-subtle);
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+
+        .result-actions .btn {
+            min-width: 180px;
+        }
+
+        /* Scores breakdown */
+        .scores-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 28px 0;
+            text-align: left;
+        }
+
+        .score-item {
+            background-color: var(--creme-bg);
+            border-radius: var(--radius);
+            padding: 14px 16px;
+        }
+
+        .score-item .score-label {
+            font-size: 0.85rem;
+            color: var(--creme-text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .score-item .score-bar-bg {
+            background-color: var(--creme-subtle);
+            border-radius: 10px;
+            height: 6px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .score-item .score-bar-val {
+            height: 100%;
+            background-color: var(--creme-accent);
+            border-radius: 10px;
+            transition: width 0.6s ease;
+        }
+
+        .score-item .score-percent {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--creme-text);
+        }
+
+        .score-item.is-winner {
+            border: 2px solid var(--creme-accent);
+        }
+
+        @media (max-width: 480px) {
+            .question-card {
+                padding: 28px 20px;
+            }
+
+            .result-card {
+                padding: 36px 24px;
+            }
+
+            .scores-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo-svg" aria-label="Bruna Nardy — Psicóloga Clínica">
+                <span class="logo-text">Bruna Nardy</span>
+                <svg class="logo-butterfly" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 16c-2-4-7-8-10-6s-1 7 3 9c2 1 5 0 7-3z"/><path d="M16 16c2-4 7-8 10-6s1 7-3 9c-2 1-5 0-7-3z"/><path d="M16 16v10" stroke-linecap="round"/><path d="M14 6c1 3 2 7 2 10" stroke-linecap="round"/><path d="M18 6c-1 3-2 7-2 10" stroke-linecap="round"/></svg>
+            </a>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon"><span></span></label>
+            <nav class="menu-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="testes.html" class="active">Testes</a></li>
+                    <li><a href="agendamento.html">Agendamento</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Page Hero -->
+        <section class="page-hero section-oliva">
+            <div class="container">
+                <h1>Estilo de Apego</h1>
+                <p>Entenda seu padr&atilde;o de v&iacute;nculo emocional e como ele influencia seus relacionamentos.</p>
+            </div>
+        </section>
+
+        <!-- Test Section -->
+        <section class="section-creme">
+            <div class="container">
+                <div class="test-container">
+
+                    <div class="test-intro" id="testIntro">
+                        <p>Responda &agrave;s 15 perguntas escolhendo a alternativa que mais tem a ver com voc&ecirc;. N&atilde;o existe resposta certa ou errada.</p>
+                        <button class="btn btn-primary" onclick="startTest()">Come&ccedil;ar o Teste</button>
+                    </div>
+
+                    <!-- Progress -->
+                    <div id="progressArea" style="display:none;">
+                        <div class="progress-text">Pergunta <span id="currentNum">1</span> de <span id="totalNum">15</span></div>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar-fill" id="progressBar"></div>
+                        </div>
+                    </div>
+
+                    <!-- Question -->
+                    <div class="question-card" id="questionCard" style="display:none;">
+                        <span class="question-number" id="questionLabel"></span>
+                        <h3 id="questionText"></h3>
+                        <div class="options" id="optionsArea"></div>
+                    </div>
+
+                    <!-- Result -->
+                    <div class="result-card" id="resultCard">
+                        <div class="result-subtitle" id="resultSubtitle"></div>
+                        <div class="result-temperament" id="resultTitle"></div>
+
+                        <div class="scores-grid" id="scoresGrid"></div>
+
+                        <div class="result-description" id="resultDescription"></div>
+
+                        <div class="result-traits" id="resultTraits"></div>
+
+                        <div class="result-actions">
+                            <button class="btn btn-primary" onclick="location.reload()">Refazer o Teste</button>
+                            <a href="agendamento.html" class="btn btn-outline-creme">Agendar uma sess&atilde;o</a>
+                        </div>
+
+                        <p class="result-note">Este teste &eacute; uma ferramenta de autoconhecimento e n&atilde;o substitui uma avalia&ccedil;&atilde;o psicol&oacute;gica profissional. Para se aprofundar nos seus resultados, agende uma sess&atilde;o.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2026 Bruna Nardy. Todos os direitos reservados.</p>
+                    <p class="footer-crp">CRP 06/152225</p>
+                </div>
+                <div class="footer-right">
+                    <a href="https://www.instagram.com/brunanardy_/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        Instagram
+                    </a>
+                    <a href="https://wa.me/5511974523819?text=Ol%C3%A1!%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>www.brunanardy.com.br</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5511974523819?text=Ol%C3%A1!%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Fale conosco pelo WhatsApp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- JavaScript — Attachment Style Test -->
+    <script>
+    const _qd="W3sicSI6IlF1YW5kbyBtZXUgcGFyY2Vpcm8oYSkgZGVtb3JhIHBhcmEgcmVzcG9uZGVyIHVtYSBtZW5zYWdlbSwgZXUuLi4iLCJvcHRpb25zIjpbeyJ0ZXh0IjoiRmljbyB0cmFucXVpbG8oYSksIHNlaSBxdWUgY2FkYSB1bSB0ZW0gc2V1IHRlbXBvLiIsInN0eWxlIjoiU0UifSx7InRleHQiOiJGaWNvIGFuc2lvc28oYSkgZSBtYW5kbyBtYWlzIG1lbnNhZ2VucyBwYXJhIHRlciBjZXJ0ZXphIGRlIHF1ZSBlc3TDoSB0dWRvIGJlbS4iLCJzdHlsZSI6IkFOIn0seyJ0ZXh0IjoiTmVtIHBlcmNlYm8sIGVzdG91IG9jdXBhZG8oYSkgY29tIG1pbmhhcyBjb2lzYXMuIiwic3R5bGUiOiJFViJ9LHsidGV4dCI6Ik9zY2lsbyBlbnRyZSBxdWVyZXIgbGlnYXIgbWlsIHZlemVzIGUgZmluZ2lyIHF1ZSBuw6NvIG1lIGltcG9ydG8uIiwic3R5bGUiOiJERSJ9XX0seyJxIjoiU29icmUgZGVtb25zdHJhciB2dWxuZXJhYmlsaWRhZGUgbm8gcmVsYWNpb25hbWVudG8sIGV1Li4uIiwib3B0aW9ucyI6W3sidGV4dCI6Ik1lIHNpbnRvIGNvbmZvcnTDoXZlbCBlbSBjb21wYXJ0aWxoYXIgbWV1cyBtZWRvcyBlIGluc2VndXJhbsOnYXMuIiwic3R5bGUiOiJTRSJ9LHsidGV4dCI6IlF1ZXJvIG11aXRvIG1lIGFicmlyLCBtYXMgdGVuaG8gbWVkbyBkZSBzZXIgZGVtYWlzIHBhcmEgYSBvdXRyYSBwZXNzb2EuIiwic3R5bGUiOiJBTiJ9LHsidGV4dCI6IlByZWZpcm8gcmVzb2x2ZXIgbWluaGFzIHF1ZXN0w7VlcyBzb3ppbmhvKGEpLCBzZW0gZW52b2x2ZXIgbyBvdXRyby4iLCJzdHlsZSI6IkVWIn0seyJ0ZXh0Ijoiw4BzIHZlemVzIG1lIGFicm8gY29tcGxldGFtZW50ZSwgZGVwb2lzIG1lIGFycmVwZW5kbyBlIG1lIGZlY2hvLiIsInN0eWxlIjoiREUifV19LHsicSI6IlF1YW5kbyBzdXJnZSB1bSBjb25mbGl0byBubyByZWxhY2lvbmFtZW50bywgbWluaGEgcmVhw6fDo28gbWFpcyBjb211bSDDqS4uLiIsIm9wdGlvbnMiOlt7InRleHQiOiJCdXNjbyBjb252ZXJzYXIgY29tIGNhbG1hIHBhcmEgZW50ZW5kZXIgb3MgZG9pcyBsYWRvcy4iLCJzdHlsZSI6IlNFIn0seyJ0ZXh0IjoiRmljbyBjb20gbWVkbyBkZSBxdWUgbyBjb25mbGl0byBzaWduaWZpcXVlIG8gZmltIGRvIHJlbGFjaW9uYW1lbnRvLiIsInN0eWxlIjoiQU4ifSx7InRleHQiOiJNZSBhZmFzdG8gZW1vY2lvbmFsbWVudGUgYXTDqSBhIHBvZWlyYSBiYWl4YXIuIiwic3R5bGUiOiJFViJ9LHsidGV4dCI6IkFsdGVybm8gZW50cmUgcXVlcmVyIHJlc29sdmVyIHR1ZG8gbmEgaG9yYSBlIHN1bWlyIGNvbXBsZXRhbWVudGUuIiwic3R5bGUiOiJERSJ9XX0seyJxIjoiRW0gcmVsYcOnw6NvIMOgIGNvbmZpYW7Dp2Egbm8gbWV1IHBhcmNlaXJvKGEpLCBldSBnZXJhbG1lbnRlLi4uIiwib3B0aW9ucyI6W3sidGV4dCI6IkNvbmZpbyBhdMOpIHF1ZSBtZSBkZWVtIG1vdGl2b3MgcmVhaXMgcGFyYSBkZXNjb25maWFyLiIsInN0eWxlIjoiU0UifSx7InRleHQiOiJRdWVybyBjb25maWFyLCBtYXMgcGVxdWVuYXMgY29pc2FzIGrDoSBtZSBkZWl4YW0gaW5zZWd1cm8oYSkuIiwic3R5bGUiOiJBTiJ9LHsidGV4dCI6IkFjaG8gcXVlIGNvbmZpYXIgZGVtYWlzIMOpIGluZ2VudWlkYWRlOyBwcmVmaXJvIG1hbnRlciBjZXJ0YSBjYXV0ZWxhLiIsInN0eWxlIjoiRVYifSx7InRleHQiOiJOdW0gbW9tZW50byBjb25maW8gY2VnYW1lbnRlLCBubyBvdXRybyBkZXNjb25maW8gZGUgdHVkby4iLCJzdHlsZSI6IkRFIn1dfSx7InEiOiJRdWFuZG8gbWV1IHBhcmNlaXJvKGEpIHByZWNpc2EgZGUgZXNwYcOnbywgZXUuLi4iLCJvcHRpb25zIjpbeyJ0ZXh0IjoiUmVzcGVpdG8gZSBhcHJvdmVpdG8gbyB0ZW1wbyBwYXJhIGN1aWRhciBkZSBtaW0gdGFtYsOpbS4iLCJzdHlsZSI6IlNFIn0seyJ0ZXh0IjoiRmljbyBwcmVvY3VwYWRvKGEpIGFjaGFuZG8gcXVlIGZpeiBhbGdvIGVycmFkby4iLCJzdHlsZSI6IkFOIn0seyJ0ZXh0IjoiQWNobyDDs3RpbW8sIHBvcnF1ZSB0YW1iw6ltIHZhbG9yaXpvIG11aXRvIG1ldSBlc3Bhw6dvIHBlc3NvYWwuIiwic3R5bGUiOiJFViJ9LHsidGV4dCI6IkZpY28gY29uZnVzbyhhKTogdW1hIHBhcnRlIGRlIG1pbSBlbnRlbmRlLCBvdXRyYSBzZSBzZW50ZSByZWplaXRhZGEuIiwic3R5bGUiOiJERSJ9XX0seyJxIjoiU29icmUgaW50aW1pZGFkZSBlbW9jaW9uYWwsIGV1IHNpbnRvIHF1ZS4uLiIsIm9wdGlvbnMiOlt7InRleHQiOiLDiSBhIGJhc2UgZGUgdW0gcmVsYWNpb25hbWVudG8gc2F1ZMOhdmVsIGUgbWUgc2ludG8gYmVtIGNvbSBpc3NvLiIsInN0eWxlIjoiU0UifSx7InRleHQiOiJEZXNlam8gcHJvZnVuZGFtZW50ZSwgbWFzIHRlbmhvIG1lZG8gZGUgbsOjbyBzZXIgY29ycmVzcG9uZGlkbyhhKS4iLCJzdHlsZSI6IkFOIn0seyJ0ZXh0Ijoiw4kgYWxnbyBxdWUgbWUgaW5jb21vZGEgdW0gcG91Y287IHByZWZpcm8gbWFudGVyIGNlcnRhIGRpc3TDom5jaWEuIiwic3R5bGUiOiJFViJ9LHsidGV4dCI6IlF1ZXJvIG11aXRvLCBtYXMgcXVhbmRvIGFjb250ZWNlLCBzaW50byB2b250YWRlIGRlIGZ1Z2lyLiIsInN0eWxlIjoiREUifV19LHsicSI6IlF1YW5kbyB1bSByZWxhY2lvbmFtZW50byB0ZXJtaW5hLCBldSBub3JtYWxtZW50ZS4uLiIsIm9wdGlvbnMiOlt7InRleHQiOiJTb2ZybywgbWFzIGNvbnNpZ28gcHJvY2Vzc2FyIGUgc2VndWlyIGVtIGZyZW50ZSBjb20gbyB0ZW1wby4iLCJzdHlsZSI6IlNFIn0seyJ0ZXh0IjoiRmljbyBkZXZhc3RhZG8oYSkgZSBsZXZvIG11aXRvIHRlbXBvIHBhcmEgc3VwZXJhci4iLCJzdHlsZSI6IkFOIn0seyJ0ZXh0IjoiU2lnbyBlbSBmcmVudGUgcsOhcGlkbyBlIGV2aXRvIHBlbnNhciBtdWl0byBzb2JyZSBvIGFzc3VudG8uIiwic3R5bGUiOiJFViJ9LHsidGV4dCI6Ik9zY2lsbyBlbnRyZSBxdWVyZXIgYSBwZXNzb2EgZGUgdm9sdGEgZSBzZW50aXIgYWzDrXZpbyBwb3IgdGVyIGFjYWJhZG8uIiwic3R5bGUiOiJERSJ9XX0seyJxIjoiTm8gaW7DrWNpbyBkZSB1bSByZWxhY2lvbmFtZW50byBub3ZvLCBldSBjb3N0dW1vLi4uIiwib3B0aW9ucyI6W3sidGV4dCI6Ik1lIHBlcm1pdGlyIGNvbmhlY2VyIGEgcGVzc29hIHNlbSBwcmVzc2EsIGN1cnRpbmRvIG8gcHJvY2Vzc28uIiwic3R5bGUiOiJTRSJ9LHsidGV4dCI6Ik1lIGFwZWdhciByw6FwaWRvIGUgasOhIGltYWdpbmFyIHVtIGZ1dHVybyBqdW50b3MuIiwic3R5bGUiOiJBTiJ9LHsidGV4dCI6Ik1hbnRlciB1bWEgY2VydGEgZGlzdMOibmNpYSBlbW9jaW9uYWwgcGFyYSBuw6NvIG1lIG1hY2h1Y2FyLiIsInN0eWxlIjoiRVYifSx7InRleHQiOiJGaWNhciBlbXBvbGdhZG8oYSkgbnVtIGRpYSBlIGNvbSB2b250YWRlIGRlIGRlc2lzdGlyIG5vIG91dHJvLiIsInN0eWxlIjoiREUifV19LHsicSI6IlF1YW5kbyBtZXUgcGFyY2Vpcm8oYSkgZWxvZ2lhIG91dHJhIHBlc3NvYSwgZXUuLi4iLCJvcHRpb25zIjpbeyJ0ZXh0IjoiQWNobyBuYXR1cmFsLCBuw6NvIG1lIHNpbnRvIGFtZWHDp2FkbyhhKSBwb3IgaXNzby4iLCJzdHlsZSI6IlNFIn0seyJ0ZXh0IjoiU2ludG8gdW0gYXBlcnRvIG5vIHBlaXRvIGUgY29tZcOnbyBhIG1lIGNvbXBhcmFyLiIsInN0eWxlIjoiQU4ifSx7InRleHQiOiJOw6NvIGRvdSBtdWl0YSBpbXBvcnTDom5jaWEsIGNhZGEgdW0gw6kgY2FkYSB1bS4iLCJzdHlsZSI6IkVWIn0seyJ0ZXh0IjoiRmluam8gcXVlIG7Do28gbWUgaW1wb3J0bywgbWFzIHBvciBkZW50cm8gZmljbyBwZXJ0dXJiYWRvKGEpLiIsInN0eWxlIjoiREUifV19LHsicSI6IlNvYnJlIHBlZGlyIGFqdWRhIGFvIG1ldSBwYXJjZWlybyhhKSwgZXUuLi4iLCJvcHRpb25zIjpbeyJ0ZXh0IjoiUGXDp28gc2VtIHByb2JsZW1hLCBmYXogcGFydGUgZGUgZXN0YXIgZW0gdW1hIHBhcmNlcmlhLiIsInN0eWxlIjoiU0UifSx7InRleHQiOiJQZcOnbywgbWFzIGZpY28gY29tIG1lZG8gZGUgZXN0YXIgaW5jb21vZGFuZG8gb3Ugc2VuZG8gY2FyZW50ZS4iLCJzdHlsZSI6IkFOIn0seyJ0ZXh0IjoiRXZpdG8gcGVkaXI7IHByZWZpcm8gbWUgdmlyYXIgc296aW5obyhhKS4iLCJzdHlsZSI6IkVWIn0seyJ0ZXh0Ijoiw4BzIHZlemVzIHBlw6dvIGRlIGZvcm1hIGluZGlyZXRhIGUgZmljbyBmcnVzdHJhZG8oYSkgcXVhbmRvIG7Do28gZW50ZW5kZW0uIiwic3R5bGUiOiJERSJ9XX0seyJxIjoiUXVhbmRvIHNpbnRvIGNpw7ptZXMsIG1pbmhhIGF0aXR1ZGUgw6kuLi4iLCJvcHRpb25zIjpbeyJ0ZXh0IjoiUmVjb25oZcOnbyBvIHNlbnRpbWVudG8gZSBjb252ZXJzbyBhYmVydGFtZW50ZSBzb2JyZSBlbGUuIiwic3R5bGUiOiJTRSJ9LHsidGV4dCI6IkZpY28gbXVpdG8gYW5ndXN0aWFkbyhhKSBlIHByZWNpc28gZGUgcmVhc3NlZ3VyYW1lbnRvIGNvbnN0YW50ZS4iLCJzdHlsZSI6IkFOIn0seyJ0ZXh0IjoiSWdub3JvIG8gc2VudGltZW50byBlIGZpbmpvIHF1ZSBuw6NvIGV4aXN0ZS4iLCJzdHlsZSI6IkVWIn0seyJ0ZXh0IjoiRXhwbG9kbyBvdSBtZSBmZWNobyBjb21wbGV0YW1lbnRlLCBzZW0gbWVpby10ZXJtby4iLCJzdHlsZSI6IkRFIn1dfSx7InEiOiJFbSByZWxhw6fDo28gYSBwbGFub3MgZGUgbG9uZ28gcHJhem8gY29tIG1ldSBwYXJjZWlybyhhKSwgZXUuLi4iLCJvcHRpb25zIjpbeyJ0ZXh0IjoiR29zdG8gZGUgY29uc3RydWlyIHBsYW5vcyBqdW50b3MgZGUgZm9ybWEgbmF0dXJhbC4iLCJzdHlsZSI6IlNFIn0seyJ0ZXh0IjoiUXVlcm8gZGVmaW5pciB0dWRvIGxvZ28gcGFyYSB0ZXIgY2VydGV6YSBkZSBxdWUgbyBvdXRybyB2YWkgZmljYXIuIiwic3R5bGUiOiJBTiJ9LHsidGV4dCI6IkZpY28gZGVzY29uZm9ydMOhdmVsIGNvbSBjb21wcm9taXNzb3MgbXVpdG8gZGlzdGFudGVzLiIsInN0eWxlIjoiRVYifSx7InRleHQiOiJPcmEgcXVlcm8gcGxhbmVqYXIgdHVkbywgb3JhIHNpbnRvIHF1ZSBlc3RvdSBwcmVzbyhhKS4iLCJzdHlsZSI6IkRFIn1dfSx7InEiOiJRdWFuZG8gcGVyY2VibyBxdWUgZXN0b3UgbWUgYXBhaXhvbmFuZG8sIGV1Li4uIiwib3B0aW9ucyI6W3sidGV4dCI6IkFjb2xobyBvIHNlbnRpbWVudG8gZSBkZWl4byBhY29udGVjZXIgbmF0dXJhbG1lbnRlLiIsInN0eWxlIjoiU0UifSx7InRleHQiOiJNZXJndWxobyBkZSBjYWJlw6dhIGUgY29sb2NvIGEgcGVzc29hIGNvbW8gY2VudHJvIGRhIG1pbmhhIHZpZGEuIiwic3R5bGUiOiJBTiJ9LHsidGV4dCI6IkZpY28gY29tIG8gcMOpIGF0csOhcyBlIHRlbnRvIGNvbnRyb2xhciBhIGludGVuc2lkYWRlIGRvIHNlbnRpbWVudG8uIiwic3R5bGUiOiJFViJ9LHsidGV4dCI6IlNpbnRvIHVtYSBtaXN0dXJhIGRlIGV1Zm9yaWEgZSBww6JuaWNvIGFvIG1lc21vIHRlbXBvLiIsInN0eWxlIjoiREUifV19LHsicSI6IlNvYnJlIGFzIG5lY2Vzc2lkYWRlcyBlbW9jaW9uYWlzIGRvIG1ldSBwYXJjZWlybyhhKSwgZXUuLi4iLCJvcHRpb25zIjpbeyJ0ZXh0IjoiUHJvY3VybyBlbnRlbmRlciBlIGF0ZW5kZXIgc2VtIG1lIGFudWxhciBubyBwcm9jZXNzby4iLCJzdHlsZSI6IlNFIn0seyJ0ZXh0IjoiRmHDp28gZGUgdHVkbyBwYXJhIGFncmFkYXIsIG1lc21vIHF1ZSBpc3NvIHNpZ25pZmlxdWUgbWUgY29sb2NhciBlbSBzZWd1bmRvIGx1Z2FyLiIsInN0eWxlIjoiQU4ifSx7InRleHQiOiJBY2hvIHF1ZSBjYWRhIHVtIGRldmVyaWEgc2FiZXIgbGlkYXIgY29tIGFzIHByw7NwcmlhcyBlbW/Dp8O1ZXMuIiwic3R5bGUiOiJFViJ9LHsidGV4dCI6IlF1ZXJvIGFqdWRhciwgbWFzIMOgcyB2ZXplcyBtZSBzaW50byBzb2JyZWNhcnJlZ2FkbyhhKSBlIG1lIGFmYXN0by4iLCJzdHlsZSI6IkRFIn1dfSx7InEiOiJTZSBtZXUgcGFyY2Vpcm8oYSkgY2FuY2VsYSB1bSBlbmNvbnRybyBlbSBjaW1hIGRhIGhvcmEsIGV1Li4uIiwib3B0aW9ucyI6W3sidGV4dCI6IkVudGVuZG8gcXVlIGltcHJldmlzdG9zIGFjb250ZWNlbSBlIHJlbWFyY28gc2VtIGRyYW1hLiIsInN0eWxlIjoiU0UifSx7InRleHQiOiJGaWNvIG1hZ29hZG8oYSkgZSBjb21lw6dvIGEgcGVuc2FyIHF1ZSBuw6NvIHNvdSBwcmlvcmlkYWRlLiIsInN0eWxlIjoiQU4ifSx7InRleHQiOiJBcHJvdmVpdG8gbyB0ZW1wbyBsaXZyZSBlIG5lbSBjb21lbnRvIGRlcG9pcy4iLCJzdHlsZSI6IkVWIn0seyJ0ZXh0IjoiRmljbyBpcnJpdGFkbyhhKSBtYXMgZGlnbyBxdWUgZXN0w6EgdHVkbyBiZW0sIGd1YXJkYW5kbyBvIHJlc3NlbnRpbWVudG8uIiwic3R5bGUiOiJERSJ9XX1d";
+    const _td="eyJTRSI6eyJuYW1lIjoiQXBlZ28gU2VndXJvIiwic3VidGl0bGUiOiJPIHBvcnRvIHNlZ3VybyBkb3MgcmVsYWNpb25hbWVudG9zIiwiZGVzY3JpcHRpb24iOiJWb2PDqiB0ZW0gZmFjaWxpZGFkZSBwYXJhIGNyaWFyIHbDrW5jdWxvcyBzYXVkw6F2ZWlzIGUgZXF1aWxpYnJhZG9zLiBDb25zZWd1ZSBzZXIgdnVsbmVyw6F2ZWwgc2VtIHBlcmRlciBzdWEgYXV0b25vbWlhIGUgY29uZmlhIG5hIGNhcGFjaWRhZGUgZG8gb3V0cm8gZGUgZXN0YXIgcHJlc2VudGUuIFNldXMgcmVsYWNpb25hbWVudG9zIHRlbmRlbSBhIHNlciBlc3TDoXZlaXMgcG9ycXVlIHZvY8OqIGNvbXVuaWNhIHN1YXMgbmVjZXNzaWRhZGVzIGNvbSBjbGFyZXphLiBJc3NvIG7Do28gc2lnbmlmaWNhIHF1ZSBuw6NvIHRlbmhhIGRlc2FmaW9zLCBtYXMgdm9jw6ogb3MgZW5mcmVudGEgY29tIG1hdHVyaWRhZGUgZW1vY2lvbmFsLiIsInRyYWl0cyI6WyJDb25maWFuw6dhIiwiRXF1aWzDrWJyaW8iLCJDb211bmljYcOnw6NvIiwiQXV0b25vbWlhIiwiRW1wYXRpYSIsIkVzdGFiaWxpZGFkZSJdLCJ0aXAiOiJDb250aW51ZSBjdWx0aXZhbmRvIHN1YSBjb211bmljYcOnw6NvIGFiZXJ0YS4gU3VhIG1haW9yIGZvcsOnYSDDqSBhIGNhcGFjaWRhZGUgZGUgYWNvbGhlciBvIG91dHJvIHNlbSBzZSBwZXJkZXIuIExlbWJyZS1zZSBkZSBxdWUgbmVtIHRvZG8gbXVuZG8gZnVuY2lvbmEgY29tbyB2b2PDqiDigJQgdGVuaGEgcGFjacOqbmNpYSBjb20gcGFyY2Vpcm9zIHF1ZSBhaW5kYSBlc3TDo28gYXByZW5kZW5kbyBhIHNlIGFicmlyLiJ9LCJBTiI6eyJuYW1lIjoiQXBlZ28gQW5zaW9zbyIsInN1YnRpdGxlIjoiTyBjb3Jhw6fDo28gcXVlIHByZWNpc2EgZGUgcmVhc3NlZ3VyYW1lbnRvIiwiZGVzY3JpcHRpb24iOiJWb2PDqiBhbWEgY29tIGludGVuc2lkYWRlIGUgZW50cmVnYSwgbWFzIGNhcnJlZ2EgdW0gbWVkbyBjb25zdGFudGUgZGUgc2VyIGFiYW5kb25hZG8oYSkgb3UgbsOjbyBzZXIgc3VmaWNpZW50ZS4gVGVuZGUgYSBidXNjYXIgdmFsaWRhw6fDo28gbm8gb3V0cm8gZSBwb2RlIGludGVycHJldGFyIHBlcXVlbm9zIHNpbmFpcyBjb21vIHJlamVpw6fDo28uIFNldXMgcmVsYWNpb25hbWVudG9zIHPDo28gbWFyY2Fkb3MgcG9yIHVtYSBtb250YW5oYS1ydXNzYSBlbW9jaW9uYWwgcXVlLCBubyBmdW5kbywgcmVmbGV0ZSBzdWEgZW5vcm1lIGNhcGFjaWRhZGUgZGUgYW1hci4gTyBkZXNhZmlvIMOpIGFwcmVuZGVyIGEgc2UgZGFyIGEgc2VndXJhbsOnYSBxdWUgYnVzY2Egbm8gb3V0cm8uIiwidHJhaXRzIjpbIkludGVuc2lkYWRlIiwiU2Vuc2liaWxpZGFkZSIsIkVudHJlZ2EiLCJIaXBlcnZpZ2lsw6JuY2lhIiwiQ2Fyw6puY2lhIiwiRGVkaWNhw6fDo28iXSwidGlwIjoiQW50ZXMgZGUgcGVkaXIgcmVhc3NlZ3VyYW1lbnRvIGFvIHBhcmNlaXJvKGEpLCBwYXJlIGUgcGVyZ3VudGUgYSBzaSBtZXNtbyhhKTogJ0lzc28gw6kgdW0gZmF0byBvdSBtZXUgbWVkbyBmYWxhbmRvPycgRGVzZW52b2x2YSBwcsOhdGljYXMgZGUgYXV0b2N1aWRhZG8gcXVlIGZvcnRhbGXDp2FtIHN1YSBhdXRvZXN0aW1hIGluZGVwZW5kZW50ZSBkbyByZWxhY2lvbmFtZW50by4ifSwiRVYiOnsibmFtZSI6IkFwZWdvIEV2aXRhdGl2byIsInN1YnRpdGxlIjoiQSBmb3J0YWxlemEgcXVlIHByb3RlZ2UgdW0gY29yYcOnw6NvIHNlbnPDrXZlbCIsImRlc2NyaXB0aW9uIjoiVm9jw6ogdmFsb3JpemEgcHJvZnVuZGFtZW50ZSBzdWEgaW5kZXBlbmTDqm5jaWEgZSB0ZW5kZSBhIHNlIHNlbnRpciBzdWZvY2FkbyhhKSBxdWFuZG8gYWxndcOpbSBzZSBhcHJveGltYSBkZW1haXMuIE7Do28gw6kgcXVlIHZvY8OqIG7Do28gcXVlaXJhIGNvbmV4w6NvIOKAlCB2b2PDqiBxdWVyLCBtYXMgYXByZW5kZXUgcXVlIG1hbnRlciBkaXN0w6JuY2lhIMOpIG1haXMgc2VndXJvLiBTZXVzIHJlbGFjaW9uYW1lbnRvcyBwb2RlbSBwYXJlY2VyIHN1cGVyZmljaWFpcyBwYXJhIG8gb3V0cm8sIGVtYm9yYSBwb3IgZGVudHJvIHZvY8OqIHNpbnRhIG1haXMgZG8gcXVlIGRlbW9uc3RyYS4gTyBkZXNhZmlvIMOpIHBlcm1pdGlyLXNlIHNlciB2aXN0byhhKSBkZSB2ZXJkYWRlLiIsInRyYWl0cyI6WyJJbmRlcGVuZMOqbmNpYSIsIkF1dG9jb250cm9sZSIsIlJhY2lvbmFsaWRhZGUiLCJEaXN0YW5jaWFtZW50byIsIkF1dG9zc3VmaWNpw6puY2lhIiwiUmVzZXJ2YSJdLCJ0aXAiOiJFeHBlcmltZW50ZSBjb21wYXJ0aWxoYXIgdW0gc2VudGltZW50byBwb3IgZGlhIGNvbSBzZXUgcGFyY2Vpcm8oYSksIG1lc21vIHF1ZSBwYXJlw6dhIGRlc2NvbmZvcnTDoXZlbC4gSW50aW1pZGFkZSBzZSBjb25zdHLDs2kgYW9zIHBvdWNvcy4gUmVjb25oZcOnYSBxdWUgcHJlY2lzYXIgZG8gb3V0cm8gbsOjbyDDqSBmcmFxdWV6YSDigJQgw6kgaHVtYW5vLiJ9LCJERSI6eyJuYW1lIjoiQXBlZ28gRGVzb3JnYW5pemFkbyIsInN1YnRpdGxlIjoiRW50cmUgbyBkZXNlam8gZSBvIG1lZG8gZGUgc2UgY29uZWN0YXIiLCJkZXNjcmlwdGlvbiI6IlZvY8OqIHZpdmUgdW0gY29uZmxpdG8gaW50ZXJubyBpbnRlbnNvOiBkZXNlamEgcHJvZnVuZGFtZW50ZSBhIGNvbmV4w6NvLCBtYXMgYW8gbWVzbW8gdGVtcG8gc2VudGUgbWVkbyBkZWxhLiBQb2RlIGFsdGVybmFyIGVudHJlIG1vbWVudG9zIGRlIGdyYW5kZSBwcm94aW1pZGFkZSBlIGFmYXN0YW1lbnRvIGFicnVwdG8sIGRlaXhhbmRvIG8gcGFyY2Vpcm8oYSkgY29uZnVzbyhhKS4gRXNzYSBvc2NpbGHDp8OjbyBnZXJhbG1lbnRlIHZlbSBkZSBleHBlcmnDqm5jaWFzIHBhc3NhZGFzIG9uZGUgYW1vciBlIGRvciBlc3RpdmVyYW0gbWlzdHVyYWRvcy4gTyBjYW1pbmhvIMOpIGFwcmVuZGVyIHF1ZSBpbnRpbWlkYWRlIHBvZGUgc2VyIHNlZ3VyYS4iLCJ0cmFpdHMiOlsiT3NjaWxhw6fDo28iLCJJbnRlbnNpZGFkZSIsIkNvbnRyYWRpw6fDo28iLCJQcm9mdW5kaWRhZGUiLCJJbXByZXZpc2liaWxpZGFkZSIsIlNlbnNpYmlsaWRhZGUiXSwidGlwIjoiUXVhbmRvIHNlbnRpciB2b250YWRlIGRlIGZ1Z2lyIGRlIGFsZ3XDqW0gcXVlIHRlIHRyYXRhIGJlbSwgcGF1c2UuIElkZW50aWZpcXVlIHNlIG8gcGVyaWdvIMOpIHJlYWwgb3Ugc2Ugw6kgdW1hIHJlc3Bvc3RhIGF1dG9tw6F0aWNhIGRvIHBhc3NhZG8uIFRlcmFwaWEgcG9kZSBzZXIgdW1hIGFsaWFkYSBwb2Rlcm9zYSBwYXJhIHJlc3NpZ25pZmljYXIgc2V1cyBwYWRyw7VlcyByZWxhY2lvbmFpcy4ifX0=";
+    function _d(s){return decodeURIComponent(atob(s).split('').map(function(c){return'%'+('00'+c.charCodeAt(0).toString(16)).slice(-2)}).join(''));}
+    const questions=JSON.parse(_d(_qd));
+    const attachmentStyles=JSON.parse(_d(_td));
+
+    let currentQuestion = 0;
+    let scores = { SE: 0, AN: 0, EV: 0, DE: 0 };
+
+    function startTest() {
+        document.getElementById('testIntro').style.display = 'none';
+        document.getElementById('progressArea').style.display = 'block';
+        document.getElementById('questionCard').style.display = 'block';
+        showQuestion();
+    }
+
+    function showQuestion() {
+        const q = questions[currentQuestion];
+        document.getElementById('currentNum').textContent = currentQuestion + 1;
+        document.getElementById('progressBar').style.width = ((currentQuestion / questions.length) * 100) + '%';
+        document.getElementById('questionLabel').textContent = 'PERGUNTA ' + (currentQuestion + 1) + ' DE ' + questions.length;
+        document.getElementById('questionText').textContent = q.q;
+
+        const optionsArea = document.getElementById('optionsArea');
+        optionsArea.innerHTML = '';
+        q.options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.textContent = opt.text;
+            btn.addEventListener('click', () => selectAnswer(opt.style));
+            optionsArea.appendChild(btn);
+        });
+
+        // Re-trigger animation
+        const card = document.getElementById('questionCard');
+        card.style.animation = 'none';
+        card.offsetHeight;
+        card.style.animation = 'fadeIn 0.4s ease';
+    }
+
+    function selectAnswer(style) {
+        scores[style]++;
+        currentQuestion++;
+
+        if (currentQuestion < questions.length) {
+            showQuestion();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        document.getElementById('progressArea').style.display = 'none';
+        document.getElementById('questionCard').style.display = 'none';
+        document.getElementById('progressBar').style.width = '100%';
+
+        // Find winner
+        const maxScore = Math.max(...Object.values(scores));
+        const winner = Object.keys(scores).find(k => scores[k] === maxScore);
+        const total = Object.values(scores).reduce((a, b) => a + b, 0);
+        const temp = attachmentStyles[winner];
+
+        document.getElementById('resultSubtitle').textContent = temp.subtitle;
+        document.getElementById('resultTitle').textContent = temp.name;
+        document.getElementById('resultDescription').innerHTML =
+            `<p>${temp.description}</p><p><strong>Dica para seus relacionamentos:</strong> ${temp.tip}</p>`;
+
+        // Traits
+        const traitsArea = document.getElementById('resultTraits');
+        traitsArea.innerHTML = '';
+        temp.traits.forEach(t => {
+            const tag = document.createElement('span');
+            tag.className = 'trait-tag';
+            tag.textContent = t;
+            traitsArea.appendChild(tag);
+        });
+
+        // Scores
+        const grid = document.getElementById('scoresGrid');
+        grid.innerHTML = '';
+        const order = [
+            { key: 'SE', label: 'Seguro' },
+            { key: 'AN', label: 'Ansioso' },
+            { key: 'EV', label: 'Evitativo' },
+            { key: 'DE', label: 'Desorganizado' }
+        ];
+        order.forEach(item => {
+            const pct = Math.round((scores[item.key] / total) * 100);
+            const div = document.createElement('div');
+            div.className = 'score-item' + (item.key === winner ? ' is-winner' : '');
+            div.innerHTML = `
+                <div class="score-label">${item.label}</div>
+                <div class="score-percent">${pct}%</div>
+                <div class="score-bar-bg">
+                    <div class="score-bar-val" style="width: 0%"></div>
+                </div>
+            `;
+            grid.appendChild(div);
+            // Animate bar
+            setTimeout(() => {
+                div.querySelector('.score-bar-val').style.width = pct + '%';
+            }, 100);
+        });
+
+        document.getElementById('resultCard').style.display = 'block';
+        window.scrollTo({ top: document.getElementById('resultCard').offsetTop - 120, behavior: 'smooth' });
+    }
+    </script>
+
+</body>
+</html>
