@@ -1,0 +1,8 @@
+# robots.txt — brunanardy.com.br
+User-agent: *
+Allow: /
+
+# Não indexar páginas de destino de formulário
+Disallow: /obrigado.html
+
+Sitemap: https://www.brunanardy.com.br/sitemap.xml
