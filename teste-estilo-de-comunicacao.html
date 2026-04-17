@@ -466,7 +466,7 @@
         document.getElementById('resultDescription').innerHTML =
             `<p>${temp.description}</p><p><strong>Dica para sua comunicação:</strong> ${temp.tip}</p>`;
 
-        const shareMsg = `Olá Bruna! 💭\n\nAcabei de fazer o teste de *Estilo de Comunicação* no seu site e meu resultado foi:\n\n🌿 *${temp.name}* — ${temp.subtitle}\n\nGostaria de conversar mais sobre como isso aparece nos meus relacionamentos.`;
+        const shareMsg = `Olá, Bruna!\n\nAcabei de fazer o teste de *Estilo de Comunicação* no seu site e meu resultado foi:\n\n*${temp.name}* — ${temp.subtitle}\n\nGostaria de conversar mais sobre como isso aparece nos meus relacionamentos.`;
         document.getElementById('shareWhatsAppBtn').href = 'https://wa.me/5511974523819?text=' + encodeURIComponent(shareMsg);
 
         // Traits

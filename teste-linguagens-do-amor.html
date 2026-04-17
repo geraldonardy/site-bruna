@@ -462,7 +462,7 @@
         document.getElementById('resultDescription').innerHTML =
             `<p>${temp.description}</p><p><strong>Dica para seus relacionamentos:</strong> ${temp.tip}</p>`;
 
-        const shareMsg = `Olá Bruna! 💭\n\nAcabei de fazer o teste de *Linguagens do Amor* no seu site e minha linguagem principal é:\n\n🌿 *${temp.name}* — ${temp.subtitle}\n\nGostaria de conversar mais sobre como usar isso a favor dos meus relacionamentos.`;
+        const shareMsg = `Olá, Bruna!\n\nAcabei de fazer o teste de *Linguagens do Amor* no seu site e minha linguagem principal é:\n\n*${temp.name}* — ${temp.subtitle}\n\nGostaria de conversar mais sobre como usar isso a favor dos meus relacionamentos.`;
         document.getElementById('shareWhatsAppBtn').href = 'https://wa.me/5511974523819?text=' + encodeURIComponent(shareMsg);
 
         // Traits
