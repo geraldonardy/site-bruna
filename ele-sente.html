@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ele Sente. Só Não Conta. | Ebook Gratuito — Bruna Nardy</title>
+    <meta name="description" content="Ebook gratuito sobre as dificuldades emocionais que homens enfrentam em silêncio. Escrito pela Psicóloga Bruna Nardy (CRP 06/152225).">
+    <link rel="canonical" href="https://www.brunanardy.com.br/ele-sente.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ele Sente. Só Não Conta. | Ebook Gratuito">
+    <meta property="og:description" content="Um ebook sobre as dificuldades emocionais que homens enfrentam em silêncio. Gratuito.">
+    <meta property="og:url" content="https://www.brunanardy.com.br/ele-sente.html">
+    <meta property="og:image" content="https://www.brunanardy.com.br/imgs/fotoPerfil.jpg">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="imgs/favicon.png">
+
+    <!-- Styles do site -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ebook-landing.css">
+
+    <style>
+        /* Estilos específicos da landing */
+        .ebook-hero {
+            padding: 80px 0 60px;
+        }
+
+        .ebook-hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (max-width: 860px) {
+            .ebook-hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .ebook-hero h1 {
+            font-size: 2.6rem;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .ebook-hero .subtitle {
+            font-size: 1.15rem;
+            line-height: 1.5;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+
+        .ebook-hero .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--oliva-subtle, #6b6b57);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .ebook-mock {
+            position: relative;
+            aspect-ratio: 3/4;
+            max-width: 320px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #3a3a2e 0%, #1f1f17 100%);
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.35), 0 8px 20px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 32px;
+            color: #e8e4d6;
+            overflow: hidden;
+        }
+
+        .ebook-mock::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at top left, rgba(255,255,255,0.06), transparent 60%);
+            pointer-events: none;
+        }
+
+        .ebook-mock .mock-line {
+            font-family: serif;
+            letter-spacing: 0.4em;
+            font-size: 0.7rem;
+            opacity: 0.7;
+            margin-bottom: 8px;
+        }
+
+        .ebook-mock .mock-title {
+            font-family: var(--font-heading, Georgia, serif);
+            font-size: 1.8rem;
+            line-height: 1.15;
+            margin-bottom: 6px;
+            font-weight: 400;
+        }
+
+        .ebook-mock .mock-title-2 {
+            font-family: var(--font-heading, Georgia, serif);
+            font-size: 1.8rem;
+            line-height: 1.15;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .ebook-mock .mock-sub {
+            font-size: 0.75rem;
+            line-height: 1.5;
+            opacity: 0.8;
+            margin-top: 16px;
+        }
+
+        .ebook-mock .mock-author {
+            position: absolute;
+            bottom: 24px;
+            left: 0;
+            right: 0;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            opacity: 0.85;
+        }
+
+        .ebook-mock .mock-monogram {
+            position: absolute;
+            bottom: 8px;
+            right: 16px;
+            font-family: var(--font-monogram, Georgia, serif);
+            font-size: 2.2rem;
+            opacity: 0.25;
+        }
+
+        /* Form */
+        .capture-form-box {
+            background: var(--creme-bg, #f5ecd9);
+            border-radius: 12px;
+            padding: 32px 28px;
+            margin-top: 28px;
+            box-shadow: 0 2px 24px rgba(0,0,0,0.18);
+        }
+
+        .capture-form-box h3 {
+            color: var(--creme-text, #3a3a2e);
+            font-size: 1.15rem;
+            margin-bottom: 16px;
+        }
+
+        .capture-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .capture-form input {
+            padding: 14px 16px;
+            border: 1px solid rgba(107, 107, 87, 0.3);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: #fff;
+            color: #3a3a2e;
+        }
+
+        .capture-form input:focus {
+            outline: none;
+            border-color: #6b6b57;
+            box-shadow: 0 0 0 3px rgba(107, 107, 87, 0.15);
+        }
+
+        .capture-form button {
+            padding: 14px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            background: #3a3a2e;
+            color: #f5ecd9;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .capture-form button:hover:not(:disabled) {
+            background: #1f1f17;
+            transform: translateY(-1px);
+        }
+
+        .capture-form button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .consent {
+            font-size: 0.78rem;
+            color: rgba(58, 58, 46, 0.7);
+            line-height: 1.5;
+            margin-top: 4px;
+        }
+
+        .consent label {
+            display: flex;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .consent input[type="checkbox"] {
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .form-message {
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-top: 8px;
+            display: none;
+        }
+
+        .form-message.success {
+            background: rgba(76, 150, 80, 0.15);
+            color: #2d5a31;
+            border: 1px solid rgba(76, 150, 80, 0.3);
+            display: block;
+        }
+
+        .form-message.error {
+            background: rgba(180, 60, 60, 0.15);
+            color: #7a2020;
+            border: 1px solid rgba(180, 60, 60, 0.3);
+            display: block;
+        }
+
+        /* Seções de conteúdo */
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .chapters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            max-width: 920px;
+            margin: 0 auto;
+        }
+
+        .chapter-item {
+            background: #fff;
+            border: 1px solid rgba(107, 107, 87, 0.2);
+            border-radius: 10px;
+            padding: 20px 22px;
+        }
+
+        .chapter-num {
+            font-family: var(--font-monogram, Georgia, serif);
+            font-size: 1.8rem;
+            color: rgba(107, 107, 87, 0.5);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .chapter-item h3 {
+            font-size: 1.05rem;
+            color: var(--creme-text, #3a3a2e);
+            margin-bottom: 6px;
+        }
+
+        .chapter-item p {
+            font-size: 0.9rem;
+            color: rgba(58, 58, 46, 0.75);
+            line-height: 1.5;
+        }
+
+        .author-box {
+            max-width: 720px;
+            margin: 0 auto;
+            background: rgba(107, 107, 87, 0.08);
+            padding: 32px;
+            border-radius: 12px;
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 28px;
+            align-items: center;
+        }
+
+        @media (max-width: 600px) {
+            .author-box {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .author-box img {
+                margin: 0 auto;
+            }
+        }
+
+        .author-box img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(107, 107, 87, 0.3);
+        }
+
+        .author-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+
+        .author-box .crp {
+            font-size: 0.85rem;
+            color: rgba(58, 58, 46, 0.6);
+            margin-bottom: 12px;
+        }
+
+        .author-box p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header simples -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo-svg" aria-label="Bruna Nardy — Psicóloga Clínica">
+                <span class="logo-text">Bruna Nardy</span>
+                <svg class="logo-butterfly" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 16c-2-4-7-8-10-6s-1 7 3 9c2 1 5 0 7-3z"/><path d="M16 16c2-4 7-8 10-6s1 7-3 9c-2 1-5 0-7-3z"/><path d="M16 16v10" stroke-linecap="round"/><path d="M14 6c1 3 2 7 2 10" stroke-linecap="round"/><path d="M18 6c-1 3-2 7-2 10" stroke-linecap="round"/></svg>
+            </a>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon"><span></span></label>
+            <nav class="menu-nav">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="cursos.html">Cursos</a></li>
+                    <li><a href="testes.html">Testes</a></li>
+                    <li><a href="agendamento.html">Agendamento</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Hero com formulário de captura -->
+        <section class="section-oliva ebook-hero">
+            <div class="container">
+                <div class="ebook-hero-grid">
+
+                    <div>
+                        <span class="badge">Ebook Gratuito</span>
+                        <h1>Ele sente. Só não conta.</h1>
+                        <p class="subtitle">Sobre as dificuldades emocionais que homens enfrentam em silêncio — e como romper esse ciclo sem perder a masculinidade no caminho.</p>
+
+                        <div class="capture-form-box">
+                            <h3>📖 Receba o ebook gratuitamente no seu email</h3>
+                            <form class="capture-form" id="leadForm" data-source="ebook-ele-sente">
+                                <input
+                                    type="text"
+                                    name="nome"
+                                    id="nome"
+                                    placeholder="Seu primeiro nome"
+                                    required
+                                    autocomplete="given-name"
+                                    maxlength="60">
+                                <input
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    placeholder="Seu melhor email"
+                                    required
+                                    autocomplete="email"
+                                    maxlength="120">
+                                <div class="consent">
+                                    <label>
+                                        <input type="checkbox" name="consent" id="consent" required>
+                                        <span>Concordo em receber o ebook e outros conteúdos da Bruna Nardy por email. Posso descadastrar a qualquer momento.</span>
+                                    </label>
+                                </div>
+                                <button type="submit" id="submitBtn">Quero receber o ebook</button>
+                                <div class="form-message" id="formMsg"></div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="ebook-mock">
+                            <div class="mock-line">——————</div>
+                            <div class="mock-title">Ele Sente.</div>
+                            <div class="mock-title-2">Só Não Conta.</div>
+                            <div class="mock-sub">Sobre as dificuldades emocionais<br>que homens enfrentam em silêncio</div>
+                            <div class="mock-line" style="margin-top: 20px;">——————</div>
+                            <div class="mock-author">BRUNA NARDY</div>
+                            <div class="mock-monogram">BN</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- O que você vai encontrar -->
+        <section class="content-section section-creme">
+            <div class="container">
+                <h2>O que você vai encontrar neste ebook</h2>
+                <div class="chapters-grid">
+
+                    <div class="chapter-item">
+                        <div class="chapter-num">01</div>
+                        <h3>A construção do homem que não sente</h3>
+                        <p>Como a cultura, a família e a escola ensinam meninos a desligar as próprias emoções.</p>
+                    </div>
+
+                    <div class="chapter-item">
+                        <div class="chapter-num">02</div>
+                        <h3>As emoções que eles escondem</h3>
+                        <p>Medo, tristeza, solidão, vergonha — o que realmente se passa por dentro do silêncio.</p>
+                    </div>
+
+                    <div class="chapter-item">
+                        <div class="chapter-num">03</div>
+                        <h3>O preço do silêncio</h3>
+                        <p>Os impactos reais na saúde física, mental e nos relacionamentos.</p>
+                    </div>
+
+                    <div class="chapter-item">
+                        <div class="chapter-num">04</div>
+                        <h3>Por que é tão difícil se abrir</h3>
+                        <p>As barreiras internas que travam a expressão emocional masculina.</p>
+                    </div>
+
+                    <div class="chapter-item">
+                        <div class="chapter-num">05</div>
+                        <h3>O efeito nos relacionamentos</h3>
+                        <p>Como essas dificuldades afetam a relação com a parceira, os filhos, os amigos.</p>
+                    </div>
+
+                    <div class="chapter-item">
+                        <div class="chapter-num">06</div>
+                        <h3>Caminhos para a mudança</h3>
+                        <p>Passos concretos e práticos pra começar a se conectar com o que se sente.</p>
+                    </div>
+
+                    <div class="chapter-item">
+                        <div class="chapter-num">07</div>
+                        <h3>Para quem convive com ele</h3>
+                        <p>Para parceiras, familiares e amigos que querem entender e apoiar sem invadir.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre a autora -->
+        <section class="content-section section-oliva">
+            <div class="container">
+                <h2>Escrito por quem escuta homens todos os dias</h2>
+                <div class="author-box">
+                    <img src="imgs/fotoPerfil.jpg" alt="Bruna Nardy">
+                    <div>
+                        <h3>Bruna Nardy</h3>
+                        <p class="crp">Psicóloga Clínica — CRP 06/152225</p>
+                        <p>Mais de 10 mil atendimentos realizados. Especialista em comunicação nos relacionamentos. Neste ebook, compartilha o que aprendeu escutando homens reais — suas dores, silêncios e descobertas — de forma acolhedora e sem julgamento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer padrão -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; 2026 Bruna Nardy. Todos os direitos reservados.</p>
+                    <p class="footer-crp">CRP 06/152225</p>
+                </div>
+                <div class="footer-right">
+                    <a href="https://www.instagram.com/brunanardy_/" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://wa.me/5511974523819" target="_blank" rel="noopener">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/lead-capture.js"></script>
+</body>
+</html>
