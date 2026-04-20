@@ -26,6 +26,12 @@
         <priority>0.8</priority>
     </url>
 
+    <url>
+        <loc>https://www.brunanardy.com.br/psi-indica.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
     <!-- Cursos específicos -->
     <url>
         <loc>https://www.brunanardy.com.br/curso-comuniquese.html</loc>
