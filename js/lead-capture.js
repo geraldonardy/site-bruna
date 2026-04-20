@@ -39,6 +39,7 @@
         const nome = document.getElementById("nome").value.trim();
         const email = document.getElementById("email").value.trim().toLowerCase();
         const consent = document.getElementById("consent").checked;
+        const resultado = document.getElementById("resultado")?.value || null;
 
         // validações básicas do lado do cliente
         if (nome.length < 2) {
@@ -66,6 +67,7 @@
                     nome: nome,
                     email: email,
                     source: source,
+                    resultado: resultado,
                     referrer: document.referrer || null,
                     page: window.location.pathname
                 })
