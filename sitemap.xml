@@ -89,8 +89,7 @@
         <priority>0.8</priority>
     </url>
 
-    <!-- Landing pages de ebook (adicionar DEPOIS que publicar) -->
-    <!--
+    <!-- Landing pages de ebook -->
     <url>
         <loc>https://www.brunanardy.com.br/ele-sente.html</loc>
         <changefreq>monthly</changefreq>
@@ -102,6 +101,5 @@
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
-    -->
 
 </urlset>
