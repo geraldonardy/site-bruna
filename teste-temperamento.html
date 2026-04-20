@@ -337,6 +337,9 @@
             border: 1px solid rgba(180,60,60,0.3);
             display: block;
         }
+        /* Fase 1b: gate — esconde resultado até o email ser submetido */
+        .result-card.gate-active > *:not(.test-capture-box) { display: none !important; }
+        .result-card.gate-active .test-capture-box { margin: 0; }
     </style>
 </head>
 <body>
@@ -407,12 +410,12 @@
 
                         <div class="result-traits" id="resultTraits"></div>
 
-                        <!-- Captura de email pro relatório completo -->
+                        <!-- Gate: preencher pra ver o resultado + receber relatório -->
                         <div class="test-capture-box">
-                            <h3>📧 Quer o relatório completo?</h3>
-                            <p>Um documento personalizado com interpretação detalhada do seu resultado, exemplos práticos e recomendações da Psicóloga Bruna Nardy. Gratuito, enviado pro seu email.</p>
+                            <h3>🎯 Seu resultado está pronto!</h3>
+                            <p>Preencha abaixo pra ver seu resultado aqui na tela <b>e</b> receber um relatório detalhado da Bruna no seu email. É gratuito.</p>
 
-                            <form class="capture-form" id="leadForm" data-source="teste-temperamento">
+                            <form class="capture-form" id="leadForm" data-source="teste-temperamento" data-post-submit="reveal-result">
                                 <input type="text" name="nome" id="nome" placeholder="Seu primeiro nome" required>
                                 <input type="email" name="email" id="email" placeholder="Seu melhor email" required>
                                 <input type="hidden" name="resultado" id="resultado" value="">
@@ -424,7 +427,7 @@
                                     </label>
                                 </div>
 
-                                <button type="submit" id="submitBtn">Quero meu relatório completo</button>
+                                <button type="submit" id="submitBtn">Ver meu resultado</button>
                                 <div class="form-message" id="formMsg"></div>
                             </form>
                         </div>
@@ -596,8 +599,17 @@
         });
 
         document.getElementById('resultCard').style.display = 'block';
+        document.getElementById('resultCard').classList.add('gate-active');
         window.scrollTo({ top: document.getElementById('resultCard').offsetTop - 120, behavior: 'smooth' });
     }
+
+    // Fase 1b: após o submit do form, revela o resultado na tela
+    document.addEventListener('leadCaptured', function () {
+        const card = document.getElementById('resultCard');
+        if (!card) return;
+        card.classList.remove('gate-active');
+        window.scrollTo({ top: card.offsetTop - 120, behavior: 'smooth' });
+    });
     </script>
 
     <!-- Script compartilhado de captura de lead -->

@@ -78,8 +78,24 @@
                 throw new Error(error.detail || "Erro ao enviar");
             }
 
-            // sucesso — redireciona pro thank you
-            window.location.href = "obrigado.html?source=" + encodeURIComponent(source);
+            // sucesso — comportamento depende do form:
+            //  - data-post-submit="reveal-result" → substitui o box por msg de sucesso e dispara evento 'leadCaptured'
+            //    (usado nos 4 testes: revela o resultado na tela após o submit)
+            //  - sem o attr → redireciona pra obrigado.html (landings de ebook)
+            if (form.dataset.postSubmit === "reveal-result") {
+                const box = form.closest(".test-capture-box");
+                if (box) {
+                    box.innerHTML =
+                        '<div class="form-message success" style="text-align:center;">' +
+                        '📧 Pronto! O relatório completo foi enviado pro seu email. Veja seu resultado abaixo ↓' +
+                        '</div>';
+                }
+                document.dispatchEvent(new CustomEvent("leadCaptured", {
+                    detail: { source: source }
+                }));
+            } else {
+                window.location.href = "obrigado.html?source=" + encodeURIComponent(source);
+            }
 
         } catch (err) {
             console.error("Capture error:", err);
